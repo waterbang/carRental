@@ -1,15 +1,56 @@
 /* pages/index/index.wxss */
 
+/* banner */
+
 .index .header .banner-img {
   width: 100%;
   height: 400rpx;
 }
 
+/* 导航块 */
 .index .header .header-recom {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
+/* 四个营销块 */
 
+.index .item {
+  margin: 20rpx 0;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.index .item .chunk {
+  width: 140rpx;
+  height: 120rpx;
+  background-color: #fff;
+  padding: 10rpx;
+  border-radius: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.index .item image {
+  margin-bottom: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 主页推荐列表 */
+
+.index .list {
+  margin-top: 50rpx;
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
 

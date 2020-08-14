@@ -1,0 +1,13 @@
+<!--components/indexList/index.wxml-->
+		<view wx:for="{{recommendList}}" wx:key="index" class="list-item">
+			<view class="list-img">
+				<image src="{{item.img}}" class="img"></image>
+			</view>
+			<view class="content">
+				<view class="title">{{item.title}}</view>
+				<view class="hotSell">热销</view>
+				<view class="img">自动 · 5座 · 1.6L</view>
+        <view class="item-msg">周年庆大促</view> <view class="item-msg">车已消毒</view> <view class="item-msg">满油取还</view>
+			</view>
+			<view class="price">{{item.price}}</view>
+		</view>

@@ -5,7 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    listFour:[ // 四个小块数据
+      {image: "/static/index/setMeal.png",title: "超值套餐"},
+      {image: "/static/index/discount.png",title: "领优惠券"},
+      {image: "/static/index/signIn.png",title: "签到积分"},
+      {image: "/static/index/activity.png",title: "限时活动"}
+    ],
+    recommendList:[{
+        title: "朗逸",
+        price: "3000.00",
+        img: "https://www.jindundangan.com/upload/cart_type/20200803093526_.jpeg"
+      }]
   },
 
   /**

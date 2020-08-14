@@ -4,8 +4,23 @@
 		<image class="banner-img" mode="aspectFill" src="/static/index/index-banner-1.jpg"></image>
 		<view class="header-recom">
 			<w-mainChunk flag="left"></w-mainChunk>
-      <w-mainChunk flag="right"></w-mainChunk>
+			<w-mainChunk flag="right"></w-mainChunk>
 		</view>
 	</view>
-
+	<view class="item">
+		<view wx:for="{{listFour}}" wx:key="index" class="chunk">
+			<image src="{{item.image}}"></image>
+			<view class="">{{item.title}}</view>
+		</view>
+	</view>
+	<view class="list">
+     <l-tabs bind:linchange="changeTabs" animated-for-line="true" active-color="#ec8e30" inactive-color="#808080">
+        <l-tabpanel tab="推荐车" key="one" slot="one">
+          <view class="tab-content">车型推荐</view>
+        </l-tabpanel>
+        <l-tabpanel tab="二手车推荐" key="two" slot="two">
+          <view class="tab-content">二手车推荐</view>
+        </l-tabpanel>
+      </l-tabs>
+	</view>
 </view>

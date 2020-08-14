@@ -5,7 +5,7 @@ import {
 } from "./storageSyncTool.js.js"
 
 // host地址
-const host = "https://www.abc.com"
+const host = "https://www.jindundangan.com/"
 
 // 合并请求参数: 将默认参数和实际请求的参数进行合并
 const mergeRequestParmas = (perDefaults, params) => {
@@ -19,7 +19,7 @@ const wxRequest = async (subUrl, params = {}) => {
     header: {
       "Content-Type": "application/json"
     },
-    method: "GET",
+    method: "POST",
     data: {
       token: token || ""
     }
@@ -28,9 +28,9 @@ const wxRequest = async (subUrl, params = {}) => {
   // 合并参数
   const options = mergeRequestParmas(defaults, params)
   let res = await new Promise((resolve, reject) => {
-    if (!token) {
-      reject("登录过期")
-    }
+    // if (!token) {
+    //   reject("登录过期")
+    // }
     let url = host + subUrl
     const { header, method, data } = options
     wx.request({
@@ -39,6 +39,7 @@ const wxRequest = async (subUrl, params = {}) => {
       method,
       data,
       success: res => {
+        console.log(res);
         const { code, data } = res.data
         if (res && code === 200) {
           resolve(data)
