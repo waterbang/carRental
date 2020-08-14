@@ -1,0 +1,41 @@
+/* components/indexMainChunk/index.wxss */
+.chunk {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5%;
+  width: 350rpx;
+  height: 110rpx;
+  background-color: #fff;
+}
+.left-back {
+  /* background-color: #fff8dc; */
+}
+.right-back {
+  /* background-color: #e4ac9a; */
+}
+
+.chunk .left {
+  margin: 10rpx;
+}
+
+.chunk .right {
+  display: flex;
+  flex-direction: column;
+}
+
+.right .img{
+  width: 40rpx;
+  height: 25rpx;
+}
+
+.chunk .left .title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.chunk .left .dsc {
+  color: #778899;
+  font-size: 13px;
+}

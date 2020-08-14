@@ -1,2 +1,11 @@
 <!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<view class="index">
+	<view class="header">
+		<image class="banner-img" mode="aspectFill" src="/static/index/index-banner-1.jpg"></image>
+		<view class="header-recom">
+			<w-mainChunk flag="left"></w-mainChunk>
+      <w-mainChunk flag="right"></w-mainChunk>
+		</view>
+	</view>
+
+</view>

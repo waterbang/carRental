@@ -1,0 +1,19 @@
+<!--components/indexMainChunk/index.wxml-->
+<view wx:if="{{flag === 'left'}}" class="chunk left left-back">
+	<view class="left">
+		<view class="title">上门接送</view>
+		<view class="dsc">为您推荐附近的门店</view>
+	</view>
+	<view class="right">
+		<image class="img" src="/static/index/hot.png"></image>
+	</view>
+</view>
+<view wx:else class="chunk right right-back">
+	<view class="left">
+		<view class="title">到店取还</view>
+		<view class="dsc">为您推荐最近的门店</view>
+	</view>
+	<view class="right">
+		<image class="img" src="/static/index/hot.png"></image>
+	</view>
+</view>

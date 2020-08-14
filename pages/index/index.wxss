@@ -1,1 +1,15 @@
 /* pages/index/index.wxss */
+
+.index .header .banner-img {
+  width: 100%;
+  height: 400rpx;
+}
+
+.index .header .header-recom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
