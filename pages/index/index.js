@@ -5,19 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listFour:[ // 四个小块数据
-      {image: "/static/index/setMeal.png",title: "超值套餐"},
-      {image: "/static/index/discount.png",title: "领优惠券"},
-      {image: "/static/index/signIn.png",title: "签到积分"},
-      {image: "/static/index/activity.png",title: "限时活动"}
+    listFour: [ // 四个小块数据
+      { image: "/static/index/setMeal.png", title: "超值套餐" },
+      { image: "/static/index/discount.png", title: "领优惠券" },
+      { image: "/static/index/signIn.png", title: "签到积分" },
+      { image: "/static/index/activity.png", title: "限时活动" }
     ],
-    recommendList:[{
-        title: "朗逸",
-        price: "3000.00",
-        img: "https://www.jindundangan.com/upload/cart_type/20200803093526_.jpeg"
-      }]
+    recommendList: [{
+      title: "朗逸",
+      price: "300.00",
+      img: "https://www.jindundangan.com/upload/cart_type/20200803093526_.jpeg"
+    }],
+    secondList: [{
+      title: "卡罗拉",
+      price: "200.00",
+      img: "https://www.jindundangan.com/upload/cart_type/20200803093526_.jpeg"
+    }],
   },
-
+  // 切换tab
+  changeTabs(e) {
+    console.log(e)
+  },
   /**
    * 生命周期函数--监听页面加载
    */

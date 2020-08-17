@@ -23,5 +23,4 @@ view, image, text, navigator {
 view, text {
   font-family: PingFangSC-Light, helvetica, 'Heiti SC';
   font-size: 28rpx;
-  color: #333;
 }

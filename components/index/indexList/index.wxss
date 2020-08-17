@@ -1,0 +1,72 @@
+/* components/indexList/index.wxss */
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.list-item {
+  margin: 10rpx 0;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20rpx;
+}
+
+.list-item .list-img .img {
+  width: 250rpx;
+  height: 160rpx;
+}
+
+.list-item .list-img .item-msg-list {
+  width: 250rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.list-item .list-img .item-msg-list .item-msg {
+  margin: 0 10rpx 5rpx 0;
+}
+
+.list-item .list-img .item-msg-list .item-msg .msg-list {
+  font-size: 10px;
+}
+
+.list-item .content {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.list-item .content .title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.list-item .content .hotSell {
+  margin: 10rpx 0;
+}
+
+.list-item .content .hotSell .hot {
+  margin: 10rpx;
+  font-size: 10px;
+}
+
+.list-item .content .tag-msg {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30rpx;
+}
