@@ -2,10 +2,10 @@ import getErrorMessage from "./expectionalError"
 import {
   getLoginToken,
   clearLoginToken
-} from "./storageSyncTool.js.js"
+} from "./storageSyncTool.js"
 
 // host地址
-const host = "https://www.jindundangan.com/"
+const host = "https://www.jindundangan.com/admin/"
 
 // 合并请求参数: 将默认参数和实际请求的参数进行合并
 const mergeRequestParmas = (perDefaults, params) => {
@@ -39,9 +39,9 @@ const wxRequest = async (subUrl, params = {}) => {
       method,
       data,
       success: res => {
-        console.log(res);
+        // console.log(res);
         const { code, data } = res.data
-        if (res && code === 200) {
+        if (res && code == 200) {
           resolve(data)
         } else {
           let err = {

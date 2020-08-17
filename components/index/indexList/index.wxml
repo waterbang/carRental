@@ -2,7 +2,7 @@
 <view class="body">
 	<view wx:for="{{recommendList}}" wx:key="index" class="list-item">
 		<view class="list-img">
-			<image src="{{item.img}}" class="img"></image>
+			<image src="{{item.img}}" class="img" lazy-load="true"></image>
 			<view class="item-msg-list">
 				<l-tag l-class="item-msg" plain="{{true}}" font-color="#d3d3d3;" size="super-mini"><text class="msg-list">周年庆大促</text></l-tag>
 				<l-tag l-class="item-msg" plain="{{true}}" font-color="#d3d3d3;" size="super-mini"><text class="msg-list">车已消毒</text></l-tag>
@@ -13,8 +13,8 @@
 			<view class="title">{{item.title}}</view>
 			<l-tag l-class="hotSell" font-color="#f0f0f0;" size="super-mini" bg-color="#e96356;"><text class="hot">热销</text></l-tag>
 
-			<view class="tag-msg">自动 · 5座 · 1.6L</view>
-			
+			<view class="tag-msg">{{item.power_type===''?'自动':item.power_type}} · {{item.seat}}座 · 1.6L</view>
+
 			<l-tag l-class="hotSell" font-color="#f0f0f0;" size="super-mini" bg-color="#e96356;"><text class="hot">周年庆大促</text></l-tag>
 
 			<text class="price"><text style="color:#ff0000;"><text style="font-size:10px">¥</text>{{item.price}}</text>/天</text>

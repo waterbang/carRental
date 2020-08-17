@@ -6,3 +6,12 @@ const getRecommend = () => wxRequest(API.INDEX_RECOMMEND).then(res => {return re
 
 //获取推荐的二手🚗
 const getUsedCar = () => wxRequest(API.INDEX_SECOND_HAND).then(res => {return res})
+
+
+
+
+
+module.exports = {
+  getRecommend,
+  getUsedCar
+}
