@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "车辆类别",
+  "usingComponents": {
+    "l-tabs" : "/miniprogram_npm/lin-ui/tabs/index",
+    "l-tabpanel" : "/miniprogram_npm/lin-ui/tabpanel/index",
+    "w-list" : "/components/index/indexList/index"
+  }
+}

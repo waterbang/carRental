@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/my/my",
-    "pages/nearby/nearby",
+    "pages/classify/classify",
     "pages/order/order"
   ],
   "window": {
@@ -22,7 +22,7 @@
       "selectedIconPath":"static/tarBar/index.png",
       "text": "首页"
     }, {
-      "pagePath": "pages/nearby/nearby",
+      "pagePath": "pages/classify/classify",
       "iconPath": "static/tarBar/region-un.png",
       "selectedIconPath":"static/tarBar/region.png",
       "text": "分类"
@@ -40,7 +40,7 @@
   },
   "style": "v2",
   "usingComponents":{
-
+    "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index"
   },
   "sitemapLocation": "sitemap.json"
 }

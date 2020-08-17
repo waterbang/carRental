@@ -1,13 +1,28 @@
-// pages/nearby/nearby.js
+// pages/classify/classify.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    classifyArr:["特价车","经济型","舒适型","SUV","商务型","豪华型","跑车","新能源"],
+    carList:[{
+      title: "朗逸",
+      price: "300.00",
+      img: "https://www.jindundangan.com/upload/cart_type/20200803093526_.jpeg"
+    }],
   },
-
+  //切换标签
+  changeTabs(e) {
+    console.log(e);
+  },
+  //选择城市
+  clickMap() {
+    wx.showToast({
+      title: '当前未开放其他城市',
+      icon: 'none'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

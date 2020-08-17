@@ -38,6 +38,7 @@
 }
 
 .list-item .content {
+  width: 60%;
   margin-left: 20rpx;
   display: flex;
   flex-direction: column;
@@ -66,7 +67,8 @@
 .price {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 30rpx;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 12px;
+  color: #949494;
 }

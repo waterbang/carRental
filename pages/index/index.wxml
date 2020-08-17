@@ -17,12 +17,12 @@
      <l-tabs bind:linchange="changeTabs" animated-for-line="true" active-color="#ec8e30" inactive-color="#808080">
         <l-tabpanel tab="推荐车" key="one" slot="one">
           <view class="tab-content">
-						<w-indexList recommendList="{{recommendList}}"></w-indexList>
+						<w-list recommendList="{{recommendList}}"></w-list>
 					</view>
         </l-tabpanel>
         <l-tabpanel tab="二手车推荐" key="two" slot="two">
           <view class="tab-content">
-						<w-indexList recommendList="{{secondList}}"></w-indexList>
+						<w-list recommendList="{{secondList}}"></w-list>
 					</view>
         </l-tabpanel>
       </l-tabs>

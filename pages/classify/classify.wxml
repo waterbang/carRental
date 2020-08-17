@@ -1,0 +1,20 @@
+<!--pages/classify/classify.wxml-->
+<view class="classify">
+	<view class="header">
+		<view class="left">用车城市</view>
+		<view bindtap="clickMap" class="right">厦门 <text style="color:#f7cb4f">></text></view>
+	</view>
+	<view class="content">
+		<l-tabs l-header-class="tabs-header" bind:linchange="changeTabs" placement="left" animated="true" scrollable="true">
+			<l-tabpanel wx:for="{{classifyArr}}" wx:key="index" tab="{{item}}" key="{{index}}" slot="{{index}}">
+				<view class="tab-content">
+					<l-loadmore show="{{true}}" type="end" end-text="到底了～">
+						<view slot="content">
+							<w-list recommendList="{{carList}}" classify="true"></w-list>
+						</view>
+					</l-loadmore>
+				</view>
+			</l-tabpanel>
+		</l-tabs>
+	</view>
+</view>
