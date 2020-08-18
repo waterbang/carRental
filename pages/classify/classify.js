@@ -1,20 +1,22 @@
 // pages/classify/classify.js
+import {
+  getTypeList,
+  getTypeData
+} from '../../models/classify'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    classifyArr:["特价车","经济型","舒适型","SUV","商务型","豪华型","跑车","新能源"],
-    carList:[{
-      title: "朗逸",
-      price: "300.00",
-      img: "https://www.jindundangan.com/upload/cart_type/20200803093526_.jpeg"
-    }],
+    classifyArr: ["特价车", "经济型", "舒适型", "SUV", "商务型", "豪华型", "跑车", "新能源"],
+    carList: [],
   },
   //切换标签
   changeTabs(e) {
-    console.log(e);
+    let typeId = e.detail.activeKey;
+    if (!typeId) return;
+    this._getTypeData(typeId);
   },
   //选择城市
   clickMap() {
@@ -23,11 +25,43 @@ Page({
       icon: 'none'
     })
   },
+  //获取分类
+  async _getTypeList() {
+    let list = await getTypeList();
+    if (list) {
+      this.setData({
+        classifyArr: list
+      })
+    }
+  },
+  //获取分类详情
+  async _getTypeData(id) {
+    this.setLoading(true);
+    let data = null;
+   try {
+    data = await getTypeData(id);
+   } catch(e) {
+    wx.reportMonitor('0', 1); // 告警监控
+     this.setLoading(false);
+   }
+    if (!data) return this.setLoading(false);
+    this.setData({
+      carList:data
+    })
+    this.setLoading(false)
+  },
+  //set loading animation
+  setLoading(status) {
+    this.setData({
+      loading: status
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._getTypeList(); // 初始化分类
+    this._getTypeData(17); // 初始化商务型分类
   },
 
   /**

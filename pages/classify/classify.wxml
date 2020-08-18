@@ -6,9 +6,9 @@
 	</view>
 	<view class="content">
 		<l-tabs l-header-class="tabs-header" bind:linchange="changeTabs" placement="left" animated="true" scrollable="true">
-			<l-tabpanel wx:for="{{classifyArr}}" wx:key="index" tab="{{item}}" key="{{index}}" slot="{{index}}">
+			<l-tabpanel wx:for="{{classifyArr}}" wx:key="index" tab="{{item.name}}" key="{{item.id}}" slot="{{item.id}}">
 				<view class="tab-content">
-					<l-loadmore show="{{true}}" type="end" end-text="到底了～">
+					<l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="我是有底线的～">
 						<view slot="content">
 							<w-list recommendList="{{carList}}" classify="true"></w-list>
 						</view>

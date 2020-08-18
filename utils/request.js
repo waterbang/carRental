@@ -9,7 +9,11 @@ const host = "https://www.jindundangan.com/admin/"
 
 // 合并请求参数: 将默认参数和实际请求的参数进行合并
 const mergeRequestParmas = (perDefaults, params) => {
-  return Object.assign({}, perDefaults, params)
+  for (var key in params) {
+    perDefaults[key] = perDefaults[key] && perDefaults[key].toString() === "[object Object]" ?
+    mergeRequestParmas(perDefaults[key], params[key]) : perDefaults[key] = params[key];
+  }
+  return perDefaults;
 }
 
 // 请求封装
@@ -17,11 +21,11 @@ const wxRequest = async (subUrl, params = {}) => {
   const token = getLoginToken()
   const defaults = {
     header: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/x-www-form-urlencoded"
     },
     method: "POST",
     data: {
-      token: token || ""
+      token: token || "21421qwdklml234"
     }
   }
 
@@ -32,7 +36,11 @@ const wxRequest = async (subUrl, params = {}) => {
     //   reject("登录过期")
     // }
     let url = host + subUrl
-    const { header, method, data } = options
+    const {
+      header,
+      method,
+      data
+    } = options
     wx.request({
       url,
       header,
@@ -40,14 +48,20 @@ const wxRequest = async (subUrl, params = {}) => {
       data,
       success: res => {
         // console.log(res);
-        const { code, data } = res.data
+        const {
+          code,
+          data
+        } = res.data
         if (res && code == 200) {
           resolve(data)
         } else {
           let err = {
             request: res.request,
             response: {
-              data: { status: res.data.code, description: res.data.message }
+              data: {
+                status: res.data.code,
+                description: res.data.message
+              }
             }
           }
           const handlerErr = responseErrorHandler(err)
@@ -99,4 +113,6 @@ const responseErrorHandler = error => {
   return err
 }
 
-export { wxRequest }
+export {
+  wxRequest
+}
