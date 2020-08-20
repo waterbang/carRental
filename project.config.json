@@ -69,6 +69,14 @@
 					"id": -1,
 					"name": "车辆类别",
 					"pathName": "pages/classify/classify",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "车辆详情，id=5",
+					"pathName": "pages/reserve/reserve",
+					"query": "id=5",
 					"scene": null
 				}
 			]

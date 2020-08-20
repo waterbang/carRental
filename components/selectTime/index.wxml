@@ -1,0 +1,19 @@
+<!--components/selectTime/index.wxml-->
+	<l-arc-popup locked="true" show="{{show}}" opacity="0.8" arc-radius="40">
+		<view class="operation">
+			<view bindtap="onSetTime" class="cancel">取消</view>
+			<view class="title">{{flag === 'left'?'取车时间':'还车时间'}}</view>
+			<view bindtap="onPushTime" class="submit">确认</view>
+		</view>
+		<picker-view indicator-style="height: 50px;" style="width: 100%; height: calc(100vw / 2);" value="{{value}}" bindchange="bindTimeChange">
+			<picker-view-column>
+				<view wx:for="{{mounthDays}}" wx:key="index" style="line-height: 50px;  text-align: center;">{{item.text}}</view>
+			</picker-view-column>
+			<picker-view-column>
+				<view wx:for="{{hours}}" wx:key="index" style="line-height: 50px;text-align: center;">{{item}}</view>
+			</picker-view-column>
+			<picker-view-column>
+				<view wx:for="{{mins}}" wx:key="index" style="line-height: 50px;  text-align: center;">{{item}}</view>
+			</picker-view-column>
+		</picker-view>
+	</l-arc-popup>

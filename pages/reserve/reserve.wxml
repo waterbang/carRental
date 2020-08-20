@@ -1,0 +1,46 @@
+<!--pages/reserve/reserve.wxml-->
+<view class="reserve">
+	<w-getAddress class="address address-flast" getCarAddress="{{getCarAddress}}" title="取车地址" img="/static/reserve/get.png" bind:getCarAddress="getCarAddress"></w-getAddress>
+	<w-getAddress class="address" getCarAddress="{{repayCarAddress}}" title="还车地址" img="/static/reserve/repay.png" bind:getCarAddress="repayAddress"></w-getAddress>
+
+	<view class="time">
+		<view class="header">
+			<image class="img" src="/static/reserve/time.png"></image>
+			<view class="title">预定时间</view>
+		</view>
+		<view class="content">
+			<view class="select" bindtap="onSetTime" data-flag="left">
+				<view class="year-day">{{getDate}}</view>
+				<view class="hour-muinute">{{getTime}}</view>
+			</view>
+			<view class="middle">
+				<view class="day">{{day}}天{{hour?(hour+'小时'):''}}</view>
+				<image class="img" src="/static/reserve/left_right.png"></image>
+			</view>
+			<view class="select" bindtap="onSetTime" data-flag="right">
+				<view class="year-day">{{reDate}}</view>
+				<view class="hour-muinute">{{reTime}}</view>
+			</view>
+		</view>
+	</view>
+	<l-tabs class="tab" animated-for-line="true" scrollable="true">
+		<l-tabpanel tab="车辆详情" key="one" slot="one" l-class="tabpanel">
+				<view class="car">
+					<image class="img" mode="aspectFill" src="{{carDetail.imgs}}"></image>
+					<view class="car-header">
+						<view class="title">{{carDetail.title}}</view>
+						<l-price l-class="moeny" unit="￥" value="{{carDetail.price}}" value-color="#ff992a" unit-color="#ff992a"></l-price>
+					</view>
+					<view class="label">{{carDetail.compartment}}厢|{{carDetail.power_type}}｜乘坐{{carDetail.seat}}人</view>
+				</view>
+		</l-tabpanel>
+		<l-tabpanel tab="租车条件" key="two" slot="two">
+			<view class="tab-content">
+				<w-condition></w-condition>
+			</view>
+		</l-tabpanel>
+	</l-tabs>
+	<l-button l-class="sub" size="large" type="warning" bind:lintap="orderACar">立即订车</l-button>
+	<!-- 时间弹出 -->
+	<w-selectTime id="selectTime" show="{{isTime}}" bind:setDate="setDate" bind:onSetTime="onSetTime" bind:pushTime="pushTime" bind:onCloseTime="closeTime" flag="{{flag}}"></w-selectTime>
+</view>

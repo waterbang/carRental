@@ -1,0 +1,42 @@
+/* components/reserve/getAddress/index.wxss */
+.getCar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10rpx;
+  margin-bottom: 20rpx;
+  height: 70px;
+  background-color: white;
+  border-radius:0 0 3% 3%;
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.3),
+  0px 0px 20px rgba(0,0,0,0.1) inset;
+}
+
+ .header {
+  display: flex;
+}
+
+ .header .img {
+  width: 40rpx;
+  height: 40rpx;
+}
+.header .title {
+  color: #949494;
+  margin:5rpx;
+}
+
+ .getCar .content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 10rpx;
+}
+
+.getCar .content .address {
+  font-weight: 600;
+}
+
+.getCar .content .icon {
+  color: #ff992a;
+}

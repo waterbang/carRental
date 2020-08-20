@@ -5,7 +5,7 @@
 		<view class="dsc">为您推荐附近的门店</view>
 	</view>
 	<view class="right">
-		<image class="img" src="/static/index/hot.png"></image>
+		<!-- <image class="img" src="/static/index/hot.png"></image> -->
 	</view>
 </view>
 <view wx:else class="chunk right right-back">

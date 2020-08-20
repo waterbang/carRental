@@ -11,6 +11,14 @@ const api = {
   "CLASSIFY_TYPE" : "type/type",
   "CLASSIFY_TYPE_DATA" : "type/typedatail",
 
+  //---------------------------------------------车辆详情页
+  //获取车辆详情
+  "RESERVE_DETAIL":"index/details",
+  
+  //---------------------------------------------订单接口
+  //订单接口
+  "ORDER_ADD":"order/addorder",
+
  //---------------------------------------------用户相关
   //获取session_key的接口地址
  "GET_OPENID" : "GetweChat/getopenid",

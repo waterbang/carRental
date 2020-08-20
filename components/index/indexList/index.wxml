@@ -1,6 +1,6 @@
 <!--components/indexList/index.wxml-->
 <view class="body">
-	<view wx:for="{{recommendList}}" wx:key="index" class="list-item">
+	<view wx:for="{{recommendList}}" wx:key="index" class="list-item" bindtap="goReserve" data-id="{{item.id}}">
 		<view class="list-img">
 			<image src="{{item.imgs}}" class="img" lazy-load="true"></image>
 			<view class="item-msg-list">

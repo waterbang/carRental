@@ -1,0 +1,7 @@
+/* components/selectTime/index.wxss */
+/* 弹出层 */
+.operation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

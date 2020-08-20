@@ -19,6 +19,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    //去详情页
+    goReserve(e) {
+      let currentTarget = e.currentTarget.dataset?.id;
+      wx.navigateTo({
+        url: `/pages/reserve/reserve?id=${currentTarget}`,
+      })
+    }
   }
 })

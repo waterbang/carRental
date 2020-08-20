@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/my/my",
     "pages/classify/classify",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/reserve/reserve"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,33 +14,38 @@
   },
   "tabBar": {
     "color": "#999999",
-    "borderStyle":"white",
+    "borderStyle": "white",
     "selectedColor": "#000000",
     "backgroundColor": "#fff",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "iconPath": "static/tarBar/index-un.png",
-      "selectedIconPath":"static/tarBar/index.png",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/classify/classify",
-      "iconPath": "static/tarBar/region-un.png",
-      "selectedIconPath":"static/tarBar/region.png",
-      "text": "分类"
-    },{
-      "pagePath": "pages/order/order",
-      "iconPath": "static/tarBar/order-un.png",
-      "selectedIconPath":"static/tarBar/order.png",
-      "text": "订单"
-    },{
-      "pagePath": "pages/my/my",
-      "iconPath": "static/tarBar/user-un.png",
-      "selectedIconPath":"static/tarBar/user.png",
-      "text": "我的"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tarBar/index-un.png",
+        "selectedIconPath": "static/tarBar/index.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "iconPath": "static/tarBar/region-un.png",
+        "selectedIconPath": "static/tarBar/region.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "static/tarBar/order-un.png",
+        "selectedIconPath": "static/tarBar/order.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/tarBar/user-un.png",
+        "selectedIconPath": "static/tarBar/user.png",
+        "text": "我的"
+      }
+    ]
   },
   "style": "v2",
-  "usingComponents":{
+  "usingComponents": {
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index"
   },
   "sitemapLocation": "sitemap.json"

@@ -1,0 +1,20 @@
+/* components/condition/index.wxss */
+.condition {
+  margin-bottom: 20rpx;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  border-radius:10rpx;
+  box-shadow:1px 0px 8px #949494;
+  height: 625rpx;
+  overflow-y: scroll;
+}
+
+.condition .title2 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 2;
+}
