@@ -25,15 +25,16 @@ const wxRequest = async (subUrl, params = {}) => {
     },
     method: "POST",
     data: {
-      token: token || "21421qwdklml234"
+      openid: token || "21421qwdklml234"
     }
   }
 
   // 合并参数
   const options = mergeRequestParmas(defaults, params)
-  let res = await new Promise((resolve, reject) => {
+  let res = await new Promise(async (resolve, reject) => {
     // if (!token) {
-    //   reject("登录过期")
+    //  wxRequest(subUrl , params)
+    //   reject('登录过期')
     // }
     let url = host + subUrl
     const {
@@ -56,13 +57,10 @@ const wxRequest = async (subUrl, params = {}) => {
           resolve(data)
         } else {
           let err = {
-            request: res.request,
-            response: {
               data: {
                 status: res.data.code,
-                description: res.data.message
+                description: res.data.msg
               }
-            }
           }
           const handlerErr = responseErrorHandler(err)
           res.err = handlerErr

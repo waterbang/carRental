@@ -1,0 +1,17 @@
+<!--components/login/index.wxml-->
+<l-popup show="{{show}}">
+	<view class="isLogin">
+		<view class="header">
+			<view class="title">授权登录</view>
+			<view bindtap="closePopup"><l-icon name="close" color="#FFE57F"  /></view>
+		</view>
+    <image class="img" src="/static/WechatIMG50.png" mode="aspectFill"></image>
+    <view class="content">
+    <view class="mag">
+    请先授权登录，小旗需要获取您的名称和头像
+    用于展示。
+    </view>
+    <l-button l-class="btn" bind:getuserinfo="getUserInfo" open-type="getUserInfo" size="medium" type="warning">授权登录</l-button>
+    </view>
+	</view>
+</l-popup>

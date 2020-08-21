@@ -4,7 +4,8 @@
     "pages/my/my",
     "pages/classify/classify",
     "pages/order/order",
-    "pages/reserve/reserve"
+    "pages/reserve/reserve",
+    "pages/affirm/affirm"
   ],
   "window": {
     "backgroundTextStyle": "light",

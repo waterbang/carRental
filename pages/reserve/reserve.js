@@ -1,10 +1,12 @@
 // pages/reserve/reserve.js
 import {
-  getCarDetail
+  getCarDetail,
+  orderACar
 } from '../../models/reserve'
 import {
   showNoIconToast
 } from '../../utils/common';
+import {wxLogin} from '../../models/user'
 
 Page({
 
@@ -12,10 +14,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:null,//获取id
     carDetail: {}, //车辆详情
-    getCarAddress: {}, //  取车地址
-    repayCarAddress: {}, // 还车地址
+    getCarAddress: null, //  取车地址
+    repayCarAddress: null, // 还车地址
     getDate: '2016-09-01', // 提车时间
     getTime: '12:01',
     flag: 'left', // 看看是哪边
@@ -27,6 +28,7 @@ Page({
     isTime: false, //时间选择框
     day: 0, // 共几天
     hour: 0, // 小时
+    isLogin: false
   },
   //获取详情信息
   async getReserve(id) {
@@ -37,7 +39,6 @@ Page({
       })
       return;
     }
-    this.data.id = id;
     let detail = await getCarDetail(id);
     this.setData({
       carDetail: detail
@@ -59,6 +60,10 @@ Page({
   //关闭时间选择框
   onSetTime(e) {
     const flag = e.currentTarget.dataset.flag || 'left';
+    if(flag === 'right' && this.data.getValue.length === 0) {
+      showNoIconToast("请先选择租车时间");
+      return;
+    } 
     this.setData({
       isTime: !this.data.isTime,
       flag: flag
@@ -68,6 +73,19 @@ Page({
     this.setData({
       isTime: false
     })
+  },
+  setIsLoginStatus(status=false) {
+    if (typeof status === 'object') {
+      status = false
+    }
+    this.setData({
+      isLogin:status
+    })
+  },
+  // 授权刷新
+  setIsLogin() {
+    this.setIsLoginStatus()
+    this.orderACar();
   },
   getDate() { // 初始化子组件时间
     this.selectComponent('#selectTime').firstDate();
@@ -94,7 +112,6 @@ Page({
       value,
       flag
     } = e.detail;
-     console.log(time,value,flag);
     if (time.length === 0) return;
     if (flag === 'left') {
       this.data.ordValue = this.data.getValue;
@@ -142,11 +159,59 @@ Page({
   },
   // 提交订单
   orderACar() {
-
+    let status = this.verify();
+    if (!status)return;
+    const data = {
+    // cancelRule:this.data.getTime,
+    carDetail:this.data.carDetail,
+    returntime :this.data. getDate + this.data.getTime,
+     rentaltime : this.data.reDate + this.data.reTime,
+     returnaddress : this.setAddress(this.data.getCarAddress),
+     rentaladdress : this.setAddress(this.data.repayCarAddress),
+     username  : wx.getStorageSync('IS_LOGIN').nickName,
+     day : this.data.day + this.setMoneyTime(this.data.hour),
+    }
+    wx.setStorageSync('AFFIRM', data)
+    wx.navigateTo({
+      url: '/pages/affirm/affirm',
+    })
   },
   // 验证参数
   verify(){
-
+    // 看看有没有用户信息
+  if (!wx.getStorageSync('IS_LOGIN')) {
+    wxLogin().then(res => {
+      this.setIsLoginStatus(false);
+    }).catch((e) =>{
+      this.setIsLoginStatus(true);
+    })
+  }
+  if(this.data.getCarAddress == null) {
+    showNoIconToast("未设置取车地址");
+    return false;
+  }
+  if(this.data.repayCarAddress == null) {
+    showNoIconToast("未设置还车地址");
+    return false;
+  }
+  if(!this.data.getValue) {
+    showNoIconToast("未设置取车时间");
+    return false;
+  }
+  if(!this.data.reValue) {
+    showNoIconToast("未设置还车时间");
+    return false;
+  }
+  return true;
+  },
+  // 设置时间
+  setMoneyTime(time) {
+   if (isNaN(time)) {throw new Error("请传入数字")}
+    return time <= 4? 0 : 1;
+  },
+  //提取地址
+  setAddress(address){
+    return `${address.provinceName}·${address.cityName}·${address.countyName}·${address.detailInfo}`
   },
   /**
    * 生命周期函数--监听页面加载

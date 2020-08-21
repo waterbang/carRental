@@ -112,5 +112,6 @@
   color: #949494;
 }
 .reserve .sub {
+  width: 100vh;
   margin-bottom: 20rpx;
 }

@@ -1,0 +1,42 @@
+/* components/login/index.wxss */
+
+.isLogin {
+  width: 50vh;
+  height: 50vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.isLogin .img {
+  width: 100%;
+  height: 100%;
+}
+
+.isLogin .header{
+  margin: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.isLogin .header .title{
+  font-size: 17px;
+  width: 600;
+  border-bottom: 1px solid(#3333);
+}
+
+.isLogin .content {
+  margin: 20rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.isLogin .content .btn {
+  margin: 40rpx 0 20rpx 0;
+}

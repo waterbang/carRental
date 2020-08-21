@@ -16,14 +16,19 @@ const api = {
   "RESERVE_DETAIL":"index/details",
   
   //---------------------------------------------订单接口
-  //订单接口
+  //增加订单接口
   "ORDER_ADD":"order/addorder",
+
+  // 获取订单列表
+  "ORDER_LIST":"order/orderdata",
 
  //---------------------------------------------用户相关
   //获取session_key的接口地址
  "GET_OPENID" : "GetweChat/getopenid",
  //获取手机号接口地址
- "GET_IPHONE" : "GetweChat/getphonenumber"
+ "GET_IPHONE" : "GetweChat/getphonenumber",
+ //后台获取用户信息
+ "GET_USERINFO": "GetweChat/getuserinfo"
 
 }
 

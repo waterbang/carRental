@@ -25,14 +25,14 @@
 	</view>
 	<l-tabs class="tab" animated-for-line="true" scrollable="true">
 		<l-tabpanel tab="车辆详情" key="one" slot="one" l-class="tabpanel">
-				<view class="car">
-					<image class="img" mode="aspectFill" src="{{carDetail.imgs}}"></image>
-					<view class="car-header">
-						<view class="title">{{carDetail.title}}</view>
-						<l-price l-class="moeny" unit="￥" value="{{carDetail.price}}" value-color="#ff992a" unit-color="#ff992a"></l-price>
-					</view>
-					<view class="label">{{carDetail.compartment}}厢|{{carDetail.power_type}}｜乘坐{{carDetail.seat}}人</view>
+			<view class="car">
+				<image class="img" mode="aspectFill" src="{{carDetail.imgs}}"></image>
+				<view class="car-header">
+					<view class="title">{{carDetail.title}}</view>
+					<l-price l-class="moeny" unit="￥" value="{{carDetail.price}}" value-color="#ff992a" unit-color="#ff992a"></l-price>
 				</view>
+				<view class="label">{{carDetail.compartment}}厢|{{carDetail.power_type}}｜乘坐{{carDetail.seat}}人</view>
+			</view>
 		</l-tabpanel>
 		<l-tabpanel tab="租车条件" key="two" slot="two">
 			<view class="tab-content">
@@ -40,7 +40,9 @@
 			</view>
 		</l-tabpanel>
 	</l-tabs>
-	<l-button l-class="sub" size="large" type="warning" bind:lintap="orderACar">立即订车</l-button>
+	<l-button l-class="sub" size="long" type="warning" bind:lintap="orderACar">立即订车</l-button>
 	<!-- 时间弹出 -->
 	<w-selectTime id="selectTime" show="{{isTime}}" bind:setDate="setDate" bind:onSetTime="onSetTime" bind:pushTime="pushTime" bind:onCloseTime="closeTime" flag="{{flag}}"></w-selectTime>
+	<!-- 登录弹出 -->
+	<w-login show="{{isLogin}}" bind:setIsLoginStatus="setIsLoginStatus" bind:setIsLogin="setIsLogin"></w-login>
 </view>

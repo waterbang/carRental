@@ -1,0 +1,73 @@
+<!--pages/reserve/affirm/affirm.wxml-->
+<view class="affirm">
+	<view class="header">
+		<image class="img" src="{{carDetail.imgs}}" mode="aspectFill"></image>
+		<view class="content">
+			<view class="title">{{carDetail.title}}
+				<l-tag l-class="hotSell" font-color="#f0f0f0;" size="super-mini" bg-color="#e96356;"><text class="hot">热销</text></l-tag>
+			</view>
+			<view class="label">{{carDetail.compartment}}厢|{{carDetail.power_type}}｜乘坐{{carDetail.seat}}人</view>
+		</view>
+	</view>
+	<view class="time">
+		<view class="title">
+			<view class="timeT">取车时间：</view>
+			<view class="time">{{returntime}}</view>
+		</view>
+		<view class="title">
+			<text class="timeT">还车时间：</text>
+			<text class="time">{{rentaltime}}</text>
+		</view>
+	</view>
+	<view class="address">
+		<view class="title">
+			<text class="timeT">取车地址：</text>
+			<text class="time">{{returnaddress}}</text>
+		</view>
+		<view class="title">
+			<text class="timeT">取车地址：</text>
+			<text class="time">{{returnaddress}}</text>
+		</view>
+	</view>
+
+	<view class="userTheCar">
+		<view class="title">用车人:</view>
+		<view class="name">{{username}}</view>
+	</view>
+	<view class="papers">
+		<view class="papers-header">取车必备证件</view>
+		<view class="title">身份证</view>
+		<view class="content">
+			取车人本人有效二代身份证，取车人年龄在18～70周岁(首次用车需要携带身份证原件，二次或多次用车支持电子身份证)
+		</view>
+		<view class="title">驾驶证</view>
+		<view class="content">
+			距离初次领证日期大于半年且有效内的驾驶证(首次用车需要携带驾驶证原件，二次或多次用车支持电子驾驶证)
+		</view>
+	</view>
+	<!-- <view class="cancel-rule">
+    <view class="title">取消规则</view>
+    <view clsss="">用</view>
+	</view> -->
+	<view class="area">
+		<view class="title">用车区域</view>
+		<view class="content">用车区域仅限于厦门地区</view>
+	</view>
+	<view class="grup">
+		<l-radio-group current="1" l-class="radioGrup" bind:linchange="selectProtocal">
+			<l-radio key="1" color="red" size="32" select-color="#ff992a" l-class="radio">用车
+				<text style="color:#2acbff;font-size:13px;">《服务协议》</text></l-radio>
+		</l-radio-group>
+	</view>
+		<view class="submit">
+		<view class="content">
+			<l-price  unit="￥" value="{{money}}" autofix value-color="#ff992a" unit-color="#ff992a" value-size="28"></l-price>
+		<l-price  unit="￥" value="{{money+50}}" deleted="{{true}}" value-color="#ff992a" unit-color="#ff992a" value-size="23" unit-size="20"> </l-price>
+		<view class="text">活动扣除50元服务费。</view>
+		</view>
+		<view class="day">共 <text style="color:#ff992a">{{day}}</text> 天
+			<view class="text">大于等于四个小时算一天。</view>
+		</view>
+		<view class="sub" bindtap="submitOrder">免押预定</view>
+	</view>
+</view>

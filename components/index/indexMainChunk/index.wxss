@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   border-radius: 10rpx;
-  box-shadow:1px 0px 4px #949494;
+  box-shadow: 0 6px -6px rgba(0,0,0,0.2);
   width: 350rpx;
   height: 110rpx;
   background-color: #fff;
