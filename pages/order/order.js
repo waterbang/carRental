@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    item: {}, //数据
+    item: [], //数据
     activeKey:0, //默认激活的选项卡
     loading:false,//是否加载
   },
@@ -22,9 +22,10 @@ Page({
     })
   },
   // 获取数据
-  getItemData(status) {
+  async getItemData(status) {
     this.setActiveKey(status);
-    let List = getOrderItemList(status);
+    let List = await getOrderItemList(status);
+    console.log(List[0])
     this.setData({
       item:List
     })

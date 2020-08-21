@@ -10,7 +10,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小旗租车",
+    "navigationBarTitleText": "小旗出行",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

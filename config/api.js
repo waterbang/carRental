@@ -18,10 +18,14 @@ const api = {
   //---------------------------------------------订单接口
   //增加订单接口
   "ORDER_ADD":"order/addorder",
-
   // 获取订单列表
   "ORDER_LIST":"order/orderdata",
-
+  // 设置订单状态
+  "ORDER_STATUS":"order/orderstatus",
+  // 取消订单
+  "ORDER_CANCEL":"order/ordercancel",
+  //删除订单
+  "ORDER_DELETE":"order/orderdel",
  //---------------------------------------------用户相关
   //获取session_key的接口地址
  "GET_OPENID" : "GetweChat/getopenid",

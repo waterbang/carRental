@@ -1,6 +1,6 @@
 <!--pages/order/order.wxml-->
 <view class="order">
-  <l-segment bind:linchange="changeTabs" active-color="#ec8e30" animated-for-line="true" active-key="{{activeKey}}">
+  <l-segment l-class="segment" bind:linchange="changeTabs" active-color="#ec8e30" animated-for-line="true" active-key="{{activeKey}}">
         <l-segment-item tab="已下单" key="0" />
         <l-segment-item tab="出租中" key="1" />
         <l-segment-item tab="已完成" key="2" />
@@ -8,7 +8,7 @@
   </l-segment>
   <l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="我是有底线的～">
   <view slot="content">
-      
+      <w-orderItem list="{{item}}" activeKey="{{activeKey}}"></w-orderItem>
   </view>
 </l-loadmore>
 

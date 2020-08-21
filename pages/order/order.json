@@ -1,6 +1,8 @@
 {
+  "navigationBarTitleText": "车辆类别",
   "usingComponents": {
     "l-segment":"/miniprogram_npm/lin-ui/segment/index",
-    "l-segment-item":"/miniprogram_npm/lin-ui/segment-item/index"
+    "l-segment-item":"/miniprogram_npm/lin-ui/segment-item/index",
+    "w-orderItem":"/components/orderItem/index"
   }
 }

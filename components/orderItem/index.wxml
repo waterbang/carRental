@@ -1,0 +1,33 @@
+<!--components/orderItem/index.wxml-->
+<view class="item">
+	<view wx:for="{{list}}" wx:key="index" bindtap="goReserve" data-id="{{item.id}}">
+		<l-card type="primary" image="{{'https://www.jindundangan.com/'+item.img}}" image-mode="aspectFill"
+			title="{{item.series_name}}" l-class="list-item" l-title-class="title-header">
+			<!-- 此处为content -->
+			<view class="content">
+				<view class="title">租期共：<text style="color:#ec8e30">{{item.day}}</text>天 <text>{{item.money}}</text>元</view>
+				<!-- 已下单 -->
+				<block wx:if="{{activeKey==0}}">
+					<view class="car">
+						<view class="address">
+							{{item.returnaddress}}</view>
+						<view class="time">{{item.rentaltime}}</view>
+					</view>
+				</block>
+				<!-- 出租中 -->
+				<block wx:if="{{activeKey==1}}">
+					<view class="car">
+						<view class="address">{{item.rentaladdress}}</view>
+						<view class="time">{{item.rentaltime}}</view>
+					</view>
+				</block>
+				<view class="btn">
+					<block wx:if="{{activeKey==0}}">
+					<l-button type="warning" size="mini" bind:lintap="_cancelOrder" >取消租车</l-button>
+					<l-button  disabled="{{item.car_status===1}}" size="mini" bind:lintap="pickUpTheCar">{{item.car_status==1?'等待配送':'确定提车'}}</l-button>
+					</block>
+				</view>
+			</view>
+		</l-card>
+	</view>
+</view>
