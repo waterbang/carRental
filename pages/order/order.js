@@ -25,10 +25,15 @@ Page({
   async getItemData(status) {
     this.setActiveKey(status);
     let List = await getOrderItemList(status);
+    List = List.data;
     console.log(List[0])
     this.setData({
       item:List
     })
+  },
+  // 儿子需要刷新了通知我
+  SonUpdatesData() {
+    this.getItemData(this.data.activeKey)
   },
   //是否加载
   setLoading(flag = false) {
@@ -79,7 +84,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getItemData(this.data.activeKey);
   },
 
   /**

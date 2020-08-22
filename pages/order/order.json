@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "车辆类别",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "l-segment":"/miniprogram_npm/lin-ui/segment/index",
     "l-segment-item":"/miniprogram_npm/lin-ui/segment-item/index",

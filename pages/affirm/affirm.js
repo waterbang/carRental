@@ -1,6 +1,7 @@
 // pages/reserve/affirm/affirm.js
 import {
-  showNoIconToast
+  showNoIconToast,
+  showAccessToast
 } from '../../utils/common'
 import {
   orderACar
@@ -61,7 +62,8 @@ Page({
       username: data.username
     }
    let result = await orderACar(body);
-   if(result == '成功'){
+   if(result.code == 200){
+    showAccessToast('预定成功！')
      wx.switchTab({
        url: '/pages/order/order',
      })

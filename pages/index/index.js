@@ -42,7 +42,6 @@ Page({
   async getRecommendList() {
     this.setLoading(true)
     let data = await getRecommend();
-    
     if (Array.isArray(data) !== true || data.length === 0) return this.setLoading(false);
     this.setData({
       recommendList: data

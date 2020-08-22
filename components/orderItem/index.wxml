@@ -23,11 +23,12 @@
 				</block>
 				<view class="btn">
 					<block wx:if="{{activeKey==0}}">
-					<l-button type="warning" size="mini" bind:lintap="_cancelOrder" >取消租车</l-button>
-					<l-button  disabled="{{item.car_status===1}}" size="mini" bind:lintap="pickUpTheCar">{{item.car_status==1?'等待配送':'确定提车'}}</l-button>
+					<l-button type="warning" size="mini" bind:lintap="_cancelOrder" data-id="{{item.id}}" >取消租车</l-button>
+					<l-button size="mini" bind:lintap="pickUpTheCar" data-id="{{item.id}}">{{item.car_status==1?'等待配送':'确定提车'}}</l-button>
 					</block>
 				</view>
 			</view>
 		</l-card>
 	</view>
 </view>
+<!-- disabled="{{item.car_status===1}}" -->

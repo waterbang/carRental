@@ -2,8 +2,9 @@ import API from '../config/api';
 import {wxRequest} from '../utils/request'
 
 //给我id，我给你详情
-const getCarDetail = (id) => wxRequest(API.RESERVE_DETAIL,{data: {id:id}}).then(res => {return res;})
+const getCarDetail = (id) => wxRequest(API.RESERVE_DETAIL,{data: {id:id}}).then(res => {return res.data;})
 
+//新增
 const orderACar = (data) => wxRequest(API.ORDER_ADD, {data:{
   day:data.day,
   returntime:data.returntime,
