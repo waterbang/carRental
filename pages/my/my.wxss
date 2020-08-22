@@ -1,1 +1,41 @@
 /* pages/my/my.wxss */
+.my .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+  width: 100%;
+}
+
+.my .header .img {
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+}
+
+.my .header .name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.my .integral {
+  background-color: white;
+  width: 97%;
+  height: 140rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+  margin: 0 auto;
+  transform: scaleY(2);
+  
+}
+
+.my .content {
+  margin-top: 100rpx;
+  width: 100%;
+}
+.my .content .title {
+  font-size: 12px;
+  color: #949494;
+  margin:10rpx;
+}

@@ -68,7 +68,7 @@ Page({
        url: '/pages/order/order',
      })
    } else {
-     showNoIconToast('网络异常！,请联系管理员');
+     showNoIconToast(result.data.msg);
    }
   },
   /**

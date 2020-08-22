@@ -1,2 +1,17 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="my">
+	<view class="header">
+		<image class="img" src="/static/home/header.png" mode="aspectFill"></image>
+		<l-avatar l-text-class="name" placement="bottom" open-data="{{['userAvatarUrl','userNickName']}}" />
+	</view>
+	<view class="integral">
+
+	</view>
+	<view class="content">
+    <view class="title">我的小旗俱乐部</view>
+		<l-list title="我的预定" icon="cart" icon-color="#ff992a" gap="10"  />
+    <l-list title="我的订单" icon="order" icon-color="#ff992a" gap="10"/>
+    <l-list title="设置" icon="setting" icon-color="#ff992a" gap="10"/>
+    <l-list title="联系我们" icon="comment" icon-color="#ff992a" gap="10"/>
+	</view>
+</view>
