@@ -1,17 +1,29 @@
 <!--components/login/index.wxml-->
 <l-popup show="{{show}}">
-	<view class="isLogin">
-		<view class="header">
-			<view class="title">授权登录</view>
-			<view bindtap="closePopup"><l-icon name="close" color="#FFE57F"  /></view>
-		</view>
+  <view class="isLogin">
+    <view class="header">
+      <view class="title">授权登录</view>
+      <view bindtap="{{isNumber?'clonePhoneNumber':'closePopup'}}">
+        <l-icon name="close" color="#FFE57F" />
+      </view>
+    </view>
     <image class="img" src="https://xdtnyimg.waterbang.top/WechatIMG50.png" mode="aspectFill"></image>
     <view class="content">
-    <view class="mag">
-    请先授权登录，小旗需要获取您的名称和头像
-    用于展示。
+    <block wx:if="{{isNumber}}">
+      <view class="mag">
+        请先授权给小旗您的手机号码，方便与您对接车辆。
+      </view>
+      <l-button l-class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" size="medium" type="warning">授权电话号码
+      </l-button>
+    </block>
+    <block wx:else>
+      <view class="mag">
+        请先授权登录，小旗需要获取您的名称和头像
+        用于展示。
+      </view>
+      <l-button l-class="btn" bind:getuserinfo="getUserInfo" open-type="getUserInfo" size="medium" type="warning">授权登录
+      </l-button>
+    </block>
     </view>
-    <l-button l-class="btn" bind:getuserinfo="getUserInfo" open-type="getUserInfo" size="medium" type="warning">授权登录</l-button>
-    </view>
-	</view>
+  </view>
 </l-popup>

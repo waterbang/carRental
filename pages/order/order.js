@@ -27,7 +27,7 @@ Page({
     this.setActiveKey(status);
     let List = await getOrderItemList(status);
     List = List.data;
-    console.log(List[0])
+    // console.log(List[0])
     this.setData({
       item:List
     })

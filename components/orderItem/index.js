@@ -19,9 +19,6 @@ Component({
     },
     activeKey: {
       type: Number,
-      observer: function (val) {
-        console.log(val)
-      }
     }
   },
 
@@ -52,7 +49,6 @@ Component({
     async _deleteOrder(e) {
       wx.vibrateShort()
       let id = e.target.dataset.id;
-      console.log(id)
       let result = await deleteOrder(id);
       // console.log(result)
       if (result.code == 200) {
@@ -102,7 +98,7 @@ Component({
     //去订单详情页
     goReserve(e) {
       let id = e.target.dataset.id;
-      console.log('goReserve:', id)
+      // console.log('goReserve:', id)
     }
   },
 })

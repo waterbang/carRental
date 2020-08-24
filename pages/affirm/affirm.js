@@ -6,6 +6,8 @@ import {
 import {
   orderACar
 } from '../../models/reserve'
+import * as Storage from '../../utils/storageSyncTool';
+
 Page({
 
   /**
@@ -21,11 +23,17 @@ Page({
     rentaladdress: '', //还车地址
     username: '用户名',
     day: '', //几天
-    money: 0,
-    body: {},
+    money: 0,//钱
+    body: {}, //发送的内容
+    isNumber:false,//是否有手机
   },
   init() {
     let data = this.data.body = wx.getStorageSync('AFFIRM');
+    if(!data) {
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }
     this.seMoney(data.day, data.carDetail.price);
     this.setData({
       day: data.day,
@@ -51,6 +59,7 @@ Page({
   },
   // 提交
   async submitOrder() {
+    if (this.isHaveNumber()) return; //看看有没有手机号码
     let data = this.data.body;
     let body = {
       day: data.day,
@@ -64,12 +73,31 @@ Page({
    let result = await orderACar(body);
    if(result.code == 200){
     showAccessToast('预定成功！')
-     wx.switchTab({
-       url: '/pages/order/order',
-     })
+    setTimeout(()=> {
+      wx.switchTab({
+        url: '/pages/order/order',
+      })
+    },1000)
    } else {
      showNoIconToast(result.data.msg);
    }
+  },
+  // 获取用户手机信息
+  isHaveNumber(){
+    let isNumber = Storage.getStorage('isNumber');
+    if (!isNumber) {
+      this.setData({
+        isNumber: true
+      })
+      return true;
+    }
+    return false;
+  },
+  //关闭手机授权弹窗
+  clonePhoneNumber() {
+    this.setData({
+      isNumber:false
+    })
   },
   /**
    * 生命周期函数--监听页面加载

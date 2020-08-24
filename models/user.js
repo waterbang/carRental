@@ -42,6 +42,7 @@ const getOpenid = () => {
           }).then(async (res) => {
             if (res.code === 200) {
               res = res.data
+              Storage.setStorage('session_key',res.session_key)
               Storage.setLoginToken(res.openid)
               await getUserInfoToServe(res.openid);
               resolve(res);
@@ -75,9 +76,28 @@ const getUserInfoToServe = async (openid) => {
     return err;
   })
 }
+//获取用户手机号码
+const putNumber = async (iv, encryptedData) => {
+  let sessionKey = Storage.getStorage('session_key');
+  if(!sessionKey) {
+    wx.removeStorageSync('XIAOQI')
+    getOpenid();
+  };
+  return await wxRequest(API.GET_IPHONE,{
+    data:{
+    sessionKey,
+    iv,
+    encryptedData
+  }}).then(res => {
+    return res;
+  }).catch(err => {
+    return err;
+  })
+}
 
 module.exports = {
   wxLogin,
   getOpenid,
-  getUserInfoToServe
+  getUserInfoToServe,
+  putNumber
 }

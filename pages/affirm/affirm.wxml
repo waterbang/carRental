@@ -4,7 +4,8 @@
 		<image class="img" src="{{carDetail.imgs}}" mode="aspectFill"></image>
 		<view class="content">
 			<view class="title">{{carDetail.title}}
-				<l-tag l-class="hotSell" font-color="#f0f0f0;" size="super-mini" bg-color="#e96356;"><text class="hot">热销</text></l-tag>
+				<l-tag l-class="hotSell" font-color="#f0f0f0;" size="super-mini" bg-color="#e96356;"><text class="hot">热销</text>
+				</l-tag>
 			</view>
 			<view class="label">{{carDetail.compartment}}厢|{{carDetail.power_type}}｜乘坐{{carDetail.seat}}人</view>
 		</view>
@@ -59,15 +60,18 @@
 				<text style="color:#2acbff;font-size:13px;">《服务协议》</text></l-radio>
 		</l-radio-group>
 	</view>
-		<view class="submit">
+	<view class="submit">
 		<view class="content">
-			<l-price  unit="￥" value="{{money}}" autofix value-color="#ff992a" unit-color="#ff992a" value-size="28"></l-price>
-		<l-price  unit="￥" value="{{money+50}}" deleted="{{true}}" value-color="#ff992a" unit-color="#ff992a" value-size="23" unit-size="20"> </l-price>
-		<view class="text">活动扣除50元服务费。</view>
+			<l-price unit="￥" value="{{money}}" autofix value-color="#ff992a" unit-color="#ff992a" value-size="28"></l-price>
+			<l-price unit="￥" value="{{money+50}}" deleted="{{true}}" value-color="#ff992a" unit-color="#ff992a"
+				value-size="23" unit-size="20"> </l-price>
+			<view class="text">活动扣除50元服务费。</view>
 		</view>
 		<view class="day">共 <text style="color:#ff992a">{{day}}</text> 天
 			<view class="text">大于等于四个小时算一天。</view>
 		</view>
 		<view class="sub" bindtap="submitOrder">免押预定</view>
 	</view>
+	<!-- 是否有电话 -->
+	<w-login show="{{isNumber}}" isNumber="true" bind:clonePhoneNumber="clonePhoneNumber"></w-login>
 </view>
