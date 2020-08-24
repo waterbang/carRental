@@ -1,5 +1,5 @@
 <!--components/condition/index.wxml-->
-<view class="condition">
+<view class="condition {{isNotice?'isNotice':'NoIsNotice'}}">
 <view class="title2">租车驾龄要求：</view>
 年龄在18-70周岁
 驾龄要求必须半年以上

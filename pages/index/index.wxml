@@ -1,14 +1,14 @@
 <!--pages/index/index.wxml-->
 <view class="index">
 	<view class="header">
-		<image class="banner-img" mode="aspectFill" src="/static/index/index-banner-1.jpg"></image>
+		<image class="banner-img" mode="aspectFill" src="https://xdtnyimg.waterbang.top/index-banner-1.jpg"></image>
 		<view class="header-recom">
 			<w-mainChunk flag="left"></w-mainChunk>
 			<w-mainChunk flag="right"></w-mainChunk>
 		</view>
 	</view>
 	<view class="item">
-		<view wx:for="{{listFour}}" wx:key="index" class="chunk">
+		<view wx:for="{{listFour}}" wx:key="index" class="chunk" bindtap="clickAssistant">
 			<image src="{{item.image}}"></image>
 			<view class="">{{item.title}}</view>
 		</view>

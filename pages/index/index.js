@@ -3,6 +3,7 @@ import {
   getRecommend,
   getUsedCar
 } from '../../models/index';
+import { showNoIconToast } from '../../utils/common'
 Page({
 
   /**
@@ -11,19 +12,19 @@ Page({
   data: {
     listFour: [ // 四个小块数据
       {
-        image: "/static/index/setMeal.png",
+        image: "https://xdtnyimg.waterbang.top/setMeal.png",
         title: "超值套餐"
       },
       {
-        image: "/static/index/discount.png",
+        image: "https://xdtnyimg.waterbang.top/discount.png",
         title: "领优惠券"
       },
       {
-        image: "/static/index/signIn.png",
+        image: "https://xdtnyimg.waterbang.top/signIn.png",
         title: "签到积分"
       },
       {
-        image: "/static/index/activity.png",
+        image: "https://xdtnyimg.waterbang.top/activity.png",
         title: "限时活动"
       }
     ],
@@ -31,8 +32,14 @@ Page({
     secondList: [], // 二手车列表
     loading:true, // 加载状态
   },
+  //点击四个块
+  clickAssistant(e) {
+    wx.vibrateShort()
+    showNoIconToast("暂未开放此功能！")
+  },
   // 切换tab
   changeTabs(e) {
+    wx.vibrateShort()
     let status = e.detail?.activeKey;
     if (status === "two") {
       this.getScondList();

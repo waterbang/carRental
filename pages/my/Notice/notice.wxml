@@ -1,0 +1,4 @@
+<!--pages/my/Notice/notice.wxml-->
+<view >
+  <w-condition isNotice="true"></w-condition>
+</view>

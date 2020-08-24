@@ -11,5 +11,4 @@
       <w-orderItem list="{{item}}" activeKey="{{activeKey}}" bind:emitNewData="SonUpdatesData"></w-orderItem>
   </view>
 </l-loadmore>
-
 </view>

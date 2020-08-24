@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "租车须知",
+  "usingComponents": {
+    "w-condition":"/components/condition/index"
+  }
+}

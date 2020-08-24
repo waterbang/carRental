@@ -12,6 +12,7 @@ Page({
   },
   // 切换标签
   changeTabs(e) {
+    wx.vibrateShort()
     const key = Number.parseInt(e.detail.activeKey)
     this.getItemData(key);
 

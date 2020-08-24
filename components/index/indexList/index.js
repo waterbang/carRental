@@ -21,6 +21,7 @@ Component({
   methods: {
     //去详情页
     goReserve(e) {
+      wx.vibrateShort()
       let currentTarget = e.currentTarget.dataset?.id;
       wx.navigateTo({
         url: `/pages/reserve/reserve?id=${currentTarget}`,

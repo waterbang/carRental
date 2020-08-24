@@ -19,15 +19,40 @@
   font-weight: 700;
 }
 
-.my .integral {
+.my .cord {
   background-color: white;
   width: 97%;
-  height: 140rpx;
+  height: 100rpx;
   border-radius: 10rpx;
   box-shadow: 0 6px 10px rgba(0,0,0,0.2);
   margin: 0 auto;
   transform: scaleY(2);
-  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cord .coupon,.cord .integral,.cord .kite,.cord .wallet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.coupon .title, .integral .title,.kite .title,.wallet .title {
+  font-size: 9px;
+}
+.coupon .title .title-num, .integral .title .title-num,.kite .title .title-num,.wallet .title .title-num {
+  font-weight: 500;
+  font-size: 13px;
+  margin: 10rpx;
+}
+.coupon .disc, .integral .disc,.kite .disc,.wallet .disc {
+  font-size: 10px;
+}
+
+.cord .wallet .img {
+  width: 80rpx;
+  height: 37.9rpx;
 }
 
 .my .content {

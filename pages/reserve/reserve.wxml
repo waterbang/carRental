@@ -1,11 +1,11 @@
 <!--pages/reserve/reserve.wxml-->
 <view class="reserve">
-	<w-getAddress class="address address-flast" getCarAddress="{{getCarAddress}}" title="取车地址" img="/static/reserve/get.png" bind:getCarAddress="getCarAddress"></w-getAddress>
-	<w-getAddress class="address" getCarAddress="{{repayCarAddress}}" title="还车地址" img="/static/reserve/repay.png" bind:getCarAddress="repayAddress"></w-getAddress>
+	<w-getAddress class="address address-flast" getCarAddress="{{getCarAddress}}" title="取车地址" img="https://xdtnyimg.waterbang.top/get.png" bind:getCarAddress="getCarAddress"></w-getAddress>
+	<w-getAddress class="address" getCarAddress="{{repayCarAddress}}" title="还车地址" img="https://xdtnyimg.waterbang.top/repay.png" bind:getCarAddress="repayAddress"></w-getAddress>
 
 	<view class="time">
 		<view class="header">
-			<image class="img" src="/static/reserve/time.png"></image>
+			<image class="img" src="https://xdtnyimg.waterbang.top/time.png"></image>
 			<view class="title">预定时间</view>
 		</view>
 		<view class="content">
@@ -15,7 +15,7 @@
 			</view>
 			<view class="middle">
 				<view class="day">{{day}}天{{hour?(hour+'小时'):''}}</view>
-				<image class="img" src="/static/reserve/left_right.png"></image>
+				<image class="img" src="https://xdtnyimg.waterbang.top/left_right.png"></image>
 			</view>
 			<view class="select" bindtap="onSetTime" data-flag="right">
 				<view class="year-day">{{reDate}}</view>

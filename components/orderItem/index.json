@@ -4,6 +4,8 @@
     "l-steps":"/miniprogram_npm/lin-ui/steps/index",
     "l-step":"/miniprogram_npm/lin-ui/step/index",
     "l-card":"/miniprogram_npm/lin-ui/card/index",
-    "l-button":"/miniprogram_npm/lin-ui/button/index"
+    "l-button":"/miniprogram_npm/lin-ui/button/index",
+    "l-status-show":"/miniprogram_npm/lin-ui/status-show/index"
+
   }
 }

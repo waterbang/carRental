@@ -1,7 +1,4 @@
-// pages/my/my.js
-import {
-  showNoIconToast
-} from '../../utils/common'
+// pages/my/Notice/notice.js
 Page({
 
   /**
@@ -10,30 +7,7 @@ Page({
   data: {
 
   },
-  //我的订单
-  goOrder() {
-    wx.vibrateShort()
-    wx.switchTab({
-      url: '/pages/order/order',
-    })
-  },
-  //新手指导
-  goGuide() {
-    wx.vibrateShort()
-    showNoIconToast("暂未开放此功能！")
-  },
-  //租车须知
-  goNotice() {
-    wx.vibrateShort()
-    wx.navigateTo({
-      url: './Notice/notice',
-    })
-  },
-  //联系我们
-  contactUs() {
-    wx.vibrateShort()
-    showNoIconToast("暂未开放此功能！")
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

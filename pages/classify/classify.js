@@ -44,7 +44,13 @@ Page({
     wx.reportMonitor('0', 1); // 告警监控
      this.setLoading(false);
    }
-    if (!data) return this.setLoading(false);
+    if (!data) { // 如果没有数据
+      this.setData({
+        carList:null
+      })
+      this.setLoading(false);
+      return;
+    }
     this.setData({
       carList:data
     })

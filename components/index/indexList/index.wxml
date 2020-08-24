@@ -1,6 +1,10 @@
 <!--components/indexList/index.wxml-->
 <view class="body">
-	<view wx:for="{{recommendList}}" wx:key="index" class="list-item" bindtap="goReserve" data-id="{{item.id}}">
+	<block wx:if="{{recommendList.length==0}}">
+		<l-status-show class="status-show" l-class="status-show" show="{{recommendList.length == 0}}" type="product" full-screen="{{false}}" describe="暂时没有相关车辆哦～～"></l-status-show>
+	</block>
+	<block wx:else>
+		<view wx:for="{{recommendList}}" wx:key="index" class="list-item" bindtap="goReserve" data-id="{{item.id}}">
 		<view class="list-img">
 			<image src="{{item.imgs}}" class="img" lazy-load="true"></image>
 			<view class="item-msg-list">
@@ -20,4 +24,5 @@
 			<text class="price"><text style="color:#ff0000;"><text style="font-size:10px">¥</text>{{item.price}}</text>/天</text>
 		</view>
 	</view>
+	</block>
 </view>

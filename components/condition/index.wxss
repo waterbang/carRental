@@ -9,8 +9,15 @@
   width: 100%;
   border-radius:10rpx;
   box-shadow:1px 0px 8px #949494;
-  height: 625rpx;
   overflow-y: scroll;
+}
+
+.isNotice{
+  height: 100vh;
+}
+
+.NoIsNotice {
+  height: 625rpx;
 }
 
 .condition .title2 {

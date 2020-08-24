@@ -5,7 +5,8 @@
     "pages/classify/classify",
     "pages/order/order",
     "pages/reserve/reserve",
-    "pages/affirm/affirm"
+    "pages/affirm/affirm",
+    "pages/my/Notice/notice"
   ],
   "window": {
     "backgroundTextStyle": "light",
