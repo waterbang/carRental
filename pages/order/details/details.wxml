@@ -16,7 +16,7 @@
     </view>
   </view>
   <view class="countdown">
-    <block wx:if="{{car_status === 1 || car_status === 2}}">
+    <block wx:if="{{car_status === 1 || car_status === 4}}">
       <view class="title">{{car_status === 1?'距离提车时间剩:':'距离还车时间剩: '}}</view>
     <l-countdown l-class-time="countdown-blue"  l-class="countdown-text" time="{{car_status === 1 ? _returntime : _rentaltime}}"/>
     </block>

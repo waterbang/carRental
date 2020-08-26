@@ -14,7 +14,7 @@ const cancelOrder = (id) => wxRequest(API.ORDER_CANCEL,{data:{id:id}}).then(res 
 const modifyOrderStatus = (id,status) => wxRequest(API.ORDER_STATUS,{data:{id:id,status:status}}).then(res => {return res}).catch(err => {return err});
 
 //删除订单
-const deleteOrder = (id) => wxRequest(API.RESERVE_DETAIL,{data:{id:id}}).then(res=>{return res}).catch(err => {return err});
+const deleteOrder = (id) => wxRequest(API.ORDER_DELETE,{data:{id:id}}).then(res=>{return res}).catch(err => {return err});
 
 module.exports = {
   getOrderItemList,

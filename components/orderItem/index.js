@@ -50,8 +50,9 @@ Component({
     async _deleteOrder(e) {
       wx.vibrateShort()
       let id = e.target.dataset.id;
+      console.log(id)
       let result = await deleteOrder(id);
-      // console.log(result)
+       console.log(result)
       if (result.code == 200) {
         showAccessToast("删除成功！");
         this.emitNewData();
@@ -108,6 +109,10 @@ Component({
       wx.navigateTo({
         url: '/pages/order/details/details',
       })
+    },
+    //阻止冒泡事件
+    catchPop(){
+
     }
   },
 })
