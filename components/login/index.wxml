@@ -7,7 +7,7 @@
         <l-icon name="close" color="#FFE57F" />
       </view>
     </view>
-    <image class="img" src="https://xdtnyimg.waterbang.top/WechatIMG50.png" mode="aspectFill"></image>
+    <image class="img" src="https://xdtnyimg.waterbang.top/WechatIMG50.png" mode="aspectFit"></image>
     <view class="content">
     <block wx:if="{{isNumber}}">
       <view class="mag">

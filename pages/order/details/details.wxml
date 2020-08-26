@@ -1,0 +1,76 @@
+<!--pages/order/details/details.wxmlff992a-->
+<view class="affirm">
+  <view class="header">
+    <image class="img" src="{{'https://www.jindundangan.com'+img}}" mode="aspectFill"></image>
+    <view class="content">
+      <view class="title">{{series_name}}
+        <l-price unit="￥" value="{{money}}" autofix value-color="#ff992a" unit-color="#ff992a" value-size="28">
+        </l-price>
+        <l-price unit="￥" value="{{money+50}}" deleted="{{true}}" value-color="#ff992a" unit-color="#ff992a"
+          value-size="23" unit-size="20"> </l-price>
+        <view class="text">活动扣除50元服务费， 大于等于四个小时算一天。</view>
+      </view>
+      <view class="day">共 <text style="color:#ff992a">{{day}}</text> 天
+      </view>
+      <view class="label">{{power_type}}｜乘坐{{seat}}人</view>
+    </view>
+  </view>
+  <view class="countdown">
+    <block wx:if="{{car_status === 1 || car_status === 2}}">
+      <view class="title">{{car_status === 1?'距离提车时间剩:':'距离还车时间剩: '}}</view>
+    <l-countdown l-class-time="countdown-blue"  l-class="countdown-text" time="{{car_status === 1 ? _returntime : _rentaltime}}"/>
+    </block>
+  </view>
+  <view class="steps">
+  <l-steps color="#ff992a" active-index="{{car_status - 1}}">
+  <l-step title="已下单" ></l-step>
+  <l-step title="已派车" ></l-step>
+  <l-step title="待还车"></l-step>
+  <l-step title="已还车"></l-step>
+</l-steps>
+  </view>
+  <view class="time">
+    <view class="title">
+      <view class="timeT">取车时间：</view>
+      <view class="time">{{returntime}}</view>
+    </view>
+    <view class="title">
+      <text class="timeT">还车时间：</text>
+      <text class="time">{{rentaltime}}</text>
+    </view>
+  </view>
+  <view class="address">
+    <view class="title">
+      <text class="timeT">取车地址：</text>
+      <text class="time">{{returnaddress}}</text>
+    </view>
+    <view class="title">
+      <text class="timeT">取车地址：</text>
+      <text class="time">{{returnaddress}}</text>
+    </view>
+  </view>
+  <view class="papers">
+    <view class="papers-header">取车必备证件</view>
+    <view class="title">身份证</view>
+    <view class="content">
+      取车人本人有效二代身份证，取车人年龄在18～70周岁(首次用车需要携带身份证原件，二次或多次用车支持电子身份证)
+    </view>
+    <view class="title">驾驶证</view>
+    <view class="content">
+      距离初次领证日期大于半年且有效内的驾驶证(首次用车需要携带驾驶证原件，二次或多次用车支持电子驾驶证)
+    </view>
+  </view>
+  <!-- <view class="cancel-rule">
+    <view class="title">取消规则</view>
+    <view clsss="">用</view>
+	</view> -->
+  <view class="area">
+    <view class="title">用车区域</view>
+    <view class="content">用车区域仅限于厦门地区</view>
+  </view>
+
+  <view class="userTheCar">
+    <view class="title">订单号: </view>
+    <view class="name">{{order_on}}</view>
+  </view>
+</view>

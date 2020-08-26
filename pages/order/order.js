@@ -7,15 +7,14 @@ Page({
    */
   data: {
     item: [], //数据
-    activeKey:0, //默认激活的选项卡
+    activeKey:0, //默认激活的选项卡 0 已下单 1 出租中 2 已完成 3 全部
     loading:false,//是否加载
   },
   // 切换标签
   changeTabs(e) {
     wx.vibrateShort()
-    const key = Number.parseInt(e.detail.activeKey)
+    const key = Number.parseInt(e.detail.activeKey);
     this.getItemData(key);
-
   },
   setActiveKey(key) {
     this.setData({
@@ -27,7 +26,7 @@ Page({
     this.setActiveKey(status);
     let List = await getOrderItemList(status);
     List = List.data;
-    // console.log(List[0])
+    //console.log(List[0])
     this.setData({
       item:List
     })
@@ -84,8 +83,12 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    this.getItemData(this.data.activeKey);
+  onPullDownRefresh: async function () {
+    this.setData({
+      item:[]
+    })
+    await this.getItemData(this.data.activeKey);
+    wx.stopPullDownRefresh()
   },
 
   /**

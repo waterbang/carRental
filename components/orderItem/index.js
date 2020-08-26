@@ -9,6 +9,7 @@ import {
   showNoIconToast,
   showAccessToast
 } from '../../utils/common'
+import * as Storage from '../../utils/storageSyncTool'
 Component({
   /**
    * 组件的属性列表
@@ -97,8 +98,16 @@ Component({
     },
     //去订单详情页
     goReserve(e) {
-      let id = e.target.dataset.id;
-      // console.log('goReserve:', id)
+      wx.vibrateShort()
+      let index = e.currentTarget.dataset.index;
+      if (!this.data.list[index]) {
+        showNoIconToast('订单错误！')
+        return;
+      }
+      Storage.setStorage('orderDetails',this.data.list[index])
+      wx.navigateTo({
+        url: '/pages/order/details/details',
+      })
     }
   },
 })

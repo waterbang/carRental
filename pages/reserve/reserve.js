@@ -109,7 +109,6 @@ Page({
     this.closeTime();
     const {
       time,
-      value,
       flag
     } = e.detail;
     if (time.length === 0) return;
@@ -138,8 +137,20 @@ Page({
     let get = this.data.getValue;
     let repay = this.data.reValue;
     if (get.length === 0 || repay.length === 0) return;
+
     let day = Number.parseInt(repay[0].value) - Number.parseInt(get[0].value);
-    let hour =  Number.parseInt(repay[1]) - Number.parseInt(get[1]);
+    let hour = 0;
+    if (day === 0) { // 是否是同一天
+      hour =  Number.parseInt(repay[1]) - Number.parseInt(get[1]);
+    } else {
+      day--;
+      hour = Math.abs( 24 - Number.parseInt(get[1]) + Number.parseInt(repay[1]))
+    }
+    //如果等于24小时
+    if(hour === 24) {
+      day++;
+      hour=0;
+    }
 
     if (day < 0 || hour < 0) {
       showNoIconToast("还车时间不能比取车时间早");

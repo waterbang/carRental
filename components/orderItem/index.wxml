@@ -4,7 +4,7 @@
 		<l-status-show l-class="status-show" show="{{list.length == 0}}" type="order" full-screen="{{false}}"></l-status-show>
 	</block>
 	<block wx:else>
-		<view wx:for="{{list}}" wx:key="index" bindtap="goReserve" data-id="{{item.id}}">
+		<view wx:for="{{list}}" wx:key="index" bindtap="goReserve" data-index="{{index}}">
 		<l-card type="primary" image="{{'https://www.jindundangan.com/'+item.img}}" image-mode="aspectFill"
 			title="{{item.series_name}}" l-class="list-item" l-title-class="title-header">
 			<!-- 此处为content -->

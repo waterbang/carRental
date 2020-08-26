@@ -11,10 +11,11 @@ Page({
   data: {
     classifyArr: ["特价车", "经济型", "舒适型", "SUV", "商务型", "豪华型", "跑车", "新能源"],
     carList: [],
+    activeKey:17 //当前分类
   },
   //切换标签
   changeTabs(e) {
-    let typeId = e.detail.activeKey;
+    let typeId = this.data.activeKey = e.detail.activeKey;
     if (!typeId) return;
     this._getTypeData(typeId);
   },
@@ -101,8 +102,12 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh:async function () {
+    this.setData({
+      carList:[]
+    })
+    await this._getTypeData(this.data.activeKey);
+    wx.stopPullDownRefresh()
   },
 
   /**

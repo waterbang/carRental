@@ -1,0 +1,191 @@
+/* pages/order/details/details.wxss */
+.affirm {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 头部 */
+.affirm .header {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10rpx;
+  background-color: white;
+  width: 100%;
+  padding: 20rpx 0;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.hot {
+  margin: 10rpx;
+  font-size: 10px;
+}
+
+.affirm .header .img {
+  width: 200rpx;
+  height: 150rpx
+}
+
+.affirm .header .content {
+  margin: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.affirm .header .content .title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.affirm .header .content .title .text {
+  font-size: 9px;
+  color: #949494;
+  font-weight: 400;
+}
+
+.affirm .header .content .label {
+  color: #949494;
+  margin-top: 10rpx;
+}
+
+.affirm .header .content .day {
+  font-size: 12px;
+}
+/* 当前状态 */
+.affirm .steps {
+  padding: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* 倒计时 */
+
+.affirm .countdown {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 20rpx 0 10rpx 0;
+}
+
+.affirm .countdown .title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.affirm .countdown .countdown-blue {
+  border: 2rpx solid #949494;
+  border-radius: 50%;
+  background:transparent;
+  color:#ff992a;
+}
+
+/* 时间 */
+.affirm .time {
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 0;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+.affirm .time .title .time {
+  width: 80%;
+}
+
+.affirm .address {
+  margin-bottom: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+.affirm .time .title,
+.affirm .address .title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* 地址 */
+.affirm .address .title .timeT,
+.affirm .time .title .timeT {
+  width: 20%;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 10rpx;
+}
+
+.affirm .address .title .time {
+  width: 80%;
+  overflow-x: scroll;
+}
+
+/* 用车人 */
+.userTheCar,
+.papers,
+.cancel-rule,
+.area {
+  padding: 10rpx;
+  margin-bottom: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: baseline;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+.userTheCar .title {
+  margin: 0 10rpx;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.affirm .papers {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10rpx;
+}
+
+.papers .papers-header {
+  font-size: 15px;
+  margin: 0 10rpx;
+  font-weight: 600;
+}
+
+.papers .title,
+.area .title,
+.cancel-rule .title {
+  font-size: 14px;
+  margin: 5rpx;
+}
+
+.papers .content,
+.cancel-rule .content,
+.area .content {
+  font-size: 12px;
+  color: #949494;
+}
+
+/* 用车区域 */
+.area {
+  display: flex;
+  flex-direction: column;
+}
+
