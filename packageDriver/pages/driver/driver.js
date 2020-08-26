@@ -1,4 +1,13 @@
 // packageDriver/pages/Index/index.js
+import {
+  isLogin
+} from '../../servers/user'
+import {
+  getCarList
+} from '../../models/order'
+import {
+  showNoIconToast
+} from '../../utils/common'
 Page({
 
   /**
@@ -6,8 +15,8 @@ Page({
    */
   data: {
     item: [], //数据
-    activeKey:0, //默认激活的选项卡 0 待发车 1 待收车 2 进行中 3 已完成
-    loading:false,//是否加载
+    activeKey: 0, //默认激活的选项卡 0 待发车 1 待收车 2 进行中 3 已完成
+    loading: false, //是否加载
   },
   // 切换标签
   changeTabs(e) {
@@ -17,17 +26,16 @@ Page({
   },
   setActiveKey(key) {
     this.setData({
-      activeKey:key
+      activeKey: key
     })
   },
   // 获取数据
   async getItemData(status) {
     this.setActiveKey(status);
-    let List = await getOrderItemList(status);
-    List = List.data;
-    //console.log(List[0])
+    let List = await getCarList(status);
+    console.log(List)
     this.setData({
-      item:List
+      item: List
     })
   },
   // 儿子需要刷新了通知我
@@ -40,15 +48,26 @@ Page({
       loading: flag
     })
   },
+  //登录逻辑
+  _isLogin() {
+    if (isLogin()) return;
+    showNoIconToast("未登录，即将跳转登录页面！");
+    setTimeout(() => {
+      wx.navigateTo({
+        url: '../login/login',
+      })
+    },1500)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // if (options.status) {
-    //   this.getItemData(status)
-    // } else {
-    //   this.getItemData(0)
-    // }
+    if (options.status) {
+      this.getItemData(status)
+    } else {
+      this.getItemData(0)
+    }
+    this._isLogin(); //看看是否登录了
   },
 
   /**
@@ -62,7 +81,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.showTarBar();
+  },
+  showTarBar() {
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 2 // 根据tab的索引值设置
+      })
+    }
   },
 
   /**
@@ -84,7 +111,7 @@ Page({
    */
   onPullDownRefresh: async function () {
     this.setData({
-      item:[]
+      item: []
     })
     await this.getItemData(this.data.activeKey);
     wx.stopPullDownRefresh()

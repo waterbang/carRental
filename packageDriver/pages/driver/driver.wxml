@@ -9,8 +9,9 @@
   </l-segment>
   <l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="我是有底线的～">
   <view slot="content">
-      <w-orderItem list="{{item}}" activeKey="{{activeKey}}" bind:emitNewData="SonUpdatesData"></w-orderItem>
+      <w-orderItem list="{{item}}" activeKey="{{activeKey}}" bind:emitNewData="SonUpdatesData"></w-orderItem>      
   </view>
 </l-loadmore>
 </view>
+<custom-tab-bar></custom-tab-bar>
 

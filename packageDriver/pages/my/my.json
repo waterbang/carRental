@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的详情",
+  "usingComponents": {
+    "l-avatar":"../../miniprogram_npm/lin-ui/avatar/index",
+    "l-list":"../../miniprogram_npm/lin-ui/list/index",
+    "custom-tab-bar":"../../components/custom-tab-bar/index"
+  }
+}

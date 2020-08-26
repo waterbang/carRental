@@ -1,0 +1,14 @@
+<!--packageDriver/components/custom-tab-bar/index.wxml-->
+<view class="tab-bar">
+  <view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <view class="center_part" wx:if="{{item.iconPath}}">
+      <image class="center_img center-has-noimg" src="https://xdtnyimg.waterbang.top/discount.png"></image>
+      <image class="center_img center-has-image" src="{{item.iconPath}}"></image>
+    </view>
+    <view class="txt fontWeight" wx:if="{{selected === index}}" style="color: {{selected === index ?selectedColor : color}}">
+      {{item.text}}
+      <view class="bg_rec"></view>
+    </view>
+    <view class="txt" wx:if="{{selected != index}}">{{item.text}}</view>
+  </view>
+</view>

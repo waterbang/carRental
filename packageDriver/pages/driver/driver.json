@@ -1,11 +1,13 @@
 {
   "navigationBarTitleText": "我的订单",
   "enablePullDownRefresh": true,
+  "disableSwipeBack": true,
   "usingComponents": {
     "l-loadmore": "../../miniprogram_npm/lin-ui/loadmore/index",
     "l-segment":"../../miniprogram_npm/lin-ui/segment",
     "l-segment-item":"../../miniprogram_npm/lin-ui/segment-item/index",
     "w-orderItem":"../../components/orderItem/index",
-    "l-message":"../../miniprogram_npm/lin-ui/message/index"
+    "l-message":"../../miniprogram_npm/lin-ui/message/index",
+    "custom-tab-bar":"../../components/custom-tab-bar/index"
   }
 }

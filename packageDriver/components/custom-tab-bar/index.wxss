@@ -1,0 +1,57 @@
+/* packageDriver/components/custom-tab-bar/index.wxss */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120rpx;
+  background: white;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-radius: 30rpx 30rpx 0 0;
+  border-top: 1px solid #eaeaea;
+  z-index: 99;
+}
+ 
+.tab-bar-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+ 
+.txt{
+  font-size: 40rpx;
+  color: #aaaaaa;
+}
+.fontWeight{
+  font-weight: bold;
+}
+.bg_rec{
+  background: #ffd324;
+  width: 80rpx;
+  min-height: auto;
+  height: 20rpx;
+  margin-top: -28rpx;
+  vertical-align: text-bottom;
+  border-radius: 0;
+  z-index: -10;
+}
+.center_img{
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  transform: translate(-50%);
+  left: 50%;
+  bottom:0;
+}
+.center-has-noimg{
+  bottom: 26px;
+  z-index: 10;
+}
+.center-has-image{
+  bottom: 20px;
+  z-index: 11;
+}
