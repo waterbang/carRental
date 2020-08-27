@@ -22,7 +22,7 @@
 .my .cord {
   background-color: white;
   width: 97%;
-  height: 100rpx;
+  height: 90rpx;
   border-radius: 10rpx;
   box-shadow: 0 6px 10px rgba(0,0,0,0.2);
   margin: 0 auto;
@@ -43,8 +43,8 @@
 }
 .coupon .title .title-num, .integral .title .title-num,.kite .title .title-num,.wallet .title .title-num {
   font-weight: 500;
-  font-size: 13px;
-  margin: 10rpx;
+  font-size: 10px;
+  margin: 13rpx;
 }
 .coupon .disc, .integral .disc,.kite .disc,.wallet .disc {
   font-size: 10px;

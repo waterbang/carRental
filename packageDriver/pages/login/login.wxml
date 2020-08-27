@@ -1,2 +1,18 @@
 <!--packageDriver/pages/login/login.wxml-->
-<text>packageDriver/pages/login/login.wxml</text>
+<view class="login">
+<view class="title">
+  <view class="title-text">登录小旗出行</view>
+</view>
+  <view class="header">
+    <image class="img" mode="aspectFit" src="https://xdtnyimg.waterbang.top/WechatIMG50.png"></image>
+  </view>
+  <view class="content">
+    <l-input class="input" label="用户名" placeholder="请输入用户名" 
+    value="{{username}}" bind:lininput="setUsername" />
+    <l-input class="input" label="密码" type="password" placeholder="请输入密码" 
+    value="{{password}}" bind:lininput="setPassword" />
+  </view>
+  <view class="footer">
+    <l-button l-class="sub" size="long" type="warning" bind:lintap="onLogin">立即登录</l-button>
+  </view>
+</view>

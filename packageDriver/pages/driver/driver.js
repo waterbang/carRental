@@ -1,7 +1,5 @@
 // packageDriver/pages/Index/index.js
-import {
-  isLogin
-} from '../../servers/user'
+import {getDriverLoginToken} from '../../utils/storageSyncTool'
 import {
   getCarList
 } from '../../models/order'
@@ -18,6 +16,10 @@ Page({
     activeKey: 0, //默认激活的选项卡 0 待发车 1 待收车 2 进行中 3 已完成
     loading: false, //是否加载
   },
+  // 吸顶
+  onPageScroll(res) {
+    wx.lin.setScrollTop(res.scrollTop)
+  },
   // 切换标签
   changeTabs(e) {
     wx.vibrateShort()
@@ -33,10 +35,17 @@ Page({
   async getItemData(status) {
     this.setActiveKey(status);
     let List = await getCarList(status);
-    console.log(List)
+   if (List.code == 200) {
     this.setData({
-      item: List
+      item: List.data
     })
+    return;
+   }
+   wx.lin.flushSticky(); // 防止吸顶灯位置错乱
+  //  wx.lin.showMessage({
+  //   content:"您的网络较差，请检查网络链接！",
+  //   type:'warning',
+  //  });
   },
   // 儿子需要刷新了通知我
   SonUpdatesData() {
@@ -50,7 +59,7 @@ Page({
   },
   //登录逻辑
   _isLogin() {
-    if (isLogin()) return;
+    if (getDriverLoginToken()) return;
     showNoIconToast("未登录，即将跳转登录页面！");
     setTimeout(() => {
       wx.navigateTo({

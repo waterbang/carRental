@@ -5,6 +5,8 @@
     "l-segment":"/miniprogram_npm/lin-ui/segment/index",
     "l-segment-item":"/miniprogram_npm/lin-ui/segment-item/index",
     "w-orderItem":"/components/orderItem/index",
-    "l-message":"/miniprogram_npm/lin-ui/message/index"
+    "l-message":"/miniprogram_npm/lin-ui/message/index",
+    "l-sticky":"/miniprogram_npm/lin-ui/sticky/index",
+    "l-sticky-item":"/miniprogram_npm/lin-ui/sticky-item/index"
   }
 }

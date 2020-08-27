@@ -1,7 +1,7 @@
 import getErrorMessage from "./expectionalError"
 import {
-  getLoginToken,
-  clearLoginToken
+  getDriverLoginToken,
+  clearDriverLoginToken
 } from "./storageSyncTool.js"
 
 // host地址
@@ -18,14 +18,14 @@ const mergeRequestParmas = (perDefaults, params) => {
 
 // 请求封装
 const wxRequest = async (subUrl, params = {}) => {
-  const token = getLoginToken()
+  const token = getDriverLoginToken()
   const defaults = {
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     method: "POST",
     data: {
-      openid: token || "21421qwdklml234"
+      id: token || ""
     }
   }
 
@@ -57,15 +57,15 @@ const wxRequest = async (subUrl, params = {}) => {
         if (res && code == 200) {
           resolve(res.data)
         } else {
-          let err = {
-              data: {
-                status: res.data.code,
-                description: res.data.msg
-              }
-          }
-          const handlerErr = responseErrorHandler(err)
-          res.err = handlerErr
-          reject(res)
+          // let err = {
+          //     data: {
+          //       status: res.data.code,
+          //       description: res.data.msg
+          //     }
+          // }
+          // const handlerErr = responseErrorHandler(err)
+          // res.err = handlerErr
+          reject(res.data)
         }
       },
       fail: err => {
@@ -87,16 +87,16 @@ const responseErrorHandler = error => {
     title: "未知错误",
     description: "系统发生未知的错误"
   }
-  if (error.response) {
+  if (error.status !== /^2\d{2}/) {
     // 发送请求后，服务端有返回
     // 1. HTTP返回的响应码不是 2xx
     // 2. 服务端自定义错误,服务端响应码不是 2xx
     // 3. 客户端自定义错误,返回的数据被定义为错误状态
     err = getErrorMessage(error)
     if (err.code === 406) {
-      const token = getLoginToken()
+      const token = getDriverLoginToken()
       if (token) {
-        clearLoginToken()
+        clearDriverLoginToken()
         //之前有token,token过期
         loginDialog()
       } else {

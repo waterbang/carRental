@@ -34,6 +34,12 @@ Page({
     wx.vibrateShort()
     showNoIconToast("暂未开放此功能！")
   },
+  // 前往司机端分包
+  goDriver() {
+    wx.navigateTo({
+      url: '/packageDriver/pages/driver/driver',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

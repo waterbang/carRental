@@ -43,26 +43,28 @@ const HTTP_ERROR = {
     [301003, '高德查询主机解析错误'],
     [1002, '没有数据'],
     [1001, '账号已添加'],
-    [1000, '暂时没有可出租的车']
+    [1000, '暂时没有可出租的车'],
+    [1002,  '登录失败']
     // ....
   ])
 }
 
 const getErrorMessage = function (error) {
-  let response = error.response.data
+  let response = error.data;
+  response.status = Number.parseInt(response.status)
   let err = {
     title: '未知错误',
     description: '系统发生未知的错误'
   }
   if (typeof response === 'string') {
     err.description = '服务器异常,请稍后重试'
-  } else if (error.response.status >= 400 && error.response.status < 600) {
-    err.title = (error.response.status < 500) ? '请求错误' : '服务器错误'
-    err.description = HTTP_ERROR.HTTP_DEFALUT_ERROR.get(error.response.status)
+  } else if (response.status >= 400 && response.status < 600) {
+    err.title = (response.status < 500) ? '请求错误' : '服务器错误'
+    err.description = HTTP_ERROR.HTTP_DEFALUT_ERROR.get(response.status)
   } else {
     err.code = response.status
-    err.title = '后台系统错误'
-    err.description = (response && 'status' in response && HTTP_ERROR.CUSTOM_ERROR.has(response.status)) ? HTTP_ERROR.CUSTOM_ERROR.get(response.status) : '操作失败,请稍后重试'
+    err.title = '数据错误'
+    err.description = (response && HTTP_ERROR.CUSTOM_ERROR.has(response.status)) ? HTTP_ERROR.CUSTOM_ERROR.get(response.status) : '操作失败,请稍后重试'
   }
 
   return err

@@ -1,17 +1,26 @@
 <!--packageDriver/pages/Index/index.wxml-->
 <view class="order">
-  <l-message content="您的网络较差，请检查网络链接！"/>
-  <l-segment l-class="segment" bind:linchange="changeTabs" active-color="#ec8e30" animated-for-line="true" active-key="{{activeKey}}">
-        <l-segment-item tab="待发车" key="0" />
-        <l-segment-item tab="待收车" key="1" />
-        <l-segment-item tab="进行中" key="2" />
-        <l-segment-item tab="已完成" key="3" />
-  </l-segment>
-  <l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="我是有底线的～">
-  <view slot="content">
-      <w-orderItem list="{{item}}" activeKey="{{activeKey}}" bind:emitNewData="SonUpdatesData"></w-orderItem>      
-  </view>
-</l-loadmore>
+  <l-message />
+  <l-sticky>
+    <l-sticky-item>
+      <view slot="header">
+        <l-segment l-class="segment" bind:linchange="changeTabs" active-color="#ec8e30" animated-for-line="true"
+          active-key="{{activeKey}}">
+          <l-segment-item tab="待发车" key="0" />
+          <l-segment-item tab="待收车" key="1" />
+          <l-segment-item tab="进行中" key="2" />
+          <l-segment-item tab="已完成" key="3" />
+        </l-segment>
+      </view>
+      <view slot="body">
+        <l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="我是有底线的～">
+          <view slot="content">
+            <w-orderItem list="{{item}}" activeKey="{{activeKey}}" bind:emitNewData="SonUpdatesData"></w-orderItem>
+          </view>
+        </l-loadmore>
+      </view>
+    </l-sticky-item>
+  </l-sticky>
+
 </view>
 <custom-tab-bar></custom-tab-bar>
-

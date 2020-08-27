@@ -10,6 +10,10 @@ Page({
     activeKey:0, //默认激活的选项卡 0 已下单 1 出租中 2 已完成 3 全部
     loading:false,//是否加载
   },
+    // 吸顶
+    onPageScroll(res) {
+      wx.lin.setScrollTop(res.scrollTop)
+    },
   // 切换标签
   changeTabs(e) {
     wx.vibrateShort()
@@ -30,6 +34,7 @@ Page({
     this.setData({
       item:List
     })
+    wx.lin.flushSticky(); // 防止吸顶灯位置错乱
   },
   // 儿子需要刷新了通知我
   SonUpdatesData() {

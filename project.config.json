@@ -20,7 +20,7 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
+    "compileHotReLoad": true,
     "useMultiFrameRuntime": false,
     "useApiHook": false,
     "babelSetting": {
@@ -79,10 +79,10 @@
           "scene": null
         },
         {
-          "id": -1,
-          "name": "车辆详情，id=5",
+          "id": 1,
+          "name": "车辆详情，id=2",
           "pathName": "pages/reserve/reserve",
-          "query": "id=5",
+          "query": "id=2",
           "scene": null
         },
         {
@@ -110,6 +110,28 @@
           "id": -1,
           "name": "完成的订单详情",
           "pathName": "pages/order/details/details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "司机端：我的订单",
+          "pathName": "packageDriver/pages/driver/driver",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 7,
+          "name": "司机端：我的页面",
+          "pathName": "packageDriver/pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "司机端：登录页面",
+          "pathName": "packageDriver/pages/login/login",
+          "query": "",
           "scene": null
         }
       ]

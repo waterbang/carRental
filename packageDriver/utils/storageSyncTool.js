@@ -1,5 +1,5 @@
 // 定义登录token的key(键名),在获取/存储的时候,通过这个key获取和存储
-const LOGIN_TOKEN_KEY = 'XIAOQI'
+const LOGIN_TOKEN_KEY = 'DRIVER_ID'
 
 const setStorage = (key, value) => {
   try {
@@ -28,23 +28,23 @@ const clearStorage = key => {
   }
 }
 
-const setLoginToken = (value) => {
+const setDriverLoginToken = (value) => {
   return setStorage(LOGIN_TOKEN_KEY, value)
 }
 
-const getLoginToken = () => {
+const getDriverLoginToken = () => {
   return getStorage(LOGIN_TOKEN_KEY)
 }
 
-const clearLoginToken = () => {
+const clearDriverLoginToken = () => {
   return clearStorage(LOGIN_TOKEN_KEY)
 }
 
 module.exports = {
-  setLoginToken,
-  getLoginToken,
+  setDriverLoginToken,
+  getDriverLoginToken,
   getStorage,
   setStorage,
-  clearLoginToken,
+  clearDriverLoginToken,
   clearStorage
 }

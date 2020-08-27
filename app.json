@@ -9,6 +9,17 @@
     "pages/my/Notice/notice",
     "pages/order/details/details"
   ],
+  "subpackages": [
+    {
+      "root": "packageDriver",
+      "pages": [
+        "pages/driver/driver",
+        "pages/my/my",
+        "pages/login/login"
+      ],
+      "independent": true
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
