@@ -2,10 +2,10 @@
 	<view class="getCar">
     <view class="header">
       <image class="img" src="{{img}}"></image>
-      <view class="title">{{title}}</view>
+      <view class="title">{{title}}: {{getCarAddress.name}}</view>
     </view>
     <view class="content" bindtap="getCarAddress">
-      <view wx:if="{{getCarAddress.provinceName}}" class="address">{{getCarAddress.provinceName}}·{{getCarAddress.cityName}}·{{getCarAddress.countyName}}·{{getCarAddress.detailInfo}}</view>
+      <view wx:if="{{getCarAddress.name}}" class="address"> {{getCarAddress.address}}</view>
       <view wx:else class="address">请选择{{title}}</view>
         <view class="icon">></view>
       </view>

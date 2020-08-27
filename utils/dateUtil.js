@@ -7,6 +7,9 @@ const number = {
   '6': '六',
   '0': '日'
 }
+function filterDay(day) { //20200602
+  return `${day.slice(0,4)}-${day.slice(4,6)}-${day.slice(6,8)}`
+}
 
 function isMonthDayNumber(year, month) {
   let date = new Date(year, month, 0);
@@ -48,5 +51,6 @@ module.exports = {
   isMonthDayNumber,
   formatNumber,
   getDate,
-  getDateTime
+  getDateTime,
+  filterDay
 }

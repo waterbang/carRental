@@ -33,6 +33,7 @@ Page({
       wx.switchTab({
         url: '/pages/index/index',
       })
+      return;
     }
     this.seMoney(data.day, data.carDetail.price);
     this.setData({

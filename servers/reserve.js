@@ -2,27 +2,37 @@ const getAddress = () => {
   return new Promise((resolve,reject) => {
     wx.getSetting({
       success(res) {
-        if (!res.authSetting['scope.address']) {
+        if (!res.authSetting['scope.userLocation']) {
           wx.authorize({
-            scope: 'scope.address',
-            success () {
-              wx.chooseAddress({
+            scope: 'scope.userLocation',
+            success (e) {
+              console.log(e)
+              wx.getLocation({
+                type: 'wgs84',
                 success (res) {
-                  resolve(res);
+                  resolve(res)
+                  // const latitude = res.latitude
+                  // const longitude = res.longitude
+                  // const speed = res.speed
+                  // const accuracy = res.accuracy
                 }
-              })
+               })
             },
             fail:() => {
               reject(reject)
             }
           })
         } else { // 已经授权过了
-          wx.chooseAddress({
+          wx.getLocation({
+            type: 'wgs84',
             success (res) {
-              resolve(res);
+              resolve(res)
             }
-          })
+           })
         }
+      },
+      fail:(e) =>{
+        console.log(e)
       }
     })
   })

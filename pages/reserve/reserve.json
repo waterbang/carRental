@@ -4,10 +4,10 @@
     "l-button": "/miniprogram_npm/lin-ui/button/index",
     "w-getAddress": "/components/reserve/getAddress/index",
     "w-selectTime": "/components/selectTime/index",
-    "l-price" :"/miniprogram_npm/lin-ui/price/index",
-    "l-tabs" : "/miniprogram_npm/lin-ui/tabs/index",
-    "l-tabpanel" : "/miniprogram_npm/lin-ui/tabpanel/index",
-    "w-condition":"/components/condition/index",
-    "w-login" :"/components/login/index"
+    "l-price": "/miniprogram_npm/lin-ui/price/index",
+    "l-tabs": "/miniprogram_npm/lin-ui/tabs/index",
+    "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index",
+    "w-condition": "/components/condition/index",
+    "w-login": "/components/login/index"
   }
 }

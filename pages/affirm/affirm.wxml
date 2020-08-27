@@ -27,7 +27,7 @@
 		</view>
 		<view class="title">
 			<text class="timeT">取车地址：</text>
-			<text class="time">{{returnaddress}}</text>
+			<text class="time">{{rentaladdress}}</text>
 		</view>
 	</view>
 

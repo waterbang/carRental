@@ -1,13 +1,13 @@
 // pages/reserve/reserve.js
 import {
-  getCarDetail,
-  orderACar
+  getCarDetail
 } from '../../models/reserve'
 import {
   showNoIconToast
 } from '../../utils/common';
 import {wxLogin} from '../../models/user'
-
+import {filterDay} from '../../utils/dateUtil'
+const chooseLocation = requirePlugin('chooseLocation');
 Page({
 
   /**
@@ -15,12 +15,13 @@ Page({
    */
   data: {
     carDetail: {}, //车辆详情
+    getAndRepay:'取车地址',
     getCarAddress: null, //  取车地址
     repayCarAddress: null, // 还车地址
     getDate: '2016-09-01', // 提车时间
     getTime: '12:01',
     flag: 'left', // 看看是哪边
-    ordValue:'', // 旧的时间
+    ordValue:[], // 旧的时间
     getValue: [], // 取车
     reValue: [], //还车
     reDate: "2020-08-01", // 还车时间
@@ -42,19 +43,6 @@ Page({
     let detail = await getCarDetail(id);
     this.setData({
       carDetail: detail
-    })
-  },
-  // 获取权限
-  getCarAddress(e) {
-    let address = e.detail;
-    this.setData({
-      getCarAddress: address
-    })
-  },
-  repayAddress(e) {
-    let address = e.detail;
-    this.setData({
-      repayCarAddress: address
     })
   },
   //关闭时间选择框
@@ -113,7 +101,7 @@ Page({
     } = e.detail;
     if (time.length === 0) return;
     if (flag === 'left') {
-      this.data.ordValue = this.data.getValue;
+      this.data.ordValue = this.data.reValue;
       this.data.getValue = time;
       let year = time[0].value.slice(0, 4); //提取年
       let monthDay = time[0].text.split("  "); //  提取日期
@@ -137,29 +125,29 @@ Page({
     let get = this.data.getValue;
     let repay = this.data.reValue;
     if (get.length === 0 || repay.length === 0) return;
+    let repayHour = Number.parseInt(repay[1]),getHour = Number.parseInt(get[1]);
 
-    let day = Number.parseInt(repay[0].value) - Number.parseInt(get[0].value);
+    let day = (new Date(filterDay(repay[0].value)) - new Date(filterDay(get[0].value))) /(1000 * 60 * 60 * 24);
+    console.log(filterDay(repay[0].value))
     let hour = 0;
-    if (day === 0) { // 是否是同一天
-      hour =  Number.parseInt(repay[1]) - Number.parseInt(get[1]);
-    } else {
+   if(getHour > repayHour) { //如果取车日期比还车日期时间大
       day--;
-      hour = Math.abs( 24 - Number.parseInt(get[1]) + Number.parseInt(repay[1]))
-    }
-    //如果等于24小时
-    if(hour === 24) {
-      day++;
-      hour=0;
+      hour = Math.abs( 24 - getHour + repayHour)
+    } else {
+      hour = repayHour - getHour;
     }
 
     if (day < 0 || hour < 0) {
       showNoIconToast("还车时间不能比取车时间早");
       let ord = this.data.ordValue;
+      if (!ord.length) return; // 防止第一次没有传报错
       let year = ord[0].value.slice(0, 4); //提取年
       let monthDay = ord[0].text.split("  "); //  提取日期
       this.setData({
         getDate: `${year}年${monthDay[0]}`,
         getTime: `${monthDay[1]} ${get[1]}:${get[2]}`,
+        day:0,
+        hour:0
       })
       return;
     }
@@ -205,12 +193,16 @@ Page({
     showNoIconToast("未设置还车地址");
     return false;
   }
-  if(!this.data.getValue) {
+  if(!this.data.getValue.length) {
     showNoIconToast("未设置取车时间");
     return false;
   }
-  if(!this.data.reValue) {
+  if(!this.data.reValue.length) {
     showNoIconToast("未设置还车时间");
+    return false;
+  }
+  if (!this.data.day && this.data.hour < 4) {
+    showNoIconToast('租车时间不能少于4小时！');
     return false;
   }
   return true;
@@ -222,7 +214,35 @@ Page({
   },
   //提取地址
   setAddress(address){
-    return `${address.provinceName}·${address.cityName}·${address.countyName}·${address.detailInfo}`
+    return `${address.name}: ${address.address}`
+  },
+  // 获取地址
+  getCallbackShowMap(){
+    const location = chooseLocation.getLocation();
+    if(!location) return;
+    if (this.data.getAndRepay == '取车地址') {
+      console.log(location)
+      this.setData({
+        getCarAddress:location
+      })
+    } else {
+      this.setData({
+        repayCarAddress:location
+      })
+    }
+  },
+  // 获取地址权限
+  getCarAddress(e) {
+    let getAndRepay = e.detail;
+    this.setData({
+      getAndRepay: getAndRepay
+    })
+  },
+  repayAddress(e) {
+    let getAndRepay = e.detail;
+    this.setData({
+      getAndRepay: getAndRepay
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -243,7 +263,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getCallbackShowMap();
   },
 
   /**
