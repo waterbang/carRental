@@ -65,30 +65,6 @@ Component({
       wx.vibrateShort()
       return await modifyOrderStatus(id, status);
     },
-    //提车 status =1
-    async pickUpTheCar(e) {
-      let id = e.target.dataset.id;
-      let result = await this._changeOrderStatus(id, 0);
-      // console.log(result)
-      if (result.code == 200) {
-        showAccessToast("提车成功！");
-        this.emitNewData();
-      } else {
-        showNoIconToast("提车失败：" + result.msg);
-      }
-    },
-    //完成订单 status =2
-    async finalizeAnOrder(e) {
-      let id = e.target.dataset.id;
-      let result = await this._changeOrderStatus(id, 1);
-      console.log(result)
-      if (result.code == 200) {
-        showAccessToast("订单完成！");
-        this.emitNewData();
-      } else {
-        showNoIconToast("还车失败：" + result.msg);
-      }
-    },
     //无订单
     notOrder() {
       showNoIconToast("找不到此订单!");
@@ -116,3 +92,29 @@ Component({
     }
   },
 })
+
+
+//  //提车 status =1
+//  async pickUpTheCar(e) {
+//   let id = e.target.dataset.id;
+//   let result = await this._changeOrderStatus(id, 0);
+//   // console.log(result)
+//   if (result.code == 200) {
+//     showAccessToast("提车成功！");
+//     this.emitNewData();
+//   } else {
+//     showNoIconToast("提车失败：" + result.msg);
+//   }
+// },
+// //完成订单 status =2
+// async finalizeAnOrder(e) {
+//   let id = e.target.dataset.id;
+//   let result = await this._changeOrderStatus(id, 1);
+//   console.log(result)
+//   if (result.code == 200) {
+//     showAccessToast("订单完成！");
+//     this.emitNewData();
+//   } else {
+//     showNoIconToast("还车失败：" + result.msg);
+//   }
+// },

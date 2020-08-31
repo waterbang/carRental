@@ -1,0 +1,38 @@
+/* pages/my/auth/auth.wxss */
+
+.auth{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.auth .auth_title {
+  font-weight: 600;
+  line-height: 2;
+  font-size: 18px;
+}
+
+.auth .ID_front , .auth .ID_reverse, .auth .driving-license{
+  box-shadow: 0, 6px, -6px,rgba(0, 0, 0, 0.2);
+  width: 70%;
+  height: 300rpx;
+  background-color: white;
+  border:1px dashed rgba(0, 0, 0, 0.2);
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  width: 100%;
+  height: 300rpx;
+}
+.driving-license_img {
+  width: 65%;
+  height: 100%;
+}
+
+.auth .sub {
+  width: 50vh;
+  margin-bottom: 20rpx;
+}

@@ -10,10 +10,17 @@
 }
 .status-show {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.show-index {
+  height: 100%;
+}
+
+.show-classify{
+  height: 100vh;
 }
 
 .list-item {

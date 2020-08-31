@@ -24,7 +24,7 @@
 	</view> -->
 	<view class="content">
     <view class="title">我的小旗俱乐部</view>
-		<l-list title="我的订单" icon="order" icon-color="#ff992a" gap="10"  bind:lintap="goOrder" />
+		<l-list title="我的认证" icon="user" icon-color="#ff992a" gap="10"  bind:lintap="goAuth" />
 		<l-list title="我是司机" icon="phone" icon-color="#ff992a" gap="10"  bind:lintap="goDriver" desc="司机端请点击这里" tag-content="司机端" tag-position="right" tag-color="#ff992a" tagShape="circle"/>
     <l-list title="新手指导" icon="help" icon-color="#ff992a" gap="10" bind:lintap="goGuide" />
     <l-list title="租车须知" icon="setting" icon-color="#ff992a" gap="10" bind:lintap="goNotice" />

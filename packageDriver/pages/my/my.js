@@ -25,7 +25,6 @@ Page({
   //租车须知
   goNotice() {
     wx.vibrateShort()
-    wx.vibrateShort()
     showNoIconToast("暂未开放此功能！")
   },
   //联系我们

@@ -11,10 +11,10 @@ Page({
 
   },
   //我的订单
-  goOrder() {
+  goAuth() {
     wx.vibrateShort()
-    wx.switchTab({
-      url: '/pages/order/order',
+    wx.navigateTo({
+      url: './auth/auth',
     })
   },
   //新手指导

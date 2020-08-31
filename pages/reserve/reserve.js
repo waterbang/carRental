@@ -128,7 +128,6 @@ Page({
     let repayHour = Number.parseInt(repay[1]),getHour = Number.parseInt(get[1]);
 
     let day = (new Date(filterDay(repay[0].value)) - new Date(filterDay(get[0].value))) /(1000 * 60 * 60 * 24);
-    console.log(filterDay(repay[0].value))
     let hour = 0;
    if(getHour > repayHour) { //如果取车日期比还车日期时间大
       day--;
@@ -221,7 +220,6 @@ Page({
     const location = chooseLocation.getLocation();
     if(!location) return;
     if (this.data.getAndRepay == '取车地址') {
-      console.log(location)
       this.setData({
         getCarAddress:location
       })

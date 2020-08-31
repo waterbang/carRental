@@ -5,7 +5,10 @@ Component({
    */
   properties: {
     recommendList: Array,
-    secondList: Array
+    secondList: Array,
+    classify:{
+      type: Boolean
+    }
   },
 
   /**

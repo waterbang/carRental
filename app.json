@@ -7,6 +7,7 @@
     "pages/reserve/reserve",
     "pages/affirm/affirm",
     "pages/my/Notice/notice",
+    "pages/my/auth/auth",
     "pages/order/details/details"
   ],
   "subpackages": [{
@@ -14,6 +15,7 @@
     "pages": [
       "pages/driver/driver",
       "pages/my/my",
+      "pages/my/auth/auth",
       "pages/login/login"
     ],
     "independent": true

@@ -133,6 +133,20 @@
           "pathName": "packageDriver/pages/login/login",
           "query": "",
           "scene": null
+        },
+        {
+          "id": 9,
+          "name": "司机端：用户资质认证",
+          "pathName": "packageDriver/pages/my/auth/auth",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "用户认证页面",
+          "pathName": "pages/my/auth/auth",
+          "query": "",
+          "scene": null
         }
       ]
     }

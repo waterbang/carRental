@@ -28,7 +28,7 @@
 				<view class="tab-content">
 					<l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="我是有底线的～">
 						<view slot="content">
-							<w-list recommendList="{{secondList}}"></w-list>
+							<w-list recommendList="{{secondList}}" classify="false"></w-list>
 						</view>
 					</l-loadmore>
 				</view>

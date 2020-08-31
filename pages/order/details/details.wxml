@@ -24,9 +24,12 @@
   <view class="steps">
   <l-steps color="#ff992a" active-index="{{car_status - 1}}">
   <l-step title="已下单" ></l-step>
-  <l-step title="已派车" ></l-step>
-  <l-step title="待还车"></l-step>
-  <l-step title="已还车"></l-step>
+  <l-step title="后台派司机发车" ></l-step>
+  <l-step title="司机接受发车" ></l-step>
+  <l-step title="已发车" ></l-step>
+  <l-step title="用户收车" describe="(用户用车中)"></l-step>
+  <l-step title="平台确认收车"></l-step>
+  <l-step title="车辆入库"></l-step>
 </l-steps>
   </view>
   <view class="time">

@@ -1,0 +1,18 @@
+<!--pages/my/auth/auth.wxml-->
+<view class="auth">
+  <view class="auth_title">身份证正面</view>
+  <view class="ID_front" bindtap="getIDCardFront">
+    <image class="img" mode="aspectFill" src="{{id_car_front?id_car_front:id_card_default_front}}"></image>
+  </view>
+  <view class="auth_title">身份证<text class="auth_title" style="color:#ff992a">反</text>面</view>
+  <view class="ID_reverse" bindtap="getIDCardReverse">
+    <image class="img" mode="aspectFill" src="{{id_car_reverse?id_car_reverse:id_card_default_reserve}}"></image>
+  </view>
+  <view class="auth_title">驾驶证</view>
+  <view class="driving-license" bindtap="getDrivingLicense">
+    <image class="img" mode="aspectFill" src="{{driving_lincense?driving_lincense:driving_lincense_default}}"></image>
+  </view>
+  <l-button l-class="sub" size="long" type="warning" bind:lintap="orderACar">上传证件</l-button>
+</view>
+<canvas canvas-id="canvas"
+  style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-1000px;top:-1000px;"></canvas>

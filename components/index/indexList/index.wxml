@@ -1,7 +1,7 @@
 <!--components/indexList/index.wxml-->
 <view class="body">
 	<block wx:if="{{recommendList.length==0}}">
-		<l-status-show class="status-show" l-class="status-show" show="{{recommendList.length == 0}}" type="product" full-screen="{{false}}" describe="暂时没有相关车辆哦～～"></l-status-show>
+		<l-status-show class="status-show {{classify?'show-classify':'show-index'}}" l-class="status-show {{classify?'show-classify':'show-index'}}" show="{{recommendList.length == 0}}" type="product" full-screen="{{false}}" describe="暂时没有相关车辆哦～～"></l-status-show>
 	</block>
 	<block wx:else>
 		<view wx:for="{{recommendList}}" wx:key="index" class="list-item" bindtap="goReserve" data-id="{{item.id}}">
