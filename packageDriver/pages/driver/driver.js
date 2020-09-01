@@ -13,24 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    item: [
-      {
-        "id": 1,
-        "o_id": 3,
-        "status": 1,
-        "type": 1,
-        "time": "2020080817",
-        "d_id": 1,
-        "addtime": "2020-08-31 14:07:43",
-        "name": " 小丘",
-        "img": "/upload/series/20200826114600_.jpeg",
-        "license": "闽D6688d",
-        "rentaladdress": "厦门思明区第一广场",
-        "returnaddress": "厦门湖里区湖里万达",
-        "rentaltime": "2020-08-08 17:46:20",
-        "returntime": "2020-08-18 17:46:20"
-      }
-    ], //数据
+    item: [], //数据
     activeKey: 0, //默认激活的选项卡 0 待发车 1 待收车 2 进行中 3 已完成
     loading: false, //是否加载
   },

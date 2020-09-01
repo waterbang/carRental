@@ -47,13 +47,13 @@ Page({
   // 转换时间
   setCountdown(status ,returntime, rentaltime) { //2020-11-09 00:00
     const time = status === 1 ? returntime : rentaltime;
-    const year = time.match(/(\S*)年/)[1];
-    const macth = time.match(/年(\S*)月/)[1];
-    const day = time.match(/月(\S*)日/)[1];
-    const minute = time.match(/( \S*)/)[1];
+    // const year = time.match(/(\S*)年/)[1];
+    // const macth = time.match(/年(\S*)月/)[1];
+    // const day = time.match(/月(\S*)日/)[1];
+    // const minute = time.match(/( \S*)/)[1];
     let _time = (status === 1) ? '_returntime' : '_rentaltime';
     this.setData({
-      [_time]: `${year}-${macth}-${day}${minute}`
+      [_time]: time
     })
   },
   /**
