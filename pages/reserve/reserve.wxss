@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   padding-top: 20rpx;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .reserve .address {
