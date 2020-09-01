@@ -1,0 +1,54 @@
+<!--packageDriver/pages/picture/picture.wxml-->
+<view class="picture">
+  <view class="header">
+    <view class="title">为了避免纠纷请对车辆进行拍照取证</view>
+    <view class="disc">点击下面各个部位进行拍照取证</view>
+  </view>
+  <view class="container">
+    <view class="front">
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">左后视镜</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">前保险杠</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">右后视镜</text></l-button>
+    </view>
+    <view class="right">
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">右前侧</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">右前轮</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">右车门</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">右后轮</text></l-button>
+      <l-button l-class="car-base-btn " width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">右后侧</text></l-button>
+    </view>
+    <view class="bottom">
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">后备箱盖</text></l-button>
+      <l-button l-class="car-base-btn " width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">后保险杠</text></l-button>
+    </view> 
+    <view class="left">
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">左前侧</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">左前轮</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">左车门</text></l-button>
+      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">左后轮</text></l-button>
+      <l-button l-class="car-base-btn " width="50" height="50" shape="circle" plain="{{true}}"><text
+          class="btn-text">左后侧</text></l-button>
+    </view>
+    <view class="centre">
+        <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
+        class="btn-text">引擎盖</text></l-button>
+    </view>
+  </view>
+  <view class="submit">
+    <l-button l-class="sub" size="long" type="warning" bind:lintap="onLogin">取证完成</l-button>
+  </view>
+</view>

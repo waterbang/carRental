@@ -10,16 +10,20 @@
     "pages/my/auth/auth",
     "pages/order/details/details"
   ],
-  "subpackages": [{
-    "root": "packageDriver",
-    "pages": [
-      "pages/driver/driver",
-      "pages/my/my",
-      "pages/my/auth/auth",
-      "pages/login/login"
-    ],
-    "independent": true
-  }],
+  "subpackages": [
+    {
+      "root": "packageDriver",
+      "pages": [
+        "pages/driver/driver",
+        "pages/driver/details/details",
+        "pages/my/my",
+        "pages/my/auth/auth",
+        "pages/login/login",
+        "pages/picture/picture"
+      ],
+      "independent": true
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -31,7 +35,8 @@
     "borderStyle": "white",
     "selectedColor": "#000000",
     "backgroundColor": "#fff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "iconPath": "static/tarBar/index-un.png",
         "selectedIconPath": "static/tarBar/index.png",

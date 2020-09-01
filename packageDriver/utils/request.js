@@ -25,7 +25,7 @@ const wxRequest = async (subUrl, params = {}) => {
     },
     method: "POST",
     data: {
-      id: token || ""
+      uid: token || ""
     }
   }
 

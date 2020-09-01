@@ -1,0 +1,98 @@
+/* packageDriver/pages/picture/picture.wxss */
+.picture {
+  width: 100%;
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.picture .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.picture .header .title {
+  line-height: 2;
+  font-size: 16px;
+}
+.picture .header .disc {
+  color:#949494;
+  font-size: 13px;
+}
+
+.picture .container {
+  padding: 20rpx;
+  margin: 210rpx auto;
+  width: 60%;
+  height: 70vw;
+  background-image: url(https://xdtnyimg.waterbang.top/carPicture.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.picture .container .front {
+  display: flex;
+  justify-content: space-around;
+  width: 60vh;
+  position: relative;
+  left: -30%;
+  top:-10%;
+}
+
+.picture .container .right {
+  position: relative;
+  left: 23%;
+  top:-6%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.picture .container .bottom {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  position: relative;
+  top:-6%;
+}
+
+.picture .container .left {
+  position: relative;
+  left: -100%;
+  bottom: 115%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.picture .container .centre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 59%;
+  left: 43.5%;
+}
+
+.picture .submit {
+  width: 100%;
+  position: absolute;
+  bottom: 2%;
+}
+
+
+.btn-text {
+  color: #ff992a;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+.car-base-btn {
+  border: 2rpx solid #ff992a !important;
+  color: #ff992a;
+}

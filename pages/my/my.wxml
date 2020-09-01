@@ -23,11 +23,15 @@
 		</view>
 	</view> -->
 	<view class="content">
-    <view class="title">我的小旗俱乐部</view>
-		<l-list title="我的认证" icon="user" icon-color="#ff992a" gap="10"  bind:lintap="goAuth" />
-		<l-list title="我是司机" icon="phone" icon-color="#ff992a" gap="10"  bind:lintap="goDriver" desc="司机端请点击这里" tag-content="司机端" tag-position="right" tag-color="#ff992a" tagShape="circle"/>
-    <l-list title="新手指导" icon="help" icon-color="#ff992a" gap="10" bind:lintap="goGuide" />
-    <l-list title="租车须知" icon="setting" icon-color="#ff992a" gap="10" bind:lintap="goNotice" />
-    <l-list title="联系我们" icon="comment" icon-color="#ff992a" gap="10" bind:lintap="contactUs" />
+		<view class="title">我的小旗俱乐部</view>
+		<l-list title="我的认证" icon="user" icon-color="#ff992a" gap="10" bind:lintap="goAuth" />
+		<l-list title="我是司机" icon="phone" icon-color="#ff992a" gap="10" bind:lintap="goDriver" desc="司机端请点击这里"
+			tag-content="司机端" tag-position="right" tag-color="#ff992a" tagShape="circle" />
+		<l-list title="新手指导" icon="help" icon-color="#ff992a" gap="10" bind:lintap="goGuide" />
+		<l-list title="租车须知" icon="setting" icon-color="#ff992a" gap="10" bind:lintap="goNotice" />
+		<l-button special="{{true}}" open-type="contact">
+			<l-list l-class="list-contact" title="客服中心" icon="comment" icon-color="#ff992a" gap="10"
+				desc="工作时间9:00 - 18:00" />
+		</l-button>
 	</view>
 </view>

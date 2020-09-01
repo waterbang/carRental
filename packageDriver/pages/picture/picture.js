@@ -1,7 +1,7 @@
-// packageDriver/pages/my/my.js
-import {
-  showNoIconToast
-} from '../../utils/common'
+// packageDriver/pages/picture/picture.js
+import {CACHE} from '../../config/map'
+import * as Storage from '../../utils/storageSyncTool'
+import {showAccessToast, showNoIconToast} from '../../utils/common'
 Page({
 
   /**
@@ -10,28 +10,7 @@ Page({
   data: {
 
   },
-  //我的订单
-  goOrder() {
-    wx.vibrateShort()
-    wx.navigateTo({
-      url: '../driver/driver',
-    })
-  },
-  //新手指导
-  goGuide() {
-    wx.vibrateShort()
-    showNoIconToast("暂未开放此功能！")
-  },
-  //租车须知
-  goNotice() {
-    wx.vibrateShort()
-    showNoIconToast("暂未开放此功能！")
-  },
-  //联系我们
-  contactUs() {
-    wx.vibrateShort()
-    showNoIconToast("暂未开放此功能！")
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

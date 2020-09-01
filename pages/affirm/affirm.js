@@ -7,6 +7,7 @@ import {
   orderACar
 } from '../../models/reserve'
 import * as Storage from '../../utils/storageSyncTool';
+import {CACHE} from '../../config/map';
 
 Page({
 
@@ -28,7 +29,7 @@ Page({
     isNumber:false,//是否有手机
   },
   init() {
-    let data = this.data.body = wx.getStorageSync('AFFIRM');
+    let data = this.data.body = wx.getStorageSync(CACHE.CAR_AFFIRM);
     if(!data) {
       wx.switchTab({
         url: '/pages/index/index',
@@ -85,7 +86,7 @@ Page({
   },
   // 获取用户手机信息
   isHaveNumber(){
-    let isNumber = Storage.getStorage('isNumber');
+    let isNumber = Storage.getStorage(CACHE.USER_ISNUMBER);
     if (!isNumber) {
       this.setData({
         isNumber: true

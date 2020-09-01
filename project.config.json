@@ -147,6 +147,19 @@
           "pathName": "pages/my/auth/auth",
           "query": "",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "司机端：车辆图片上传页面",
+          "pathName": "packageDriver/pages/picture/picture",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "司机端：订单详情页面",
+          "pathName": "packageDriver/pages/driver/details/details",
+          "scene": null
         }
       ]
     }

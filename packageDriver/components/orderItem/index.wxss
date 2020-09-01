@@ -17,8 +17,8 @@
   font-weight: 600;
 }
 
-.content .title {
-  font-size: 12px;
+.content .title, .content .plate{
+  font-size: 14px;
 }
 
 .content .car .address, .content .car .time {

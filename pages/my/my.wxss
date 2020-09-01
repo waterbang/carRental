@@ -1,4 +1,8 @@
 /* pages/my/my.wxss */
+.my {
+  width: 100%;
+  overflow: hidden;
+}
 .my .header {
   display: flex;
   justify-content: center;
@@ -63,4 +67,8 @@
   font-size: 12px;
   color: #949494;
   margin:10rpx;
+}
+
+.my .content .list-contact {
+  width: 100vh;
 }

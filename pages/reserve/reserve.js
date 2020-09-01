@@ -7,6 +7,7 @@ import {
 } from '../../utils/common';
 import {wxLogin} from '../../models/user'
 import {filterDay} from '../../utils/dateUtil'
+import {CACHE} from '../../config/map';
 const chooseLocation = requirePlugin('chooseLocation');
 Page({
 
@@ -156,8 +157,8 @@ Page({
     })
   },
   // 提交订单
-  orderACar() {
-    let status = this.verify();
+  async orderACar() {
+    let status = await this.verify();
     if (!status)return;
     const data = {
     // cancelRule:this.data.getTime,
@@ -166,23 +167,24 @@ Page({
      rentaltime : this.data.reDate + this.data.reTime,
      returnaddress : this.setAddress(this.data.getCarAddress),
      rentaladdress : this.setAddress(this.data.repayCarAddress),
-     username  : wx.getStorageSync('IS_LOGIN').nickName,
+     username  : wx.getStorageSync(CACHE.USER_IS_LOGIN).nickName,
      day : this.data.day + this.setMoneyTime(this.data.hour),
     }
-    wx.setStorageSync('AFFIRM', data)
+    wx.setStorageSync(CACHE.CAR_AFFIRM, data)
     wx.navigateTo({
       url: '/pages/affirm/affirm',
     })
   },
   // 验证参数
-  verify(){
+  async verify(){
     // 看看有没有用户信息
-  if (!wx.getStorageSync('IS_LOGIN')) {
-    wxLogin().then(res => {
+  if (!wx.getStorageSync(CACHE.USER_IS_LOGIN)) {
+   await wxLogin().then(res => {
       this.setIsLoginStatus(false);
     }).catch((e) =>{
       this.setIsLoginStatus(true);
     })
+    return false;
   }
   if(this.data.getCarAddress == null) {
     showNoIconToast("未设置取车地址");

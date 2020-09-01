@@ -1,0 +1,188 @@
+/* pages/order/details/details.wxss */
+page {
+  background-color: #f0f0f0;
+}
+
+.car_detail {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 头部 */
+.car_detail .header {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10rpx;
+  background-color: white;
+  width: 100%;
+  padding: 20rpx 0;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.hot {
+  margin: 10rpx;
+  font-size: 10px;
+}
+
+.car_detail .header .img {
+  width: 200rpx;
+  height: 150rpx
+}
+
+.car_detail .header .content {
+  margin: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.car_detail .header .content .title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+
+.car_detail .header .content .label {
+  color: #949494;
+  margin-top: 10rpx;
+}
+
+/* 当前状态 */
+.car_detail .steps {
+  padding: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* 倒计时 */
+
+.car_detail .countdown {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 20rpx 0 10rpx 0;
+}
+
+.car_detail .countdown .title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.car_detail .countdown .countdown-blue {
+  border: 2rpx solid #949494;
+  border-radius: 50%;
+  background:transparent;
+  color:#ff992a;
+}
+
+/* 时间 */
+.car_detail .time {
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 0;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+.car_detail .time .title .time {
+  width: 80%;
+}
+
+.car_detail .address {
+  margin-bottom: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+.car_detail .time .title,
+.car_detail .address .title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* 地址 */
+.car_detail .address .title .timeT,
+.car_detail .time .title .timeT {
+  width: 20%;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 10rpx;
+}
+
+.car_detail .address .title .time {
+  width: 80%;
+  overflow-x: scroll;
+}
+
+/* 用车人 */
+.userTheCar,
+.papers,
+.cancel-rule,
+.area {
+  padding: 10rpx;
+  margin-bottom: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: baseline;
+  width: 97%;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+}
+
+.userTheCar .title {
+  margin: 0 10rpx;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.car_detail .papers {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10rpx;
+}
+
+.papers .papers-header {
+  font-size: 15px;
+  margin: 0 10rpx;
+  font-weight: 600;
+}
+
+.papers .title,
+.area .title,
+.cancel-rule .title {
+  font-size: 14px;
+  margin: 5rpx;
+}
+
+.papers .content,
+.cancel-rule .content,
+.area .content {
+  font-size: 12px;
+  color: #949494;
+}
+
+/* 用车区域 */
+.area {
+  display: flex;
+  flex-direction: column;
+}
+

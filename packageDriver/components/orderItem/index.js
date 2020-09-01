@@ -5,6 +5,7 @@ import {
   showAccessToast
 } from '../../utils/common'
 import * as Storage from '../../utils/storageSyncTool'
+import {CACHE} from '../../config/map'
 Component({
   /**
    * 组件的属性列表
@@ -29,18 +30,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    //取消订单
-    async _cancelOrder(e) {
-      wx.vibrateShort()
-      let id = e.target.dataset.id;
-      let result = await cancelOrder(id);
-      if (result.code == 200) {
-        showAccessToast("取消成功！");
-        this.emitNewData();
-      } else {
-        showNoIconToast("取消失败：" + result.msg);
-      }
-    },
     //删除订单
     async _deleteOrder(e) {
       wx.vibrateShort()
@@ -100,9 +89,9 @@ Component({
         showNoIconToast('订单错误！')
         return;
       }
-      Storage.setStorage('orderDetails',this.data.list[index])
+      Storage.setStorage(CACHE.DRIVE_ORDER_DETAIL,this.data.list[index])
       wx.navigateTo({
-        url: '/pages/order/details/details',
+        url: './details/details',
       })
     },
     //阻止冒泡事件

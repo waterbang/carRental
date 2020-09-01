@@ -3,11 +3,12 @@ import {
   wxRequest
 } from '../utils/request'
 import * as Storage from '../utils/storageSyncTool';
+import { CACHE } from '../config/map'
 //登录
-const IS_LOGIN = 'IS_LOGIN'
+const IS_LOGIN =  CACHE.USER_IS_LOGIN
 
 const wxLogin = () => {
-  if (Storage.getStorage(IS_LOGIN)) return;
+  if (Storage.getStorage(IS_LOGIN)) return false;
   return new Promise((resolve, reject) => {
     // 获取用户信息
     wx.getSetting({
