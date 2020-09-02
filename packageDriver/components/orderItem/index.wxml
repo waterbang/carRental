@@ -41,11 +41,11 @@
 						</block>
 						<block wx:elif="{{activeKey==2}}">
 							<block wx:if="{{item.type==1}}">
-								<l-button type="success" size="mini" bind:lintap="finalizeAnOrder" data-id="{{item.id}}">完成发车
+								<l-button type="success" size="mini" bind:lintap="completeTheGrid" data-id="{{item.id}}">完成发车
 								</l-button>
 							</block>
 							<block wx:else>
-								<l-button type="success" size="mini" bind:lintap="finalizeAnOrder" data-id="{{item.id}}">完成收车
+								<l-button size="mini" bind:lintap="completeTheCollect" data-id="{{item.id}}">完成收车
 								</l-button>
 							</block>
 						</block>

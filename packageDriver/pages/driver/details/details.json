@@ -2,6 +2,7 @@
   "navigationBarTitleText": "客户订单详情",
   "usingComponents": {
     "l-price":"../../../miniprogram_npm/lin-ui/price/index",
-    "l-countdown":"../../../miniprogram_npm/lin-ui/countdown/index"
+    "l-countdown":"../../../miniprogram_npm/lin-ui/countdown/index",
+    "l-tag":"../../../miniprogram_npm/lin-ui/tag/index"
   }
 }

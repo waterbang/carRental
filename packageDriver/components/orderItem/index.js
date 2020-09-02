@@ -74,6 +74,20 @@ Component({
         showNoIconToast("收车失败：" + result.msg);
       }
     },
+    // 完成收车
+    completeTheGrid(e) {
+      let id = e.target.dataset.id;
+      wx.navigateTo({
+        url: `../../pages/my/auth/auth?id=${id}`,
+      })
+    },
+    // 完成发车
+    completeTheCollect(e) {
+      let id = e.target.dataset.id;
+      wx.navigateTo({
+        url: `../../pages/picture/picture?id=${id}`,
+      })
+    },
     //无订单
     notOrder() {
       showNoIconToast("找不到此订单!");
@@ -95,9 +109,7 @@ Component({
         url: './details/details',
       })
     },
-    //阻止冒泡事件
-    catchPop(){
-
-    }
+    //阻止冒泡事件不要删除
+    catchPop(){}
   },
 })
