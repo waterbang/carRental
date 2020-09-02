@@ -36,9 +36,16 @@ Page({
   async getItemData(status) {
     this.setActiveKey(status);
     let List = await getCarList(status);
+    console.log(List)
    if (List.code == 200) {
     this.setData({
       item: List.data
+    })
+    return;
+   } 
+   if(List.code == 1000) { //没有数据
+    this.setData({
+      item: []
     })
     return;
    }

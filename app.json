@@ -19,8 +19,7 @@
         "pages/my/my",
         "pages/my/auth/auth",
         "pages/login/login",
-        "pages/picture/picture",
-        "pages/pathPlanning/pathPlanning"
+        "pages/picture/picture"
       ],
       "independent": true
     }

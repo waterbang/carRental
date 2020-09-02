@@ -17,12 +17,18 @@
   font-weight: 600;
 }
 
-.content .title, .content .plate{
+.content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.content .left .title, .content .plate{
   font-size: 14px;
 }
 
-.content .car .address, .content .car .time {
-  font-size: 12px;
+.content .left .car .address, .content .car .time {
+  font-size: 14px;
   color: #949494;
 }
 

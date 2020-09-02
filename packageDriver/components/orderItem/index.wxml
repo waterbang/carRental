@@ -1,45 +1,61 @@
 <!--components/orderItem/index.wxml-->
 <view class="item">
 	<block wx:if="{{list.length == 0}}">
-		<l-status-show l-class="status-show" show="{{list.length == 0}}" type="order" full-screen="{{false}}"></l-status-show>
+		<l-status-show l-class="status-show" show="{{list.length == 0}}" type="order" full-screen="{{false}}">
+		</l-status-show>
 	</block>
-	<!-- {{'https://www.jindundangan.com/'+item.img}} -->
 	<block wx:else>
-		<view wx:for="{{list}}" wx:key="index" >
-		<l-card type="primary" image="" image-mode="aspectFill"
-			title="{{item.series_name}}" l-class="list-item" l-title-class="title-header">
-			<!-- 此处为content -->
-			<view class="content" bindtap="goReserve" data-index="{{index}}">
-				<view class="title">姓名:{{item.name}}</view>
-				<view class="plate">车牌号: <text style="color:#ec8e30">{{item.license}}</text></view>
-				<!-- 发车 -->
-				<block wx:if="{{activeKey === 3 || activeKey === 2||activeKey==0}}"> 
-					<view class="car">
-						<view class="address">
-							{{item.returnaddress}}</view>
-						<view class="time">{{item.rentaltime}}</view>
+		<view wx:for="{{list}}" wx:key="index">
+			<l-card type="primary" plaintext="{{true}}" title="{{item.series_name}}" l-class="list-item"
+				l-title-class="title-header">
+				<!-- 此处为content -->
+				<view class="content" bindtap="goReserve" data-index="{{index}}">
+					<view class="left">
+						<view class="title">姓名:{{item.name}}</view>
+						<view class="plate">车牌号: <text style="color:#ec8e30">{{item.license}}</text></view>
+						<!-- 发车 -->
+						<block wx:if="{{item.type==1}}">
+							<view class="car">
+								<view class="address">
+									{{item.returnaddress}}</view>
+								<view class="time">{{item.rentaltime}}</view>
+							</view>
+						</block>
+						<!-- 收车 -->
+						<block wx:if="{{item.type==2}}">
+							<view class="car">
+								<view class="address">{{item.rentaladdress}}</view>
+								<view class="time">{{item.rentaltime}}</view>
+							</view>
+						</block>
 					</view>
-				</block>
-				<!-- 收车 -->
-				<block wx:if="{{activeKey === 3 || activeKey === 2|| activeKey==1}}">
-					<view class="car">
-						<view class="address">{{item.rentaladdress}}</view>
-						<view class="time">{{item.rentaltime}}</view>
+					<view class="btn" catchtap="catchPop">
+						<block wx:if="{{activeKey==0}}">
+							<!-- 待发车-->
+							<l-button size="mini" disabled="{{item.car_status===1}}" bind:lintap="beganToStart" data-id="{{item.id}}">
+								确定发车</l-button>
+						</block>
+						<block wx:elif="{{activeKey==1}}">
+							<!-- 待收车-->
+							<l-button size="mini" bind:lintap="beganToCollect" data-id="{{item.id}}">确定收车</l-button>
+						</block>
+						<block wx:elif="{{activeKey==2}}">
+							<block wx:if="{{item.type==1}}">
+								<l-button type="success" size="mini" bind:lintap="finalizeAnOrder" data-id="{{item.id}}">完成发车
+								</l-button>
+							</block>
+							<block wx:else>
+								<l-button type="success" size="mini" bind:lintap="finalizeAnOrder" data-id="{{item.id}}">完成收车
+								</l-button>
+							</block>
+						</block>
+						<block wx:elif="{{activeKey==3}}">
+							<!-- 已完成显示删除-->
+							<l-button type="error" size="mini" bind:lintap="_deleteOrder" data-id="{{item.id}}">删除订单</l-button>
+						</block>
 					</view>
-				</block>
-				<view class="btn" catchtap="catchPop">
-					<block wx:if="{{activeKey==0}}"> <!-- 已下单-->
-					<l-button size="mini" disabled="{{item.car_status===1}}" bind:lintap="pickUpTheCar" data-id="{{item.id}}">确定发车</l-button>
-					</block>
-					<block wx:elif="{{activeKey==1}}"> <!-- 出租中-->
-						<l-button type="success" size="mini" bind:lintap="finalizeAnOrder" data-id="{{item.id}}" >确定收车</l-button>
-					</block>
-					<block wx:elif="{{activeKey==2}}"> <!-- 已完成显示删除-->
-						<l-button type="error" size="mini" bind:lintap="_deleteOrder" data-id="{{item.id}}" >删除订单</l-button>
-					</block>
 				</view>
-			</view>
-		</l-card>
-	</view>
+			</l-card>
+		</view>
 	</block>
 </view>
