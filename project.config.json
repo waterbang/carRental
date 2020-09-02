@@ -138,7 +138,7 @@
           "id": 9,
           "name": "司机端：用户资质认证",
           "pathName": "packageDriver/pages/my/auth/auth",
-          "query": "",
+          "query": "id=4",
           "scene": null
         },
         {
@@ -149,16 +149,17 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 11,
           "name": "司机端：车辆图片上传页面",
           "pathName": "packageDriver/pages/picture/picture",
-          "query": "",
+          "query": "id=4",
           "scene": null
         },
         {
           "id": -1,
           "name": "司机端：订单详情页面",
           "pathName": "packageDriver/pages/driver/details/details",
+          "query": "",
           "scene": null
         }
       ]

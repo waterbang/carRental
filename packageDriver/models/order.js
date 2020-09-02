@@ -16,7 +16,7 @@ const putCarDamage = (order_id,damage,damage_desc,grade) => post(API.CAR_DAMAGE,
 }).then(res=>{return res}).catch(err => { return err});
 
 //上传图片
-const pushImg = (id, type, data) => post(API.ADD_CAR_IMAGE,{id, type, data}).then(res=>{return res}).catch(err => { return err});
+const pushImg = (id, type, data) => post(API.ADD_CAR_IMAGE,{id, type, data:data}).then(res=>{return res}).catch(err => { return err});
 
 module.exports = {
   getCarList,

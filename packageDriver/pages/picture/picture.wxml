@@ -6,49 +6,50 @@
   </view>
   <view class="container">
     <view class="front">
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">左后视镜</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">前保险杠</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">右后视镜</text></l-button>
+      <l-button l-class="{{verifyMap[1]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="1" ><text
+          class="{{verifyMap[1]?'push-text':'btn-text'}}">左后视镜</text></l-button>
+      <l-button l-class="{{verifyMap[2]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="2" ><text
+          class="{{verifyMap[2]?'push-text':'btn-text'}}">前保险杠</text></l-button>
+      <l-button l-class="{{verifyMap[3]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="3" ><text
+          class="{{verifyMap[3]?'push-text':'btn-text'}}">右后视镜</text></l-button>
     </view>
     <view class="right">
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">右前侧</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">右前轮</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">右车门</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">右后轮</text></l-button>
-      <l-button l-class="car-base-btn " width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">右后侧</text></l-button>
+      <l-button l-class="{{verifyMap[4]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="4" ><text
+          class="{{verifyMap[4]?'push-text':'btn-text'}}">右前侧</text></l-button>
+      <l-button l-class="{{verifyMap[5]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="5" ><text
+          class="{{verifyMap[5]?'push-text':'btn-text'}}">右前轮</text></l-button>
+      <l-button l-class="{{verifyMap[6]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="6" ><text
+          class="{{verifyMap[6]?'push-text':'btn-text'}}">右车门</text></l-button>
+      <l-button l-class="{{verifyMap[7]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="7" ><text
+          class="{{verifyMap[7]?'push-text':'btn-text'}}">右后轮</text></l-button>
+      <l-button l-class="{{verifyMap[8]?'pushSuccess ':'car-base-btn'}} " width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="8"><text
+          class="{{verifyMap[8]?'push-text':'btn-text'}}">右后侧</text></l-button>
     </view>
     <view class="bottom">
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">后备箱盖</text></l-button>
-      <l-button l-class="car-base-btn " width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">后保险杠</text></l-button>
+      <l-button l-class="{{verifyMap[9]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="9"><text
+          class="{{verifyMap[9]?'push-text':'btn-text'}}">后备箱盖</text></l-button>
+      <l-button l-class="{{verifyMap[10]?'pushSuccess ':'car-base-btn'}} " width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="10"><text
+          class="{{verifyMap[10]?'push-text':'btn-text'}}">后保险杠</text></l-button>
     </view> 
     <view class="left">
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">左前侧</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">左前轮</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">左车门</text></l-button>
-      <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">左后轮</text></l-button>
-      <l-button l-class="car-base-btn " width="50" height="50" shape="circle" plain="{{true}}"><text
-          class="btn-text">左后侧</text></l-button>
+      <l-button l-class="{{verifyMap[11]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="11"><text
+          class="{{verifyMap[11]?'push-text':'btn-text'}}">左前侧</text></l-button>
+      <l-button l-class="{{verifyMap[12]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="12"><text
+          class="{{verifyMap[12]?'push-text':'btn-text'}}">左前轮</text></l-button>
+      <l-button l-class="{{verifyMap[13]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="13"><text
+          class="{{verifyMap[13]?'push-text':'btn-text'}}">左车门</text></l-button>
+      <l-button l-class="{{verifyMap[14]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="14"><text
+          class="{{verifyMap[14]?'push-text':'btn-text'}}">左后轮</text></l-button>
+      <l-button l-class="{{verifyMap[15]?'pushSuccess ':'car-base-btn'}} " width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="15"><text
+          class="{{verifyMap[15]?'push-text':'btn-text'}}">左后侧</text></l-button>
     </view>
     <view class="centre">
-        <l-button l-class="car-base-btn" width="50" height="50" shape="circle" plain="{{true}}"><text
-        class="btn-text">引擎盖</text></l-button>
+        <l-button l-class="{{verifyMap[16]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="16"><text
+        class="{{verifyMap[16]?'push-text':'btn-text'}}">引擎盖</text></l-button>
     </view>
   </view>
   <view class="submit">
-    <l-button l-class="sub" size="long" type="warning" bind:lintap="onLogin">取证完成</l-button>
+    <l-button l-class="sub" size="long" type="warning" bind:lintap="onSubmit">取证完成</l-button>
   </view>
 </view>
+<canvas canvas-id="canvas" style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-1000px;top:-1000px;"></canvas>

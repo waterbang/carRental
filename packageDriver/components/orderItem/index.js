@@ -37,7 +37,6 @@ Component({
       let id = e.target.dataset.id;
       console.log(id)
       let result = await deleteOrder(id);
-       console.log(result)
       if (result.code == 200) {
         showAccessToast("删除成功！");
         this.emitNewData();

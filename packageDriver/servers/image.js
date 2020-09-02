@@ -4,7 +4,7 @@ const chooseImage = (_this) => {
         wx.chooseImage({
             count: 1, // 默认9
             sizeType: ['compressed'], // 指定只能为压缩图，首先进行一次默认压缩
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: photo => {
                 //将tempFilePaths[0]加入到images数组 作为展示
                 images = (photo.tempFilePaths[0])
@@ -32,21 +32,20 @@ const chooseImage = (_this) => {
                         ctx.draw(false, setTimeout(function () {
                             wx.canvasToTempFilePath({
                                 canvasId: 'canvas',
+                                fileType: 'png',
                                 destWidth: canvasWidth,
                                 destHeight: canvasHeight,
                                 success: res => {
                                     // console.log(res.tempFilePath) //最终图片路径
                                     let path = res.tempFilePath
                                     let arr = path.split('.');
-                                    let list = {};
+                                    let list ='';
                                     //获取图片类型
-                                    list.imageType = '.' + arr[arr.length - 1];
+                                    //list.imageType = '.' + arr[arr.length - 1];
                                     //对图片进行base64 获取base64Code
-                                    list.base64Code = wx
-                                        .getFileSystemManager()
-                                        .readFileSync(path, 'base64');
+                                    list = wx.getFileSystemManager().readFileSync(path, 'base64');
                                     //将list加入到imageList数组中 作为后台接口参数
-                                    resolve({images, list});
+                                    resolve({images, base64Img:'data:image/jpeg;base64,'+list});
                                 },
                                 fail: res => {
                                     reject(res);
@@ -65,6 +64,65 @@ const chooseImage = (_this) => {
     })
 }
 
+const Choose2DImage = (_this) => {
+    return new Promise((resolve, reject) => {
+        wx.getSystemInfo({
+            success: res => {
+                let windowWidth = res.windowWidth;
+                // 获取图片信息
+                wx.getImageInfo({
+                    src: _this.data.imgPath,
+                    success: res => {
+                        // 比例
+                        var scale = 1;
+                        if (res.width > windowWidth) {
+                            scale = windowWidth / res.width;
+                        }
+                        console.log(scale);
+                        // 宽
+                        let imgWidth = res.width * scale;
+                        // 高
+                        let imgHeight = res.height * scale;
+                        //设置canvas标签宽高
+                        _this.setData({
+                            canvasWidth: imgWidth,
+                            canvasHeight: imgHeight
+                        })
+                        //获取canvas-----------------------------------------
+                        const query = wx.createSelectorQuery();
+                        query.select('#canvas').fields({
+                            node: true,
+                            size: true
+                        }).exec(async res => {
+                            const canvas = res[0].node;
+                            canvas.width = imgWidth;
+                            canvas.height = imgHeight;
+                            //2d画布
+                            const ctx = canvas.getContext('2d');
+                            //创建图片
+                            const mainImg = canvas.createImage();
+                            mainImg.src = _this.data.imgPath;
+                            const mainImgs = await new Promise((resolve, reject) => {
+                                mainImg.onload = () => resolve(mainImg);
+                                mainImg.onerror = (e) => reject(e);
+                            });
+                            // 绘制图像到画布
+                            ctx.drawImage(mainImgs, 0, 0, imgWidth, imgHeight);
+                            let base64 = canvas.toDataURL('image/jpeg', 0.9).replace('data:image/jpeg;base64,', "");
+                            resolve(base64);
+                        })
+                    },
+                    fail: err => {
+                       reject(err)
+                    }
+                })
+            }
+        })
+        
+    })
+}
+
 module.exports = {
-    chooseImage
+    chooseImage,
+    Choose2DImage
 }
