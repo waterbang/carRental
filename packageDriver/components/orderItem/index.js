@@ -73,18 +73,18 @@ Component({
         showNoIconToast("收车失败：" + result.msg);
       }
     },
-    // 完成收车
+    // 完成发车
     completeTheGrid(e) {
       let id = e.target.dataset.id;
       wx.navigateTo({
         url: `../../pages/my/auth/auth?id=${id}`,
       })
     },
-    // 完成发车
+    // 完成收车
     completeTheCollect(e) {
       let id = e.target.dataset.id;
       wx.navigateTo({
-        url: `../../pages/picture/picture?id=${id}`,
+        url: `../../pages/picture/picture?id=${id}&type=true`,
       })
     },
     //无订单

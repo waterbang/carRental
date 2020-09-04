@@ -48,8 +48,39 @@
         class="{{verifyMap[16]?'push-text':'btn-text'}}">引擎盖</text></l-button>
     </view>
   </view>
+  <view class="fuel-meter">
+      <view class="header">请上传里程图并输入里程数</view>
+      <view class="mileage">
+          <view class="title">
+            <l-button l-class="{{verifyMap[20]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="20"><text
+        class="{{verifyMap[20]?'push-text':'btn-text'}}">里程图</text></l-button>
+          </view>
+        <l-input label="里程数" type="number" placeholder="请输入里程数" colon="true" bind:linblur="isMileageData" />
+      </view>
+      <view class="header">
+          <view>请上传油表图并输入油表量</view>
+          <view class="oil">(如：1/4)</view>
+        </view>
+      <view class="oil-meter">
+        <view class="title">
+            <l-button l-class="{{verifyMap[21]?'pushSuccess ':'car-base-btn'}}" width="50" height="50" shape="circle" plain="{{true}}" bind:lintap="openCamera" data-type="21"><text
+        class="{{verifyMap[21]?'push-text':'btn-text'}}">油表图</text></l-button>
+        </view>
+            <l-input label="油表量" type="text"  colon="true"  placeholder="油表量支持分数或小数" bind:linblur="isMeterData"/>
+      </view>
+  </view>
   <view class="submit">
-    <l-button l-class="sub" size="long" type="warning" bind:lintap="onSubmit">取证完成</l-button>
+    <block wx:if="{{type}}">
+      <view class="off-runtime">
+        <l-button class="sub-off" l-class="sub-off" size="long" type="error" bind:lintap="detrimentalToCollect">有损收车</l-button>
+        <l-button class="sub-off" l-class="sub-off" size="long" type="warning" bind:lintap="nondestructiveCollect">无损收车</l-button>
+      </view>
+    </block>
+    <block wx:else>
+    <l-button l-class="sub" size="long" type="warning" bind:lintap="nondestructiveCollect">取证完成</l-button>
+    </block>
   </view>
 </view>
+<w-detriment show="{{isDetriment}}" id="{{id}}" ></w-detriment>
+
 <canvas canvas-id="canvas" style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-1000px;top:-1000px;"></canvas>

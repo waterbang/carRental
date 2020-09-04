@@ -6,7 +6,7 @@
     </view>
     <view class="contact">
       <view class="label"><text style="color:#949494;">用车人:</text>{{name}}</view>
-    <view class="number" ><text style="color:#949494;">联系电话：</text><l-tag shape="square" size="medium">{{tel}}</l-tag></view>
+    <view class="number" bindtap="mackingACall" ><text style="color:#949494;">联系电话：</text><l-tag shape="square" size="medium">{{tel}}</l-tag></view>
     </view>
   </view>
   <view class="countdown">

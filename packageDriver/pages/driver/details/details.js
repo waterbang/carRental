@@ -35,6 +35,7 @@ Page({
       rentaladdress: data.rentaladdress,
       o_id: data.o_id,
       license: data.license,
+      tel: data.tel
     })
     // wx.removeStorageSync('orderDetails')
   },
@@ -67,6 +68,12 @@ Page({
             console.log(err)
           }
         })
+  },
+  //打电话
+  mackingACall() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.tel //仅为示例，并非真实的电话号码
+    })
   },
   /**
    * 生命周期函数--监听页面加载

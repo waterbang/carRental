@@ -36,6 +36,7 @@ Page({
   async getItemData(status) {
     this.setActiveKey(status);
     let List = await getCarList(status);
+    // console.log(List)
    if (List.code == 200) {
     this.setData({
       item: List.data

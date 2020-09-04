@@ -1,0 +1,27 @@
+/* packageDriver/components/detriment/index.wxss */
+.contant {
+  position: relative;
+  background-color: white;
+  height: 60vh;
+  width: 50vh;
+  padding: 20rpx;
+}
+.contant .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contant .body .maintain .radio-item {
+  margin:0 20rpx;
+}
+.contant .body .maintain .title {
+  margin-bottom: 20rpx;
+}
+
+.contant .submit {
+  margin: 20rpx auto;
+  width: 94%;
+ position: absolute;
+ bottom: 0;
+}

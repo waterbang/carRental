@@ -49,10 +49,10 @@
 								</l-button>
 							</block>
 						</block>
-						<block wx:elif="{{activeKey==3}}">
 							<!-- 已完成显示删除-->
+						<!-- <block wx:elif="{{activeKey==3}}">
 							<l-button type="error" size="mini" bind:lintap="_deleteOrder" data-id="{{item.id}}">删除订单</l-button>
-						</block>
+						</block> -->
 					</view>
 				</view>
 			</l-card>

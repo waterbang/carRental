@@ -4,6 +4,7 @@ const api = { // 司机端API
   "UPDATE_ORDER_STATUS":"driver/update_status",
   "ADD_CAR_IMAGE":"driver/add_img",
   "CAR_DAMAGE":"driver/damage",
+  "CAR_METER":"driver/inputmeter",
 
  //---------------------------------------------用户相关
   //用户登录

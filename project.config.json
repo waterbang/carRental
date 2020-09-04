@@ -150,9 +150,9 @@
         },
         {
           "id": 11,
-          "name": "司机端：车辆图片上传页面",
+          "name": "司机端：车辆图片上传页面:收车",
           "pathName": "packageDriver/pages/picture/picture",
-          "query": "id=4",
+          "query": "id=6&type=true",
           "scene": null
         },
         {
@@ -160,6 +160,13 @@
           "name": "司机端：订单详情页面",
           "pathName": "packageDriver/pages/driver/details/details",
           "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "司机端：车辆图片上传页面:发车",
+          "pathName": "packageDriver/pages/picture/picture",
+          "query": "id=6",
           "scene": null
         }
       ]

@@ -5,7 +5,8 @@ import {
 } from '../../utils/common'
 import {
   updateCarStatus,
-  pushImg
+  pushImg,
+  pushCarMeter
 } from '../../models/order'
 import {
   chooseImage
@@ -18,19 +19,33 @@ Page({
   data: {
     id: '', // 订单id
     verifyMap: [], //  验证是否上传了16张图片
+    oil: 0, //油表
+    mileage: 0, //里程
+    type: false, //false 发车，true 收车
+    isDetriment:false,// 有损显示隐藏控制
   },
   init(option) {
     if (!option.id) {
       showNoIconToast('订单过时，请联系后台');
       wx.navigateBack();
     }
-    this.data.id = option.id;
+    this.setData({
+      id: option.id
+    })
+    if (option.type) {
+      this.setData({
+        type: true
+      })
+    }
   },
+  // 上传图片
   async openCamera(e) {
     let type = Number.parseInt(e.target.dataset.type);
-    let {base64Img} = await chooseImage(this);
+    let {
+      base64Img
+    } = await chooseImage(this);
     wx.showLoading({
-      title:'正在上传'
+      title: '正在上传'
     })
     let result = await this.addOneImg(type, base64Img);
     let map = `verifyMap[${type}]`
@@ -49,28 +64,64 @@ Page({
       return false
     }
   },
-  // 提交
-  onSubmit() {
-    if(this.verify()) return;
-    if (this._updateCarStatus()) return;
-    setTimeout((
-      wx.reLaunch({
-        url: '../../pages/driver',
-      })
-    ),1000)
+  //获取油表里程表 油表20 里程表21
+  async getFuelAndMileage() {
+    let meter = this.data.oil, // 油
+      mileage = this.data.mileage; //里程
+    if (!meter || !mileage) {
+      showNoIconToast(`${!meter?'油量表':''} ${!mileage?'里程数':''} 不能为空`)
+      return true;
+    }
+    let result = await pushCarMeter(this.data.id, meter, mileage);
+    if (result.code == 200) {
+      showNoIconToast('里程油表提交成功！')
+      return false
+    }
+    // showNoIconToast(result.data + '');
+    return false;
+  },
+  //校验油表
+  isMeterData(e) {
+    let meter = e?.detail.value || this.data.oil;
+    // console.log(/^(\d+)\/(\d+)$/.test(meter), /^[0]\.{1}(\d+)$/.test(meter))
+    if (/^(\d+)\/(\d+)$/.test(meter)) { //如果是分数
+      let molecule = meter.match(/(\d*)\//)[1];
+      let denominator = meter.match(/\/(\d*)/)[1];
+      if (molecule > denominator) {
+        showNoIconToast('分子不能大于分母！');
+        return true;
+      }
+      this.data.oil = Number.parseInt(molecule) / Number.parseInt(denominator);
+      return false;
+    } else if (/^[0]\.{1}(\d+)$/.test(meter)) { // 如果是小数
+      this.data.oil = Number.parseFloat(meter);
+      return false;
+    }
+    showNoIconToast('油量表必须为小数或整数, 且小数整数部分不能大于0')
+    return true;
+
+  },
+  //获取里程数
+  isMileageData(e) {
+    let mileage = e.detail.value;
+    this.data.mileage = mileage;
   },
   //验证
   verify() {
     let _verify = this.data.verifyMap
-   let count =  _verify.filter((item) => {
-        return item === true
+    let count = _verify.filter((item) => {
+      return item === true
     })
-    if (count.length < 16) return true; //如果没有到16张
+    if (count.length < 18) {
+      showNoIconToast(`图片未全部上传！剩余上传图片${18 - count.length} 张`);
+      return true
+    }; //如果没有到16张
     return false;
   },
   // 更新订单状态
   async _updateCarStatus() {
-    let result =  await updateCarStatus(this.data.id, 2); //2为进行中到状态
+    let result = await updateCarStatus(this.data.id, 2); //2为进行中到状态
+    console.log(result)
     if (result.code == 200) {
       showAccessToast('订单完成！')
       return false
@@ -78,6 +129,31 @@ Page({
       showNoIconToast(result.data)
       return true
     }
+  },
+  //开启有损
+  openDetrimental() {
+    this.setData({
+      isDetriment: true
+    })
+  },
+  //有损收车
+  detrimentalToCollect() {
+    if (this.verify()) return; // 验证图片
+    if (this.isMeterData()) return; // 验证油表
+    if (this.getFuelAndMileage()) return; // 上传里程油表
+    this.openDetrimental();
+  },
+  //无损收车
+  nondestructiveCollect() {
+    if (this.verify()) return; // 验证图片
+    if (this.isMeterData()) return; // 验证油表
+    if (this.getFuelAndMileage()) return; // 上传里程油表
+    if (this._updateCarStatus()) return;
+    setTimeout((
+      wx.reLaunch({
+        url: '../../pages/driver/driver',
+      })
+    ), 1000)
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,0 +1,23 @@
+<!--packageDriver/components/detriment/index.wxml-->
+<l-popup show="{{show}}" animation="hide" bind:lintap="cloneComponents">
+  <view class="contant">
+    <view class="header" bindtap="cloneComponents">
+      <view></view>
+      <view class="clear">X</view>
+    </view>
+    <view class="body">
+      <view class="maintain">
+        <view class="title">请选择是否进场维修：</view>
+        <l-radio-group current="1" none-checked="{{false}}" select-color="#ff992a" placement="row" bind:linchange="clickMaintain">
+          <l-radio l-class="radio-item" key="1">需要进场维修</l-radio>
+          <l-radio l-class="radio-item" key="2">不需要进场维修</l-radio>
+        </l-radio-group>
+        <view class="title">车损详细描述：</view>
+        <l-textarea placeholder="说说该车辆具体损坏信息..." bind:lininput="inputDescription" auto-height="true" />
+      </view>
+    </view>
+    <view class="submit">
+      <l-button class="sub-off" l-class="sub-off" size="long" type="error" bind:lintap="detrimentalToCollect">有损收车</l-button>
+    </view>
+  </view>
+</l-popup>

@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-popup":"../../miniprogram_npm/lin-ui/popup/index",
+    "l-radio":"../../miniprogram_npm/lin-ui/radio/index",
+    "l-radio-group":"../../miniprogram_npm/lin-ui/radio-group/index",
+    "l-textarea":"../../miniprogram_npm/lin-ui/textarea/index",
+    "l-button":"../../miniprogram_npm/lin-ui/button/index"
+  }
+}
