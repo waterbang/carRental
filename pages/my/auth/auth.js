@@ -21,6 +21,7 @@ Page({
   },
   //获取身份证正面
   async getIDCardFront(e) {
+    wx.vibrateShort()
    let {images, list} =  await chooseImage(this);
    this.setData({
      id_car_front:images
@@ -57,6 +58,12 @@ Page({
       return true;
     }
     return false;
+  },
+  // 上传完成
+  orderACar() {
+    wx.vibrateShort()
+    if (this.verify()) return;
+    wx.navigateBack()
   },
   /**
    * 生命周期函数--监听页面加载

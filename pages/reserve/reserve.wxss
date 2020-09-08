@@ -19,7 +19,7 @@
   border-radius: 10rpx;
   height: 150rpx;
   background-color: white;
-  box-shadow:1px 0px 4px #949494;
+  box-shadow:1px 6px -4px #949494;
   margin-bottom: 20rpx;
   display: flex;
   flex-direction: column;
@@ -85,7 +85,7 @@
   align-items: center;
   width: 100%;
   border-radius:10rpx;
-  box-shadow:1px 0px 8px #949494;
+  box-shadow:1px 4px -4px #949494;
 }
 
 .reserve .car .img {

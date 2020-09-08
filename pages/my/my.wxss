@@ -41,17 +41,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 30%;
+  height: 100%;
 }
 .coupon .title, .integral .title,.kite .title,.wallet .title {
-  font-size: 9px;
+  font-size: 8px;
+  line-height: 2;
+  text-align: center;
 }
 .coupon .title .title-num, .integral .title .title-num,.kite .title .title-num,.wallet .title .title-num {
   font-weight: 500;
   font-size: 10px;
-  margin: 13rpx;
+  margin: 0 13rpx;
 }
 .coupon .disc, .integral .disc,.kite .disc,.wallet .disc {
-  font-size: 10px;
+  font-size: 9px;
+  line-height: 1.5;
+  letter-spacing:3rpx;
 }
 
 .cord .wallet .img {
