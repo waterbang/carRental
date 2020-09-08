@@ -4,6 +4,8 @@ import {
   getUsedCar
 } from '../../models/index';
 import { showNoIconToast } from '../../utils/common'
+import { getOpenid } from '../../models/user'
+ 
 Page({
 
   /**
@@ -72,11 +74,26 @@ Page({
       loading: status
     })
   },
+  checkSession() { // 检查是否过期
+    wx.checkSession({
+      success () {
+        //session_key 未过期，并且在本生命周期一直有效
+      },
+      fail:async () => {
+        // session_key 已经失效，需要重新执行登录流程
+      let res = await getOpenid()//重新登录
+      if (res.code === 200) {
+        showNoIconToast('重新登录成功！');
+      }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getRecommendList();
+    this.checkSession();
   },
 
   /**

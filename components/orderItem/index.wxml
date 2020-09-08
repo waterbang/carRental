@@ -7,7 +7,7 @@
 	<block wx:else>
 		<view wx:for="{{list}}" wx:key="index">
 			<l-card type="primary" image="{{'https://www.jindundangan.com/'+item.img}}" image-mode="aspectFill"
-				title="{{item.series_name}}" l-class="list-item" l-title-class="title-header">
+				title="{{item.series_name}}" l-class="list-item" l-title-class="title-header" l-img-class="item-img">
 				<!-- 此处为content -->
 				<view class="content" bindtap="goReserve" data-index="{{index}}">
 					<view class="title">租期共：<text style="color:#ec8e30">{{item.day}}</text>天 <text>{{item.money}}</text>元</view>
@@ -31,7 +31,7 @@
 							<!-- 已下单-->
 							<l-button type="warning" size="mini" bind:lintap="_cancelOrder" data-id="{{item.id}}">取消租车</l-button>
 						</block>
-						<block wx:elif="{{activeKey==2 || item.car_status==7}}">
+						<block wx:elif="{{activeKey==3 && item.car_status==7}}">
 							<!-- 已完成显示删除-->
 							<l-button type="error" size="mini" bind:lintap="_deleteOrder" data-id="{{item.id}}">删除订单</l-button>
 						</block>

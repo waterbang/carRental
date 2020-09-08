@@ -2,7 +2,7 @@
 <view class="condition {{isNotice?'isNotice':'NoIsNotice'}}">
 <view class="title2">租车驾龄要求：</view>
 年龄在18-70周岁
-驾龄要求必须半年以上
+驾龄要求必须半年以上。
 
 <view class="title2">取车证件</view>
 取车人本人有效的二代身份证原件（首次用车需携带身份
@@ -27,5 +27,9 @@
 
 <view class="title2">用车区域</view>
 取车地点暂定于全厦门。
+
+<view class="title2">告知用户</view>
+小旗将提供必要的安全设施，如：三脚架，灭火器🧯等
+
 </view>
 

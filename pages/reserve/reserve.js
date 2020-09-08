@@ -220,7 +220,8 @@ Page({
   // 获取地址
   getCallbackShowMap(){
     const location = chooseLocation.getLocation();
-    if(!location) return;
+    let address = this.verifyAddress(location);
+    if(!address) return;
     if (this.data.getAndRepay == '取车地址') {
       this.setData({
         getCarAddress:location
@@ -230,6 +231,22 @@ Page({
         repayCarAddress:location
       })
     }
+  },
+  // 验证地址
+  verifyAddress(address) {
+    if (!address) return false;
+    if (address.city !== '厦门市') {
+      showNoIconToast('当前服务仅支持厦门市！');
+      return false;
+    }
+    let regexp = /.*福建省厦门市.*/g;
+    // console.log(address)
+    let rep = address.address.match(regexp);
+    if (!rep) {
+      address.address = `${address.province}${address.city}${address.district}${address.name}`
+    }
+
+    return address;
   },
   // 获取地址权限
   getCarAddress(e) {

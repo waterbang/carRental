@@ -10,6 +10,8 @@
   border-radius:10rpx;
   box-shadow:1px 0px 8px #949494;
   overflow-y: scroll;
+  padding: 20rpx;
+  line-height: 2;
 }
 
 .isNotice{

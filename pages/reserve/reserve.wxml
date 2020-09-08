@@ -34,7 +34,7 @@
 				<view class="label">{{carDetail.compartment}}厢|{{carDetail.power_type}}｜乘坐{{carDetail.seat}}人</view>
 			</view>
 		</l-tabpanel>
-		<l-tabpanel tab="租车条件" key="two" slot="two">
+		<l-tabpanel tab="租车条件 ⚠️" key="two" slot="two">
 			<view class="tab-content">
 				<w-condition></w-condition>
 			</view>

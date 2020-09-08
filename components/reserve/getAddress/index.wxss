@@ -25,6 +25,7 @@
 }
 
  .getCar .content{
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

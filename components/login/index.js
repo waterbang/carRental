@@ -45,7 +45,11 @@ Component({
         this.clonePhoneNumber();
         Storage.setStorage('isNumber', result.data.tel);
       } else {
-        showNoIconToast('授权失败，请清空缓存重新登录！')
+        showNoIconToast('登录过期，即将清空缓存重新登录！')
+        wx.clearStorage();
+        wx.reLaunch({
+          url: '../../pages/index/index',
+        })
       }
     },
     //关闭手机

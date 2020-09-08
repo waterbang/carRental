@@ -42,10 +42,10 @@ const getOpenid = () => {
             }
           }).then(async (res) => {
             if (res.code === 200) {
-              res = res.data
-              Storage.setStorage('session_key',res.session_key)
-              Storage.setLoginToken(res.openid)
-              await getUserInfoToServe(res.openid);
+              let data = res.data
+              Storage.setStorage('session_key',data.session_key)
+              Storage.setLoginToken(data.openid)
+              await getUserInfoToServe(data.openid);
               resolve(res);
             } else {
               reject(res)

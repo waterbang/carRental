@@ -73,6 +73,7 @@ Page({
       username: data.username
     }
    let result = await orderACar(body);
+   result = result.data;
    if(result.code == 200){
     showAccessToast('预定成功！')
     setTimeout(()=> {
@@ -81,7 +82,7 @@ Page({
       })
     },1000)
    } else {
-     showNoIconToast(result.data.msg);
+     showNoIconToast(result.data);
    }
   },
   // 获取用户手机信息

@@ -12,6 +12,9 @@
   background-color: white;
   width: 97%;
 }
+.item-img {
+  height: 200rpx;
+}
 
 .item .title-header{
   font-weight: 600;

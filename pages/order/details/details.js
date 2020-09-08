@@ -1,3 +1,6 @@
+import {
+  addressAnalysis
+} from '../../../servers/map'
 // pages/order/details/details.js
 Page({
 
@@ -12,17 +15,17 @@ Page({
     _rentaltime: '', // 转换的还车时间
     returnaddress: '', //提车地址
     rentaladdress: '', //还车地址
-    money:0, //钱
-    order_on:'', //订单号
-    series_name:'', // 车名
-    img:'' , //车图片
-    seat:4, // 几座
-    power_type:'', //自动还是手动
-    car_status:1, // 订单状态 1 下单 2 已派送车 3 待还车 4 已完成
+    money: 0, //钱
+    order_on: '', //订单号
+    series_name: '', // 车名
+    img: '', //车图片
+    seat: 4, // 几座
+    power_type: '', //自动还是手动
+    car_status: 1, // 订单状态 1 下单 2 已派送车 3 待还车 4 已完成
   },
   init() {
-    let data  = wx.getStorageSync('orderDetails');
-    if(!data) {
+    let data = wx.getStorageSync('orderDetails');
+    if (!data) {
       wx.switchTab({
         url: '/pages/index/index',
       })
@@ -34,26 +37,57 @@ Page({
       rentaltime: data.rentaltime,
       returnaddress: data.returnaddress,
       rentaladdress: data.rentaladdress,
-      money:Number.parseInt(data.money),
-      order_on:data.order_on,
-      series_name:data.series_name,
+      money: Number.parseInt(data.money),
+      order_on: data.order_on,
+      series_name: data.series_name,
       img: data.img,
-      seat:data.seat,
-      power_type:data.power_type,
-      car_status:data.car_status
+      seat: data.seat,
+      power_type: data.power_type,
+      car_status: data.car_status
     })
-   // wx.removeStorageSync('orderDetails')
+    // wx.removeStorageSync('orderDetails')
   },
   // 转换时间
-  setCountdown(status ,returntime, rentaltime) { //2020-11-09 00:00
+  setCountdown(status, returntime, rentaltime) { //2020-11-09 00:00
     const time = status === 1 ? returntime : rentaltime;
-    // const year = time.match(/(\S*)年/)[1];
-    // const macth = time.match(/年(\S*)月/)[1];
-    // const day = time.match(/月(\S*)日/)[1];
-    // const minute = time.match(/( \S*)/)[1];
     let _time = (status === 1) ? '_returntime' : '_rentaltime';
+    let year = null, macth = null, day = null, minute = null;
+    try {
+      year = time.match(/(\S*)年/)[1];
+      macth = time.match(/年(\S*)月/)[1];
+      day = time.match(/月(\S*)日/)[1];
+      minute = time.match(/( \S*)/)[1];
+    } catch (err) {
+      this.setData({
+        [_time]: time
+      })
+      return;
+    }
     this.setData({
-      [_time]: time
+      [_time]: `${year}-${macth}-${day} ${minute}`
+    })
+  },
+  // 送车导航
+  async goReturnaddressMap() {
+    let local = await addressAnalysis(this.data.returnaddress);
+    this.openMap(local.lat, local.lng);
+  },
+  // 还车导航
+  async goRentaladdressMap() {
+    let local = await addressAnalysis(this.data.rentaladdress);
+    this.openMap(local.lat, local.lng);
+  },
+  openMap(latitude, longitude) {
+    wx.openLocation({
+      latitude,
+      longitude,
+      scale: 18,
+      success: (res) => {
+        console.log(res);
+      },
+      fail: (err) => {
+        console.log(err)
+      }
     })
   },
   /**

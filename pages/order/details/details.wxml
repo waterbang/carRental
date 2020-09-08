@@ -4,7 +4,7 @@
     <image class="img" src="{{'https://www.jindundangan.com'+img}}" mode="aspectFill"></image>
     <view class="content">
       <view class="title">{{series_name}}
-        <l-price unit="￥" value="{{money}}" autofix value-color="#ff992a" unit-color="#ff992a" value-size="28">
+        <l-price l-class="price" unit="￥" value="{{money}}" autofix value-color="#ff992a" unit-color="#ff992a" value-size="28">
         </l-price>
         <l-price unit="￥" value="{{money+50}}" deleted="{{true}}" value-color="#ff992a" unit-color="#ff992a"
           value-size="23" unit-size="20"> </l-price>
@@ -27,7 +27,7 @@
   <l-step title="后台派司机发车" ></l-step>
   <l-step title="司机接受发车" ></l-step>
   <l-step title="已发车" ></l-step>
-  <l-step title="用户收车" describe="(用户用车中)"></l-step>
+  <l-step title="用户收车" describe="(用车中)"></l-step>
   <l-step title="平台确认收车"></l-step>
   <l-step title="车辆入库"></l-step>
 </l-steps>
@@ -43,13 +43,15 @@
     </view>
   </view>
   <view class="address">
-    <view class="title">
-      <text class="timeT">取车地址：</text>
+    <view class="title" bindtap="goReturnaddressMap" >
+      <text class="timeT">送车地址：</text>
       <text class="time">{{returnaddress}}</text>
+      <text class="go">></text>
     </view>
-    <view class="title">
-      <text class="timeT">取车地址：</text>
+    <view class="title" bindtap="goRentaladdressMap">
+      <text class="timeT">收车地址：</text>
       <text class="time">{{rentaladdress}}</text>
+      <text class="go">></text>
     </view>
   </view>
   <view class="papers">
