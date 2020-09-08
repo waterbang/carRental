@@ -1,4 +1,5 @@
 <!--components/orderItem/index.wxml-->
+<wxs module="address" src="../../utils/address.wxs"></wxs>
 <view class="item">
 	<block wx:if="{{list.length == 0}}">
 		<l-status-show l-class="status-show" show="{{list.length == 0}}" type="order" full-screen="{{false}}">
@@ -17,14 +18,14 @@
 						<block wx:if="{{item.type==1}}">
 							<view class="car">
 								<view class="address">
-									{{item.returnaddress}}</view>
+									{{address.filterAddress(item.returnaddress)}}</view>
 								<view class="time">{{item.rentaltime}}</view>
 							</view>
 						</block>
 						<!-- 收车 -->
 						<block wx:if="{{item.type==2}}">
 							<view class="car">
-								<view class="address">{{item.rentaladdress}}</view>
+								<view class="address">{{address.filterAddress(item.rentaladdress)}}</view>
 								<view class="time">{{item.rentaltime}}</view>
 							</view>
 						</block>

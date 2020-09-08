@@ -43,10 +43,15 @@ Page({
       carDetail: data.carDetail,
       returntime: data.returntime,
       rentaltime: data.rentaltime,
-      returnaddress: data.returnaddress,
-      rentaladdress: data.rentaladdress,
+      returnaddress: this.filterAddress(data.returnaddress),
+      rentaladdress: this.filterAddress(data.rentaladdress),
       // cancelRule:data.cancelRule
     })
+  },
+  // 过滤地址
+  filterAddress(address) {
+    let add =  address.split('#');
+    return add[0];
   },
   //是否选中协议
   selectProtocal(e) {
@@ -73,7 +78,7 @@ Page({
       username: data.username
     }
    let result = await orderACar(body);
-   result = result.data;
+   result = typeof result.data == 'object' ? result.data: result;
    if(result.code == 200){
     showAccessToast('预定成功！')
     setTimeout(()=> {

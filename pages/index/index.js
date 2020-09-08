@@ -5,7 +5,7 @@ import {
 } from '../../models/index';
 import { showNoIconToast } from '../../utils/common'
 import { getOpenid } from '../../models/user'
- 
+ import * as Storage  from '../../utils/storageSyncTool'
 Page({
 
   /**
@@ -87,6 +87,9 @@ Page({
       }
       }
     })
+    if (!Storage.getStorage('session_key')) {
+      getOpenid();
+    }
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,4 +1,5 @@
 <!--pages/order/details/details.wxmlff992a-->
+<wxs module="address" src="../../../utils/address.wxs"></wxs>
 <view class="affirm">
   <view class="header">
     <image class="img" src="{{'https://www.jindundangan.com'+img}}" mode="aspectFill"></image>
@@ -45,12 +46,12 @@
   <view class="address">
     <view class="title" bindtap="goReturnaddressMap" >
       <text class="timeT">送车地址：</text>
-      <text class="time">{{returnaddress}}</text>
+      <text class="time">{{address.filterAddress(returnaddress)}}</text>
       <text class="go">></text>
     </view>
     <view class="title" bindtap="goRentaladdressMap">
       <text class="timeT">收车地址：</text>
-      <text class="time">{{rentaladdress}}</text>
+      <text class="time">{{address.filterAddress(rentaladdress)}}</text>
       <text class="go">></text>
     </view>
   </view>

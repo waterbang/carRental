@@ -13,10 +13,15 @@ Page({
   },
   //登录
   async onLogin() {
+    wx.vibrateShort()
+    wx.showLoading({
+      title: '正在登录',
+    })
     let username = this.data.username,
         password = this.data.password;
         if (this.varifyData(username,password)) return;
     let result = await userLogin(username, password);
+    wx.hideLoading()
     if (Number.parseInt(result.code) !== 200) {
       showNoIconToast('账号或密码错误！');
       return;

@@ -1,0 +1,9 @@
+var Address = {
+  filterAddress: function(address){ // 提取前面的地址
+    return  address.split('#')[0];
+  }
+}
+
+module.exports= {
+  filterAddress:Address.filterAddress
+}

@@ -1,9 +1,5 @@
-import {
-  addressAnalysis
-} from '../../../servers/map'
 // pages/order/details/details.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -69,21 +65,25 @@ Page({
   },
   // 送车导航
   async goReturnaddressMap() {
-    let local = await addressAnalysis(this.data.returnaddress);
-    this.openMap(local.lat, local.lng);
+    let lon = this.data.returnaddress.split('#')[2]; // 经度
+    let lat = this.data.returnaddress.split('#')[1]; //纬度
+    this.openMap(lat, lon);
   },
   // 还车导航
   async goRentaladdressMap() {
-    let local = await addressAnalysis(this.data.rentaladdress);
-    this.openMap(local.lat, local.lng);
+    let lon = this.data.rentaladdress.split('#')[2]; // 经度
+    let lat = this.data.rentaladdress.split('#')[1]; //纬度
+    this.openMap(lat, lon);
   },
   openMap(latitude, longitude) {
+    latitude = Number.parseFloat(latitude)
+    longitude = Number.parseFloat(longitude)
     wx.openLocation({
       latitude,
       longitude,
       scale: 18,
       success: (res) => {
-        console.log(res);
+        // console.log(res);
       },
       fail: (err) => {
         console.log(err)

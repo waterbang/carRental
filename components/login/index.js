@@ -47,9 +47,11 @@ Component({
       } else {
         showNoIconToast('登录过期，即将清空缓存重新登录！')
         wx.clearStorage();
+       setTimeout(() => {
         wx.reLaunch({
           url: '../../pages/index/index',
         })
+       },1000)
       }
     },
     //关闭手机

@@ -80,9 +80,9 @@
         },
         {
           "id": 1,
-          "name": "车辆详情，id=2",
+          "name": "车辆详情，id=1",
           "pathName": "pages/reserve/reserve",
-          "query": "id=2",
+          "query": "id=1",
           "scene": null
         },
         {

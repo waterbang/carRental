@@ -169,6 +169,7 @@ Page({
      rentaladdress : this.setAddress(this.data.repayCarAddress),
      username  : wx.getStorageSync(CACHE.USER_IS_LOGIN).nickName,
      day : this.data.day + this.setMoneyTime(this.data.hour),
+     
     }
     wx.setStorageSync(CACHE.CAR_AFFIRM, data)
     wx.navigateTo({
@@ -215,7 +216,8 @@ Page({
   },
   //提取地址
   setAddress(address){
-    return `${address.name}: ${address.address}`
+    // console.log(address)latitude: 24.445715, longitude: 118.082695
+    return `${address.name}: ${address.address}#${address.latitude}#${address.longitude}`
   },
   // 获取地址
   getCallbackShowMap(){
@@ -224,11 +226,11 @@ Page({
     if(!address) return;
     if (this.data.getAndRepay == '取车地址') {
       this.setData({
-        getCarAddress:location
+        getCarAddress:address
       })
     } else {
       this.setData({
-        repayCarAddress:location
+        repayCarAddress:address
       })
     }
   },
@@ -265,6 +267,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //console.log("options.id",options.id)
     this.getReserve(options.id); // 获取汽车详情
     this.getDate(); // 获取时间
   },

@@ -40,6 +40,7 @@ Page({
   },
   // 上传图片
   async openCamera(e) {
+    wx.vibrateShort()
     let type = Number.parseInt(e.target.dataset.type);
     let {
       base64Img
@@ -49,10 +50,10 @@ Page({
     })
     let result = await this.addOneImg(type, base64Img);
     let map = `verifyMap[${type}]`
-    wx.hideLoading()
     this.setData({
       [map]: result
     })
+    wx.hideLoading()
   },
   // 添加图片
   async addOneImg(type, imgData) {
@@ -75,7 +76,7 @@ Page({
     let result = await pushCarMeter(this.data.id, meter, mileage);
     if (result.code == 200) {
       showNoIconToast('里程油表提交成功！')
-      return false
+      return false;
     }
     // showNoIconToast(result.data + '');
     return false;
@@ -127,6 +128,11 @@ Page({
       return false
     } else {
       showNoIconToast(result.data)
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '../driver/driver',
+        })
+      },1500)
       return true
     }
   },
@@ -137,17 +143,19 @@ Page({
     })
   },
   //有损收车
-  detrimentalToCollect() {
+  async detrimentalToCollect() {
+    wx.vibrateShort()
     if (this.verify()) return; // 验证图片
     if (this.isMeterData()) return; // 验证油表
-    if (this.getFuelAndMileage()) return; // 上传里程油表
+    if (await this.getFuelAndMileage()) return; // 上传里程油表
     this.openDetrimental();
   },
   //无损收车
-  nondestructiveCollect() {
-    if (this.verify()) return; // 验证图片
+  async nondestructiveCollect() {
+    wx.vibrateShort()
+    //if (this.verify()) return; // 验证图片
     if (this.isMeterData()) return; // 验证油表
-    if (this.getFuelAndMileage()) return; // 上传里程油表
+    if (await this.getFuelAndMileage()) return; // 上传里程油表
     if (this._updateCarStatus()) return;
     setTimeout((
       wx.reLaunch({

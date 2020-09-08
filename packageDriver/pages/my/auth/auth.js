@@ -84,8 +84,13 @@ Page({
   },
   // 添加图片
   async addOneImg(type, imgData) {
+    wx.vibrateShort()
+    wx.showLoading({
+      title: '正在上传'
+    })
     let result = await pushImg(this.data.id, type, imgData)
     // console.log(result);
+    wx.hideLoading();
     if (result.code == 200) {
       return true
     } else {
@@ -95,6 +100,7 @@ Page({
   },
   // 上传完成
   orderACar() {
+    wx.vibrateShort()
     if (this.verify()) return;
     wx.navigateTo({
       url: `../../picture/picture?id=${this.data.id}`,
