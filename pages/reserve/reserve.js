@@ -216,7 +216,7 @@ Page({
   },
   //提取地址
   setAddress(address){
-    // console.log(address)latitude: 24.445715, longitude: 118.082695
+    // latitude: 24.445715, longitude: 118.082695
     return `${address.name}: ${address.address}#${address.latitude}#${address.longitude}`
   },
   // 获取地址

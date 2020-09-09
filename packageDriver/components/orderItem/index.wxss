@@ -11,6 +11,17 @@
   margin: 10rpx auto;
   background-color: white;
   width: 97%;
+  padding-top: 10rpx;
+}
+
+.list-item .header-1 {
+  margin: 10rpx 0;
+  color: #ff992a;
+}
+
+.list-item .header-2 {
+  margin: 10rpx 0;
+  color: #68d388;
 }
 
 .item .title-header{

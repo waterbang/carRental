@@ -49,6 +49,7 @@ Component({
    */
   methods: {
     switchTab(e) {
+      wx.vibrateShort()
       const idx = e.currentTarget.dataset.index;
       const path = e.currentTarget.dataset.path
       if (idx === this.data.selected) return;

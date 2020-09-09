@@ -81,6 +81,6 @@
     </block>
   </view>
 </view>
-<w-detriment show="{{isDetriment}}" id="{{id}}" ></w-detriment>
+<w-detriment show="{{isDetriment}}" _id="{{_id}}" ></w-detriment>
 
 <canvas canvas-id="canvas" style="width:{{cWidth}}px;height:{{cHeight}}px;position: absolute;left:-1000px;top:-1000px;"></canvas>

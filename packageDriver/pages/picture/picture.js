@@ -17,7 +17,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: '', // 订单id
+    _id: '', // 订单id
     verifyMap: [], //  验证是否上传了16张图片
     oil: 0, //油表
     mileage: 0, //里程
@@ -30,7 +30,7 @@ Page({
       wx.navigateBack();
     }
     this.setData({
-      id: option.id
+      _id: option.id
     })
     if (option.type) {
       this.setData({
@@ -145,23 +145,23 @@ Page({
   //有损收车
   async detrimentalToCollect() {
     wx.vibrateShort()
-    if (this.verify()) return; // 验证图片
-    if (this.isMeterData()) return; // 验证油表
-    if (await this.getFuelAndMileage()) return; // 上传里程油表
+    //if (this.verify()) return; // 验证图片
+    //if (this.isMeterData()) return; // 验证油表
+   // if (await this.getFuelAndMileage()) return; // 上传里程油表
     this.openDetrimental();
   },
   //无损收车
   async nondestructiveCollect() {
     wx.vibrateShort()
     //if (this.verify()) return; // 验证图片
-    if (this.isMeterData()) return; // 验证油表
-    if (await this.getFuelAndMileage()) return; // 上传里程油表
+   // if (this.isMeterData()) return; // 验证油表
+    //if (await this.getFuelAndMileage()) return; // 上传里程油表
     if (this._updateCarStatus()) return;
     setTimeout((
       wx.reLaunch({
         url: '../../pages/driver/driver',
       })
-    ), 1000)
+    ), 500)
   },
   /**
    * 生命周期函数--监听页面加载

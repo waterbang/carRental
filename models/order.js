@@ -1,20 +1,20 @@
 import API from '../config/api';
 import {
-  wxRequest
+  post
 } from '../utils/request'
 
 // 获取订单接口
 
-const getOrderItemList = (status) => wxRequest(API.ORDER_LIST,{data:{status:status}}).then(res => {return res}).catch(err => {return err}); 
+const getOrderItemList = (status) => post(API.ORDER_LIST,{status}).then(res => {return res}).catch(err => {return err}); 
 
 // 取消订单
-const cancelOrder = (id) => wxRequest(API.ORDER_CANCEL,{data:{id:id}}).then(res => {return res}).catch(err => {return err});
+const cancelOrder = (id) => post(API.ORDER_CANCEL,{id}).then(res => {return res}).catch(err => {return err});
 
 // 修改订单状态
-const modifyOrderStatus = (id,status) => wxRequest(API.ORDER_STATUS,{data:{id:id,status:status}}).then(res => {return res}).catch(err => {return err});
+const modifyOrderStatus = (id,status) => post(API.ORDER_STATUS,{id,status}).then(res => {return res}).catch(err => {return err});
 
 //删除订单
-const deleteOrder = (id) => wxRequest(API.ORDER_DELETE,{data:{id:id}}).then(res=>{return res}).catch(err => {return err});
+const deleteOrder = (id) => post(API.ORDER_DELETE,{id}).then(res=>{return res}).catch(err => {return err});
 
 module.exports = {
   getOrderItemList,

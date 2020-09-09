@@ -32,8 +32,12 @@ const api = {
  //获取手机号接口地址
  "GET_IPHONE" : "GetweChat/getphonenumber",
  //后台获取用户信息
- "GET_USERINFO": "GetweChat/getuserinfo"
+ "GET_USERINFO": "GetweChat/getuserinfo",
 
+ //---------------------------------------------支付
+ //支付
+  "WXPAY_ORDER":"order/wxpay",
+  
 }
 
 

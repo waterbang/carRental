@@ -112,6 +112,12 @@ const responseErrorHandler = error => {
   return err
 }
 
+const get = (url,data) => {return wxRequest(url,{data:data,method:'get'}) }
+
+const post = (url,data) => {return wxRequest(url,{data:data}) }
+
 export {
-  wxRequest
+  wxRequest,
+  post,
+  get,
 }

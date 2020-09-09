@@ -45,13 +45,13 @@ Component({
     },
     // 
     async getCarAddress() {
+      wx.showLoading({
+        title: '正在获取地图',
+      })
       let address = await getAddress();
       this.triggerEvent('getCarAddress', this.data.title)
       this.goToMap(address.latitude, address.longitude)
-      if (address.errMsg !== "chooseLocation:ok") {
-        showNoIconToast("获取地址失败！");
-        return;
-      }
+      wx.hideLoading()
     }
   }
 })

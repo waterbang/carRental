@@ -7,7 +7,12 @@ Component({
    */
   properties: {
     show: Boolean,
-    id: Number
+    _id: {
+      type: Number,
+      observer:function(val){
+        this.data.my_id = val
+      }
+    }
   },
 
   /**
@@ -16,6 +21,7 @@ Component({
   data: {
     select:1, // 需不需要进场维修 1是需要 2是不需要
     desc:'', // 详细信息
+    my_id:null
   },
 
   /**
@@ -43,14 +49,14 @@ Component({
         showNoIconToast('详细描述不能为空！')
         return;
       }
-      let result = await putCarDamage(this.data.id,this.data.desc, this.data.select);
+      let result = await putCarDamage(this.data.my_id,this.data.desc, this.data.select);
       console.log(result);
       if (result.code == 200) {
         setTimeout(() =>{
           wx.reLaunch({
             url: '../../pages/driver/driver',
           })
-        }, 1000)
+        }, 500)
       }
     },
   }

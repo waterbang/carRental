@@ -10,6 +10,7 @@
 			<l-card type="primary" plaintext="{{true}}" title="{{item.series_name}}" l-class="list-item"
 				l-title-class="title-header">
 				<!-- 此处为content -->
+				<view class="{{item.type == 1? 'header-1':'header-2'}}">{{item.type == 1? '发车订单':'收车订单'}}</view>
 				<view class="content" bindtap="goReserve" data-index="{{index}}">
 					<view class="left">
 						<view class="title">姓名:{{item.name}}</view>
@@ -46,7 +47,7 @@
 								</l-button>
 							</block>
 							<block wx:else>
-								<l-button size="mini" bind:lintap="completeTheCollect" data-id="{{item.id}}">完成收车
+								<l-button size="mini" bind:lintap="completeTheCollect" data-id="{{item.o_id}}">完成收车
 								</l-button>
 							</block>
 						</block>
