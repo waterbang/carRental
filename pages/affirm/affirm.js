@@ -78,7 +78,6 @@ Page({
       username: data.username
     }
    let result = await orderACar(body);
-   result = typeof result.data == 'object' ? result.data: result;
    if(result.code == 200){
     showAccessToast('预定成功！')
     setTimeout(()=> {
