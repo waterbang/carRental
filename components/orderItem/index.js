@@ -10,6 +10,7 @@ import {
   showAccessToast
 } from '../../utils/common'
 import * as Storage from '../../utils/storageSyncTool'
+import { wxPayMeet } from '../../servers/wxPay'
 Component({
   /**
    * 组件的属性列表
@@ -34,18 +35,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    //取消订单
+    //支付订单
     async wxPayOrder(e) {
       wx.vibrateShort()
-      let id = e.target.dataset.id;
-      console.log(id)
-      let result = await cancelOrder(id);
-      if (result.code == 200) {
-        showAccessToast("取消成功！");
-        this.emitNewData();
-      } else {
-        showNoIconToast("取消失败：" + result.msg);
+      let item = e.target.dataset.item;
+      let orderDetail = {
+        o_id: item.id,
+        uid: item.uid
       }
+      await wxPayMeet(orderDetail);
+      // todo
     },
     //取消订单
     async _cancelOrder(e) {

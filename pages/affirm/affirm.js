@@ -67,6 +67,9 @@ Page({
   // 提交
   async submitOrder() {
     if (this.isHaveNumber()) return; //看看有没有手机号码
+    wx.showLoading({
+      title: '正在下单',
+    })
     let data = this.data.body;
     let body = {
       day: data.day,
@@ -78,6 +81,7 @@ Page({
       username: data.username
     }
    let result = await orderACar(body);
+   wx.hideLoading();
    if(result.code == 200){
    wxPayMeet(result.data);
    } else {

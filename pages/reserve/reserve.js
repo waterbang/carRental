@@ -49,10 +49,6 @@ Page({
   //关闭时间选择框
   onSetTime(e) {
     const flag = e.currentTarget.dataset.flag || 'left';
-    // if(flag === 'right' && this.data.getValue.length === 0) {
-    //   showNoIconToast("请先选择租车时间");
-    //   return;
-    // } 
     this.setData({
       isTime: !this.data.isTime,
       flag: flag

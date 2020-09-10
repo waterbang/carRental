@@ -24,7 +24,7 @@
   </view>
   <view class="steps">
   <l-steps color="#ff992a" active-index="{{car_status - 1}}">
-  <l-step title="已下单" ></l-step>
+  <l-step title="{{status == 1?'已下单':'已支付'}}" ></l-step>
   <l-step title="后台派司机发车" ></l-step>
   <l-step title="司机接受发车" ></l-step>
   <l-step title="已发车" ></l-step>

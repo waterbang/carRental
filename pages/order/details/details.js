@@ -18,6 +18,7 @@ Page({
     seat: 4, // 几座
     power_type: '', //自动还是手动
     car_status: 1, // 订单状态 1 下单 2 已派送车 3 待还车 4 已完成
+    status:1, // 是否支付 1 是未支付
   },
   init() {
     let data = wx.getStorageSync('orderDetails');
@@ -39,7 +40,8 @@ Page({
       img: data.img,
       seat: data.seat,
       power_type: data.power_type,
-      car_status: data.car_status
+      car_status: data.car_status,
+      status:data.status
     })
     // wx.removeStorageSync('orderDetails')
   },

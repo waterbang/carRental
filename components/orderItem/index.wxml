@@ -30,7 +30,7 @@
 					<view class="btn" catchtap="catchPop">
 						<block wx:if="{{item.status == 1}}">
 							<!-- 已下单-->
-							<l-button type="error" size="mini" bind:lintap="wxPayOrder" data-id="{{item}}">支付订单</l-button>
+							<l-button type="error" size="mini" bind:lintap="wxPayOrder" data-item="{{item}}">支付订单</l-button>
 						</block>
 						<block wx:if="{{activeKey==0}}">
 							<!-- 已下单-->
