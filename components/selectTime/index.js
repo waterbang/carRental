@@ -147,7 +147,7 @@ Component({
       this.triggerEvent('onCloseTime')
     },
     //初始化数据
-    firstDate: async function (offset = 0) {
+    firstDate: async function () {
       const date = new Date(new Date().getTime()+ 1000 * 60 * 3)
       const year = date.getFullYear()
       let month = date.getMonth() + 1
@@ -196,6 +196,7 @@ Component({
         mins
       })
       this.data.time =  putTime(this.data.value,this.data.mounthDays,this.data.hours,this.data.mins);
+      this.onPushTime();
     },
   }
 })

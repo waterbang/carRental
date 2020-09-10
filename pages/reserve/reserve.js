@@ -49,10 +49,10 @@ Page({
   //关闭时间选择框
   onSetTime(e) {
     const flag = e.currentTarget.dataset.flag || 'left';
-    if(flag === 'right' && this.data.getValue.length === 0) {
-      showNoIconToast("请先选择租车时间");
-      return;
-    } 
+    // if(flag === 'right' && this.data.getValue.length === 0) {
+    //   showNoIconToast("请先选择租车时间");
+    //   return;
+    // } 
     this.setData({
       isTime: !this.data.isTime,
       flag: flag
@@ -76,8 +76,8 @@ Page({
     this.setIsLoginStatus()
     this.orderACar();
   },
-  getDate() { // 初始化子组件时间
-    this.selectComponent('#selectTime').firstDate();
+  async getDate() { // 初始化子组件时间
+   await  this.selectComponent('#selectTime').firstDate();
   },
   setDate(e) { //初始化渲染时间
     const {
@@ -266,10 +266,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: async function (options) {
     //console.log("options.id",options.id)
     this.getReserve(options.id); // 获取汽车详情
-    this.getDate(); // 获取时间
+    await this.getDate(); // 获取时间
   },
 
   /**
