@@ -8,8 +8,7 @@ import {
 } from '../../models/reserve'
 import * as Storage from '../../utils/storageSyncTool';
 import {CACHE} from '../../config/map';
-import { payMentOfAnOrder } from '../../models/pay'
-import { wxPay } from '../../servers/wxPay'
+import { wxPayMeet } from '../../servers/wxPay'
 Page({
 
   /**
@@ -80,31 +79,10 @@ Page({
     }
    let result = await orderACar(body);
    if(result.code == 200){
-   this.wxPayMeet(result.data);
+   wxPayMeet(result.data);
    } else {
      showNoIconToast(result.data);
    }
-  },
-  // 获取后端支付
-  async wxPayMeet(data) {
-    const {order_on, o_id, uid} = data;
-    if (!order_on || !o_id || !uid) {
-      showNoIconToast('订单异常，请重新下单！');
-      return;
-    }
-    let payData = await payMentOfAnOrder(uid, o_id);
-    await wxPay(payData.data)
-    
-  },
-  //拉起微信支付
- async wxPay(payData) {
-   if (!payData) {
-     showNoIconToast('服务器异常！请稍后再试');
-     return;
-   }
-  wxPay(payData,(res) => {
-    console.log(res);
-  })
   },
   // 获取用户手机信息
   isHaveNumber(){

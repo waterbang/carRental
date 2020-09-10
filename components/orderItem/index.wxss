@@ -13,7 +13,7 @@
   width: 97%;
 }
 .item-img {
-  height: 200rpx;
+  height: 220rpx;
 }
 
 .item .title-header{
@@ -27,6 +27,9 @@
 .content .car .address, .content .car .time {
   font-size: 12px;
   color: #949494;
+  height: 35rpx;
+  width: 400rpx;
+  overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
 }
 
 .content .btn {

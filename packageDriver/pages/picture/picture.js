@@ -78,7 +78,6 @@ Page({
       showNoIconToast('里程油表提交成功！')
       return false;
     }
-    // showNoIconToast(result.data + '');
     return false;
   },
   //校验油表
@@ -145,23 +144,27 @@ Page({
   //有损收车
   async detrimentalToCollect() {
     wx.vibrateShort()
-    //if (this.verify()) return; // 验证图片
-    //if (this.isMeterData()) return; // 验证油表
-   // if (await this.getFuelAndMileage()) return; // 上传里程油表
+    if (this.verify()) return; // 验证图片
+    if (this.isMeterData()) return; // 验证油表
+    if (await this.getFuelAndMileage()) return; // 上传里程油表
     this.openDetrimental();
   },
   //无损收车
   async nondestructiveCollect() {
     wx.vibrateShort()
-    //if (this.verify()) return; // 验证图片
-   // if (this.isMeterData()) return; // 验证油表
-    //if (await this.getFuelAndMileage()) return; // 上传里程油表
-    if (this._updateCarStatus()) return;
-    setTimeout((
+    wx.showLoading({
+      title: '正在提交'
+    })
+    if (this.verify()) {wx.hideLoading(); return}; // 验证图片
+    if (this.isMeterData()) {wx.hideLoading(); return}; // 验证油表
+    if (await this.getFuelAndMileage()) {wx.hideLoading(); return};; // 上传里程油表
+    if (this._updateCarStatus()) {wx.hideLoading(); return};
+    setTimeout(() => {
+      wx.hideLoading();
       wx.reLaunch({
         url: '../../pages/driver/driver',
       })
-    ), 500)
+    }, 500)
   },
   /**
    * 生命周期函数--监听页面加载

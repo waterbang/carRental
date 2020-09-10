@@ -35,6 +35,19 @@ Component({
    */
   methods: {
     //取消订单
+    async wxPayOrder(e) {
+      wx.vibrateShort()
+      let id = e.target.dataset.id;
+      console.log(id)
+      let result = await cancelOrder(id);
+      if (result.code == 200) {
+        showAccessToast("取消成功！");
+        this.emitNewData();
+      } else {
+        showNoIconToast("取消失败：" + result.msg);
+      }
+    },
+    //取消订单
     async _cancelOrder(e) {
       wx.vibrateShort()
       let id = e.target.dataset.id;
@@ -52,7 +65,7 @@ Component({
       let id = e.target.dataset.id;
       console.log(id)
       let result = await deleteOrder(id);
-       console.log(result)
+      console.log(result)
       if (result.code == 200) {
         showAccessToast("删除成功！");
         this.emitNewData();
@@ -81,13 +94,13 @@ Component({
         showNoIconToast('订单错误！')
         return;
       }
-      Storage.setStorage('orderDetails',this.data.list[index])
+      Storage.setStorage('orderDetails', this.data.list[index])
       wx.navigateTo({
         url: '/pages/order/details/details',
       })
     },
     //阻止冒泡事件
-    catchPop(){
+    catchPop() {
 
     }
   },

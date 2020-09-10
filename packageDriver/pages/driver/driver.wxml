@@ -2,7 +2,7 @@
 <view class="order">
   <l-message />
   <l-sticky>
-    <l-sticky-item>
+    <l-sticky-item l-header-sticky-class="sticky-header">
       <view slot="header">
         <l-segment l-class="segment" bind:linchange="changeTabs" active-color="#ec8e30" animated-for-line="true"
           active-key="{{activeKey}}">

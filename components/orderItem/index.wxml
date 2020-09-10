@@ -28,6 +28,10 @@
 						</view>
 					</block>
 					<view class="btn" catchtap="catchPop">
+						<block wx:if="{{item.status == 1}}">
+							<!-- 已下单-->
+							<l-button type="error" size="mini" bind:lintap="wxPayOrder" data-id="{{item}}">支付订单</l-button>
+						</block>
 						<block wx:if="{{activeKey==0}}">
 							<!-- 已下单-->
 							<l-button type="warning" size="mini" bind:lintap="_cancelOrder" data-id="{{item.id}}">取消租车</l-button>

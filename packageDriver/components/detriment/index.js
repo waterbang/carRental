@@ -45,13 +45,17 @@ Component({
     },
     // 有损收车
    async detrimentalToCollect() {
+    wx.showLoading({
+      title: '正在收车'
+    })
       if (!this.data.desc) {
         showNoIconToast('详细描述不能为空！')
         return;
       }
       let result = await putCarDamage(this.data.my_id,this.data.desc, this.data.select);
-      console.log(result);
+      // console.log(result);
       if (result.code == 200) {
+        wx.hideLoading();
         setTimeout(() =>{
           wx.reLaunch({
             url: '../../pages/driver/driver',

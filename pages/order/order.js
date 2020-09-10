@@ -51,7 +51,7 @@ Page({
    */
   onLoad: function (options) {
     if (options.status) {
-      this.getItemData(status)
+      this.getItemData(options.status)
     } else {
       this.getItemData(0)
     }

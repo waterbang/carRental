@@ -4,6 +4,9 @@
   height: 100%;
   margin-bottom: 120rpx;
 }
+.sticky-header {
+  z-index: 99;
+}
 .segment {
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
   background-color: #fff;

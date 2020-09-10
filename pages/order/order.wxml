@@ -2,7 +2,7 @@
 <view class="order">
   <l-message content="您的网络较差，请检查网络链接！" />
   <l-sticky>
-    <l-sticky-item>
+    <l-sticky-item l-header-sticky-class="sticky-header">
       <view slot="header">
         <l-segment l-class="segment" bind:linchange="changeTabs" active-color="#ec8e30" animated-for-line="true"
           active-key="{{activeKey}}">
@@ -12,7 +12,7 @@
           <l-segment-item tab="全部" key="3" />
         </l-segment>
       </view>
-      <view slot="body">
+      <view class="body" slot="body">
         <l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="我是有底线的～">
           <view slot="content">
             <w-orderItem list="{{item}}" activeKey="{{activeKey}}" bind:emitNewData="SonUpdatesData"></w-orderItem>
