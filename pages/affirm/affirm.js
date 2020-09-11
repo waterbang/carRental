@@ -8,7 +8,7 @@ import {
 } from '../../models/reserve'
 import * as Storage from '../../utils/storageSyncTool';
 import {CACHE} from '../../config/map';
-import { wxPayMeet } from '../../servers/wxPay'
+import { wxPayMeet,pollPay } from '../../servers/wxPay'
 Page({
 
   /**
@@ -84,10 +84,32 @@ Page({
    wx.hideLoading();
    if(result.code == 200){
    wxPayMeet(result.data);
+   this.paymentMassage(result.data)
    } else {
      showNoIconToast(result.data);
    }
   },
+  // js
+paymentMassage(data){
+  const {o_id, uid} = data;
+  wx.lin.showDialog({
+    type:"confirm",     
+    title:"支付订单确认",
+    content:"您是否已经支付?" ,
+    confirmText:"yes",
+    confirmColor:"#f60",
+    cancelText:"no~",
+    cancelColor:"#999",
+    success: (res) => {
+      if (res.confirm) {
+        pollPay(uid ,o_id);
+      } else if (res.cancel) {
+        pollPay(uid ,o_id);
+        console.log('用户点击取消')
+      }
+    }
+  })
+},
   // 获取用户手机信息
   isHaveNumber(){
     let isNumber = Storage.getStorage(CACHE.USER_ISNUMBER);

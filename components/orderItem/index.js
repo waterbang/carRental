@@ -1,5 +1,6 @@
 // components/orderItem/index.js
 // 0 已下单 ， 1 出租中 2 已完成 3 全部
+import {pollPay} from '../../servers/wxPay'
 import {
   cancelOrder,
   modifyOrderStatus,
@@ -10,7 +11,9 @@ import {
   showAccessToast
 } from '../../utils/common'
 import * as Storage from '../../utils/storageSyncTool'
-import { wxPayMeet } from '../../servers/wxPay'
+import {
+  wxPayMeet
+} from '../../servers/wxPay'
 Component({
   /**
    * 组件的属性列表
@@ -44,7 +47,31 @@ Component({
         uid: item.uid
       }
       await wxPayMeet(orderDetail);
-      // todo
+     this.paymentMassage(orderDetail);
+    },
+    // 支付订单
+    paymentMassage(data) {
+      const {
+        o_id,
+        uid
+      } = data;
+      wx.lin.showDialog({
+        type: "confirm",
+        title: "支付订单确认",
+        content: "您是否已经支付?",
+        confirmText: "yes",
+        confirmColor: "#f60",
+        cancelText: "no~",
+        cancelColor: "#999",
+        success: (res) => {
+          if (res.confirm) {
+            pollPay(uid, o_id);
+          } else if (res.cancel) {
+            pollPay(uid, o_id, true);
+            console.log('用户点击取消')
+          }
+        }
+      })
     },
     //取消订单
     async _cancelOrder(e) {

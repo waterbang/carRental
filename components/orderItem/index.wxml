@@ -1,5 +1,6 @@
 <!--components/orderItem/index.wxml-->
 <wxs module="address" src="../../utils/address.wxs"></wxs>
+<l-dialog />
 <view class="item">
 	<block wx:if="{{list.length == 0}}">
 		<l-status-show l-class="status-show" show="{{list.length == 0}}" type="order" full-screen="{{false}}">

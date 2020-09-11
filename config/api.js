@@ -37,7 +37,8 @@ const api = {
  //---------------------------------------------支付
  //支付
   "WXPAY_ORDER":"order/wxpay",
-  
+  // 查看订单是否已支付
+  "WX_PAYMENT":"order/update_status"
 }
 
 

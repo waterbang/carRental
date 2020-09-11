@@ -75,3 +75,4 @@
 	<!-- 是否有电话 -->
 	<w-login show="{{isNumber}}" isNumber="true" bind:clonePhoneNumber="clonePhoneNumber"></w-login>
 </view>
+<l-dialog />

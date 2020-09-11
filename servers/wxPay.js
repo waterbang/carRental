@@ -1,5 +1,5 @@
 
-import { payMentOfAnOrder } from '../models/pay'
+import { payMentOfAnOrder,pollingOrderPay } from '../models/pay'
 const wxPay = (obj) => {
     wx.requestPayment({
         timeStamp: obj.timeStamp,
@@ -11,18 +11,11 @@ const wxPay = (obj) => {
           wx.showToast({
             title:"支付成功！"
           })
-          wx.reLaunch({
-            url: '../pages/order/order',
-          })
-            console.log(res)        
         },
         fail: (err) =>{
           wx.showToast({
-            title:"支付失败！",
+            title:"取消支付！",
             icon:"none"
-          })
-          wx.reLaunch({
-            url: '/pages/order/order?status=3',
           })
           console.log(err)
         }
@@ -41,14 +34,52 @@ const wxPay = (obj) => {
     return;
   }
   let payData = await payMentOfAnOrder(uid, o_id);
-  await wxPay(payData.data)
+ await wxPay(payData.data);
 }
 
-const pollPay = () => {
-
+const pollPay = (uid, o_id, no = false) => {
+  wx.showLoading({
+    title: '正在核对订单',
+  })
+  let paying = false;
+  let index = 0;
+  const timeId = setInterval(() => {
+    if (paying == true) { //订单成功
+      clearInterval(timeId)
+      wx.hideLoading()
+      wx.showToast({
+        title:"支付成功！"
+      })
+      wx.reLaunch({
+        url: '/pages/order/order',
+      })
+    };
+    if (index === 3) { // 订单失败
+      clearInterval(timeId)
+      wx.hideLoading();
+      wx.showToast({
+        title:"取消支付！"
+      })
+      if (!no) {
+        wx.reLaunch({
+          url: '/pages/order/order?status=3',
+        })
+      }
+    }
+    checkPaymentDone(uid, o_id);
+  },1000)
+    const checkPaymentDone = async (uid, o_id) => {
+    index++;
+    let result = await pollingOrderPay(uid, o_id);
+    console.log(result);
+    if (result.code == 200) {
+      paying = true;
+    }
+    }
 }
 
 module.exports = {
   wxPay,
-  wxPayMeet
+  wxPayMeet,
+  pollPay
 }

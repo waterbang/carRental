@@ -5,6 +5,7 @@
     "l-radio":"/miniprogram_npm/lin-ui/radio/index",
     "l-tag":"/miniprogram_npm/lin-ui/tag/index",
     "l-price":"/miniprogram_npm/lin-ui/price/index",
-    "w-login":"/components/login/index"
+    "w-login":"/components/login/index",
+    "l-dialog":"/miniprogram_npm/lin-ui/dialog"
   }
 }
