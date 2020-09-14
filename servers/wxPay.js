@@ -46,23 +46,32 @@ const pollPay = (uid, o_id, no = false) => {
   const timeId = setInterval(() => {
     if (paying == true) { //订单成功
       clearInterval(timeId)
-      wx.hideLoading()
-      wx.showToast({
-        title:"支付成功！"
-      })
-      wx.reLaunch({
-        url: '/pages/order/order',
-      })
+      setTimeout(() => {
+        wx.hideLoading()
+        wx.showToast({
+          title:"支付成功！"
+        })
+        wx.reLaunch({
+          url: '/pages/order/order',
+        })
+      },100)
     };
     if (index === 3) { // 订单失败
       clearInterval(timeId)
-      wx.hideLoading();
-      wx.showToast({
-        title:"取消支付！"
-      })
       if (!no) {
-        wx.reLaunch({
-          url: '/pages/order/order?status=3',
+        setTimeout(() => {
+          wx.hideLoading();
+          wx.showToast({
+            title:"取消支付！"
+          })
+          wx.reLaunch({
+            url: '/pages/order/order?status=3',
+          })
+        },100)
+      } else {
+        wx.hideLoading();
+        wx.showToast({
+          title:"取消支付！"
         })
       }
     }

@@ -2,13 +2,14 @@
 import {
   showNoIconToast
 } from '../../utils/common'
+import {getUserIntegral} from '../../models/my'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    integral:0, //用户积分
   },
   //我的订单
   goAuth() {
@@ -40,6 +41,15 @@ Page({
       url: '/packageDriver/pages/driver/driver',
     })
   },
+  // 获取用户积分
+  async getIntegral() {
+    let result = await getUserIntegral();
+    if (result.code == 200 && result.data.integral != undefined) {
+      this.setData({
+        integral:result.data.integral
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -58,7 +68,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getIntegral();//获取用户积分
   },
 
   /**

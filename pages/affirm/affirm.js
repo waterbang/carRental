@@ -3,6 +3,7 @@ import {
   showNoIconToast,
   showAccessToast
 } from '../../utils/common'
+import { getOpenid } from '../../models/user'
 import {
   orderACar
 } from '../../models/reserve'
@@ -114,6 +115,8 @@ paymentMassage(data){
   isHaveNumber(){
     let isNumber = Storage.getStorage(CACHE.USER_ISNUMBER);
     if (!isNumber) {
+      wx.removeStorageSync('XIAOQI');
+      getOpenid();
       this.setData({
         isNumber: true
       })

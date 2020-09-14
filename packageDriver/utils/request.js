@@ -18,7 +18,7 @@ const mergeRequestParmas = (perDefaults, params) => {
 
 // 请求封装
 const wxRequest = async (subUrl, params = {}) => {
-  const token = getDriverLoginToken()
+  const token = getDriverLoginToken().id
   const defaults = {
     header: {
       "Content-Type": "application/x-www-form-urlencoded"

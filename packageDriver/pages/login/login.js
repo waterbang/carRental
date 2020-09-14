@@ -30,7 +30,7 @@ Page({
       showNoIconToast('服务器异常，请联系管理员。');
       return;
     }
-    setDriverLoginToken(result.data.id);
+    setDriverLoginToken(result.data);
     showAccessToast('登录成功！');
     setTimeout(() => {
       wx.navigateBack()

@@ -82,8 +82,11 @@ const putNumber = async (iv, encryptedData) => {
   let sessionKey = Storage.getStorage('session_key');
   if(!sessionKey) {
     wx.removeStorageSync('XIAOQI')
-    getOpenid();
+    sessionKey = await getOpenid().then(res => {
+     return res.data.session_key;
+   });
   };
+  console.log("sessionKey:",sessionKey);
   return await wxRequest(API.GET_IPHONE,{
     data:{
     sessionKey,

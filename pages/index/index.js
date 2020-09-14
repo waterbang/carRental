@@ -1,9 +1,10 @@
 // pages/index/index.js
 import {
   getRecommend,
-  getUsedCar
+  getUsedCar,
+  signIn
 } from '../../models/index';
-import { showNoIconToast } from '../../utils/common'
+import { showNoIconToast, showAccessToast } from '../../utils/common'
 import { getOpenid } from '../../models/user'
  import * as Storage  from '../../utils/storageSyncTool'
 Page({
@@ -37,7 +38,23 @@ Page({
   //点击四个块
   clickAssistant(e) {
     wx.vibrateShort()
+    let index = e.currentTarget.dataset?.index;
+    if (index === 2) {
+      this.signInIntegral();
+      return;
+    }
     showNoIconToast("暂未开放此功能！")
+  },
+  // 签到积分
+  async signInIntegral() {
+    wx.vibrateShort();
+    let result = await signIn();
+    result = result.data.data ? result.data: result ;    
+    if (result.code == 200 || result.code == 1002) {
+      showAccessToast(result.data);
+      return;
+    }
+    showNoIconToast('网络异常！');
   },
   // 切换tab
   changeTabs(e) {

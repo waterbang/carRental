@@ -8,7 +8,7 @@
 		</view>
 	</view>
 	<view class="item">
-		<view wx:for="{{listFour}}" wx:key="index" class="chunk" bindtap="clickAssistant">
+		<view wx:for="{{listFour}}" wx:key="index" class="chunk" bindtap="clickAssistant" data-index="{{index}}">
 			<image src="{{item.image}}"></image>
 			<view class="">{{item.title}}</view>
 		</view>

@@ -2,7 +2,7 @@
 <view class="my">
 	<view class="header">
 		<image class="img" src="https://xdtnyimg.waterbang.top/header.png" mode="aspectFill"></image>
-		<l-avatar l-text-class="name" placement="bottom" open-data="{{['userAvatarUrl','userNickName']}}" />
+		<l-avatar l-text-class="name" placement="bottom" open-data="{{['userAvatarUrl']}}" text="{{name}}" />
 	</view>
 	<!-- <view class="cord" bindtap="goGuide" >
 		<view class="coupon">
@@ -24,7 +24,7 @@
 	</view> -->
 	<view class="content">
     <view class="title">我的小旗俱乐部</view>
-		<l-list title="我的订单" icon="order" icon-color="#ff992a" gap="10"  bind:lintap="goOrder" />
+		<l-list title="切换司机账号" icon="order" icon-color="#ff992a" gap="10"  bind:lintap="switchID" />
     <l-list title="新手指导" icon="help" icon-color="#ff992a" gap="10" bind:lintap="goGuide" />
     <l-list title="司机须知" icon="setting" icon-color="#ff992a" gap="10" bind:lintap="goNotice" />
     <l-list title="联系我们" icon="comment" icon-color="#ff992a" gap="10" bind:lintap="contactUs" />

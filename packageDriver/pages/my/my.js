@@ -2,19 +2,20 @@
 import {
   showNoIconToast
 } from '../../utils/common'
+import * as Storage from '../../utils/storageSyncTool'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    name:'司机未登录'
   },
   //我的订单
-  goOrder() {
+  switchID() {
     wx.vibrateShort()
     wx.navigateTo({
-      url: '../driver/driver',
+      url: '../login/login',
     })
   },
   //新手指导
@@ -32,11 +33,18 @@ Page({
     wx.vibrateShort()
     showNoIconToast("暂未开放此功能！")
   },
+  // 获取司机名称
+  getName() {
+    let name = Storage.getStorage('DRIVER_ID').name;
+    if (!name) return;
+    this.setData({
+      name 
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -50,7 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getName();
   },
 
   /**

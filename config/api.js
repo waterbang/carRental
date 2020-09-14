@@ -4,7 +4,10 @@ const api = {
   "INDEX_RECOMMEND" : "index/indexmodel",
   //首页二手车车型
   "INDEX_SECOND_HAND" : "index/indexsell",
-
+  //积分签到
+  "INTEGRAL_SIGN" :"sign/click",
+  // 获取总积分
+  "INTEGRAL_GROSS":"sign/obtain",
 
   //---------------------------------------------分类页
   // 分类车辆接口列表

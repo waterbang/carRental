@@ -57,7 +57,7 @@ Page({
   },
   // 添加图片
   async addOneImg(type, imgData) {
-    let result = await pushImg(this.data.id, type, imgData)
+    let result = await pushImg(this.data._id, type, imgData)
     if (result.code == 200) {
       return true
     } else {
@@ -73,7 +73,7 @@ Page({
       showNoIconToast(`${!meter?'油量表':''} ${!mileage?'里程数':''} 不能为空`)
       return true;
     }
-    let result = await pushCarMeter(this.data.id, meter, mileage);
+    let result = await pushCarMeter(this.data._id, meter, mileage);
     if (result.code == 200) {
       showNoIconToast('里程油表提交成功！')
       return false;
@@ -120,18 +120,18 @@ Page({
   },
   // 更新订单状态
   async _updateCarStatus() {
-    let result = await updateCarStatus(this.data.id, 2); //2为进行中到状态
+    let result = await updateCarStatus(this.data._id, 2); //2为进行中到状态
     console.log(result)
     if (result.code == 200) {
       showAccessToast('订单完成！')
-      return false
+      return false;
     } else {
-      showNoIconToast(result.data)
+      showNoIconToast("请勿重复提交")
       setTimeout(() => {
         wx.reLaunch({
           url: '../driver/driver',
         })
-      },1500)
+      },500)
       return true
     }
   },
@@ -155,14 +155,14 @@ Page({
     wx.showLoading({
       title: '正在提交'
     })
-    if (this.verify()) {wx.hideLoading(); return}; // 验证图片
+    //if (this.verify()) {wx.hideLoading(); return}; // 验证图片
     if (this.isMeterData()) {wx.hideLoading(); return}; // 验证油表
     if (await this.getFuelAndMileage()) {wx.hideLoading(); return};; // 上传里程油表
-    if (this._updateCarStatus()) {wx.hideLoading(); return};
+    if (await this._updateCarStatus()) {wx.hideLoading(); return};
     setTimeout(() => {
       wx.hideLoading();
       wx.reLaunch({
-        url: '../../pages/driver/driver',
+        url: '../driver/driver',
       })
     }, 500)
   },

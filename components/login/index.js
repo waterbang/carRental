@@ -1,19 +1,26 @@
 // components/login/index.js
-import {putNumber} from '../../models/user'
+import {
+  putNumber
+} from '../../models/user'
 import * as Storage from '../../utils/storageSyncTool'
-import { showNoIconToast } from '../../utils/common'
+import {
+  showNoIconToast
+} from '../../utils/common'
+import {
+  getOpenid
+} from '../../models/user'
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    show:{
-      type:Boolean,
+    show: {
+      type: Boolean,
       value: false
     },
-    isNumber:{
-      type:Boolean,
-      value:false
+    isNumber: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -21,7 +28,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    iv: '',
+    encryptedData: "",
   },
 
   /**
@@ -34,25 +42,28 @@ Component({
     getUserInfo() {
       this.triggerEvent('setIsLogin')
     },
-    async getPhoneNumber (e) {
+    async getPhoneNumber(e) {
       if (!e.detail.encryptedData || !e.detail.iv) {
         showNoIconToast('取消授权！');
         return;
       }
+      this.data.iv = e.detail.iv;
+      this.data.encryptedData = e.detail.encryptedData;
       let result = await putNumber(e.detail.iv, e.detail.encryptedData);
       if (result.code === 200) {
         showNoIconToast('授权成功')
         this.clonePhoneNumber();
         Storage.setStorage('isNumber', result.data.tel);
-      } else {
-        showNoIconToast('登录过期，即将清空缓存重新登录！')
-        wx.clearStorage();
-       setTimeout(() => {
-        wx.reLaunch({
-          url: '../../pages/index/index',
-        })
-       },1000)
-      }
+        return;
+      } 
+      wx.removeStorageSync('session_key')
+      await this.againNumber();
+    },
+    async againNumber() {
+      let result = await putNumber(this.data.iv, this.data.encryptedData);
+      showNoIconToast('授权成功')
+      this.clonePhoneNumber();
+      Storage.setStorage('isNumber', result.data.tel);
     },
     //关闭手机
     clonePhoneNumber() {
