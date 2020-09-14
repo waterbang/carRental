@@ -21,7 +21,9 @@ Page({
   //新手指导
   goGuide() {
     wx.vibrateShort()
-    showNoIconToast("暂未开放此功能！")
+    wx.navigateTo({
+      url: './new/new',
+    })
   },
   //租车须知
   goNotice() {

@@ -8,7 +8,8 @@
     "pages/affirm/affirm",
     "pages/my/Notice/notice",
     "pages/my/auth/auth",
-    "pages/order/details/details"
+    "pages/order/details/details",
+    "pages/my/new/new"
   ],
   "subpackages": [
     {

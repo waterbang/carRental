@@ -168,6 +168,13 @@
           "pathName": "packageDriver/pages/picture/picture",
           "query": "id=6",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "新手指导",
+          "pathName": "pages/my/new/new",
+          "query": "",
+          "scene": null
         }
       ]
     }

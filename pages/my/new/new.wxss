@@ -1,0 +1,27 @@
+/* pages/my/new/new.wxss */
+.title-1 {
+  margin: 20rpx;
+}
+
+.steps {
+  background-color: white;
+  padding:20rpx 10rpx ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 6px -6px;
+  border-radius: 10rpx;
+}
+
+.msg {
+  line-height: 2;
+  background-color: white;
+  padding:20rpx;
+  align-items: center;
+  box-shadow: 0 0 6px -6px;
+  border-radius: 10rpx;
+}
+
+.extrude {
+  color: #ff992a;
+}

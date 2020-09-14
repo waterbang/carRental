@@ -85,7 +85,7 @@ Component({
     },
     //计算时间
     getDate: async function () {
-      let date = new Date(new Date().getTime()+ 1000 * 60 * 3);
+      let date = new Date(new Date().getTime()+  1000 * 60 * 60 * 2);
       if (this.data.flag === 'right') {
         date = new Date(this.data.ordDate)
       }
@@ -148,7 +148,7 @@ Component({
     },
     //初始化数据
     firstDate: async function () {
-      const date = new Date(new Date().getTime()+ 1000 * 60 * 3)
+      const date = new Date(new Date().getTime()+ 1000 * 60 * 60 * 2)
       const year = date.getFullYear()
       let month = date.getMonth() + 1
       const day = date.getDate();

@@ -1,0 +1,30 @@
+<!--pages/my/new/new.wxml-->
+<view class="new">
+  <view class="title-1">用车流程</view>
+  <view class="steps">
+    <l-steps color="#ff992a">
+      <l-step title="已下单"></l-step>
+      <l-step title="后台派司机发车"></l-step>
+      <l-step title="司机接受发车"></l-step>
+      <l-step title="已发车"></l-step>
+      <l-step title="用户收车" describe="(用车中)"></l-step>
+      <l-step title="平台确认收车"></l-step>
+      <l-step title="车辆入库"></l-step>
+    </l-steps>
+  </view>
+  <view class="title-1">付款</view>
+  <view class="msg">
+    下单后,已下单将变成已付款。
+    <l-steps color="#ff992a">
+      <l-step title="已付款"></l-step>
+    </l-steps>
+  </view>
+  <view class="title-1">如何提车</view>
+  <view class="msg">
+    用户付款之后，后台将派发订单给距离用户最近司机，司机将在用户<text class="msg extrude">指定的提车时间</text>将车辆送达用户<text class="msg extrude">指定的提车地点</text>。
+  </view>
+  <view class="title-1">应该携带哪些证件</view>
+  <view class="msg">
+    为了维护用户和小旗的利益，请提车时携带：<text class="msg extrude">身份证</text>，<text class="msg extrude">驾驶证</text>。
+  </view>
+</view>

@@ -57,11 +57,11 @@ Component({
         selected: idx
       })
       if (this.data.list[idx].isSpecial){
-        wx.navigateTo({
+        wx.redirectTo({
           url: path,
         })
       }else{
-        wx.navigateTo({
+        wx.redirectTo({
           url: path,
         })
       }
