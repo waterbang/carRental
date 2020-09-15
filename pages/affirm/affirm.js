@@ -10,6 +10,7 @@ import {
 import * as Storage from '../../utils/storageSyncTool';
 import {CACHE} from '../../config/map';
 import { wxPayMeet,pollPay } from '../../servers/wxPay'
+import { CommonConfirmMessage } from '../../utils/common'
 Page({
 
   /**
@@ -90,25 +91,13 @@ Page({
      showNoIconToast(result.data);
    }
   },
-  // js
+  // 显示已支付或未支付
 paymentMassage(data){
   const {o_id, uid} = data;
-  wx.lin.showDialog({
-    type:"confirm",     
-    title:"支付订单确认",
-    content:"您是否已经支付?" ,
-    confirmText:"yes",
-    confirmColor:"#f60",
-    cancelText:"no~",
-    cancelColor:"#999",
-    success: (res) => {
-      if (res.confirm) {
-        pollPay(uid ,o_id);
-      } else if (res.cancel) {
-        pollPay(uid ,o_id);
-        console.log('用户点击取消')
-      }
-    }
+  CommonConfirmMessage('支付订单确认', '您是否已经支付?','yes','no~',() => {
+    pollPay(uid ,o_id);
+  }, () => {
+    pollPay(uid ,o_id);
   })
 },
   // 获取用户手机信息

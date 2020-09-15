@@ -1,0 +1,17 @@
+<!--pages/integral/integral.wxml-->
+<view class="integral">
+  <view class="calendar-con">
+    <calendar id="calendar" config="{{calendarConfig}}" bind:afterCalendarRender="afterCalendarRender" />
+  </view>
+  <l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="到底了～">
+    <view slot="content">
+      <view class="list" wx:for="{{list}}" wx:key="index">
+        <view class="inte">签到获得</view>
+        <view class="time">
+          <view class="title">{{item.integral}}<text style="color:#000"> 旗币</text></view>
+          <view class="date">{{item.addtime}}</view>
+        </view>
+      </view>
+    </view>
+  </l-loadmore>
+</view>

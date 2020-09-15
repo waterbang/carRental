@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "积分详情",
+  "onReachBottomDistance":50,
+  "usingComponents": {
+    "calendar": "/components/calendar/index",
+    "l-loadmore":"/miniprogram_npm/lin-ui/loadmore/index"
+  }
+}

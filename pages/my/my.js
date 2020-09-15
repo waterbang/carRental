@@ -25,6 +25,12 @@ Page({
       url: './new/new',
     })
   },
+  // 积分详情
+  goIntegral() {
+    wx.navigateTo({
+      url: '../integral/integral',
+    })
+  },
   //租车须知
   goNotice() {
     wx.vibrateShort()

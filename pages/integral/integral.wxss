@@ -1,0 +1,31 @@
+/* pages/integral/integral.wxss */
+.calendar-con {
+  background-color: white;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+.integral-class {
+  background-color: #ff992a;
+}
+
+ .list {
+  background-color: white;
+  margin:20rpx auto;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20rpx;
+  width: 94%;
+} 
+
+ .list .time {
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.list .time .title {
+  color: #ff992a;
+}
+ .list .time .date {
+  color: #999;
+}

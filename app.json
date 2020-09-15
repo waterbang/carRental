@@ -9,7 +9,8 @@
     "pages/my/Notice/notice",
     "pages/my/auth/auth",
     "pages/order/details/details",
-    "pages/my/new/new"
+    "pages/my/new/new",
+    "pages/integral/integral"
   ],
   "subpackages": [
     {

@@ -4,20 +4,20 @@
 		<image class="img" src="https://xdtnyimg.waterbang.top/header.png" mode="aspectFill"></image>
 		<l-avatar l-text-class="name" placement="bottom" open-data="{{['userAvatarUrl','userNickName']}}" />
 	</view>
-	<view class="cord" bindtap="contactUs" >
-		<view class="coupon">
+	<view class="cord">
+		<view class="coupon" catchtap="contactUs">
 			<view class="title"><text class="title-num">0</text>张</view>
 			<view class="disc">优惠券</view>
 		</view>
-		<view class="integral">
+		<view class="integral" catchtap="goIntegral">
 			<view class="title"><text class="title-num">{{integral}}</text></view>
 			<view class="disc">积分</view>
 		</view>
-		<view class="kite">
+		<view class="kite" catchtap="contactUs">
 			<view class="title"><text class="title-num">0</text>元</view>
 			<view class="disc">抵用金</view>
 		</view>
-		<view class="wallet">
+		<view class="wallet" catchtap="contactUs">
 			<image class="img" src="https://xdtnyimg.waterbang.top/wallet.png"></image>
 			<view class="disc">我的钱包</view>
 		</view>

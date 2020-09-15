@@ -4,7 +4,7 @@ import {
   getUsedCar,
   signIn
 } from '../../models/index';
-import { showNoIconToast, showAccessToast } from '../../utils/common'
+import { showNoIconToast, showAccessToast, CommonConfirmMessage } from '../../utils/common'
 import { getOpenid } from '../../models/user'
  import * as Storage  from '../../utils/storageSyncTool'
 Page({
@@ -50,11 +50,24 @@ Page({
     wx.vibrateShort();
     let result = await signIn();
     result = result.data.data ? result.data: result ;    
-    if (result.code == 200 || result.code == 1002) {
-      showAccessToast(result.data);
+    if (result.code == 200) {
+      this.integralMassage(result.data);
+      return;
+    } 
+    if (result.code == 1002) {
+      showNoIconToast('明天再来哦！');
       return;
     }
     showNoIconToast('网络异常！');
+  },
+  //显示积分
+  integralMassage(integral){
+    CommonConfirmMessage('每日签到成功', `恭喜您获得${integral}旗币`,'去积分看看','no~',() => {
+      wx.navigateTo({
+        url: '../integral/integral',
+      })
+    }, () => {
+    })
   },
   // 切换tab
   changeTabs(e) {

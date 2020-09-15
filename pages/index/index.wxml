@@ -1,4 +1,5 @@
 <!--pages/index/index.wxml-->
+<l-dialog />
 <view class="index">
 	<view class="header">
 		<image class="banner-img" mode="aspectFill" src="https://xdtnyimg.waterbang.top/index-banner-1.jpg"></image>

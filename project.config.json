@@ -175,6 +175,12 @@
           "pathName": "pages/my/new/new",
           "query": "",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "积分页面",
+          "pathName": "pages/integral/integral",
+          "scene": null
         }
       ]
     }

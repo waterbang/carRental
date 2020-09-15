@@ -3,6 +3,7 @@
     "w-mainChunk": "/components/index/indexMainChunk/index",
     "w-list": "/components/index/indexList/index",
     "l-tabs" : "/miniprogram_npm/lin-ui/tabs/index",
-    "l-tabpanel" : "/miniprogram_npm/lin-ui/tabpanel/index"
+    "l-tabpanel" : "/miniprogram_npm/lin-ui/tabpanel/index",
+    "l-dialog":"/miniprogram_npm/lin-ui/dialog/index"
   }
 }

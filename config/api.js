@@ -41,7 +41,13 @@ const api = {
  //支付
   "WXPAY_ORDER":"order/wxpay",
   // 查看订单是否已支付
-  "WX_PAYMENT":"order/update_status"
+  "WX_PAYMENT":"order/update_status",
+
+//----------------------------------------------积分
+  //渲染日历
+  "INTEGRAL_CALENDAR":"sign/calendar",
+  //积分变动情况
+  "INTEGRAL_LIST":"sign/lists"
 }
 
 
