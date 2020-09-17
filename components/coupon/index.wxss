@@ -1,0 +1,103 @@
+/* components/coupon/index.wxss */
+.coupon-contant {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10rpx 0;
+}
+.coupon {
+  display: flex;
+  position: relative;
+  width: 90%;
+  height: 100px;
+  margin: 20rpx 0;
+  filter: drop-shadow(2px 2px 3px #999);
+}
+
+/* .coupon text{
+  display: inline-block;
+  position: absolute;
+  right: 30%;
+  top: 5px;
+  border: 1px solid red;
+} */
+.coupon-left {
+  background: #ff992a;
+  background: radial-gradient(circle at top right, transparent 5px, #ff992a 0) top right, radial-gradient(circle at bottom right, transparent 5px, #ff992a 0) bottom right;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  width: 70%;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10rpx;
+}
+
+.coupon-left .title {
+  text-shadow: 1rpx 2rpx 2rpx white;
+  color: #fff;
+  font-size: 20px;
+  margin: 20rpx;
+}
+.coupon-left .time {
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx;
+}
+.coupon-left .time .msg {
+  color:white;
+  margin-left: 4rpx;
+  font-size: 10px;
+}
+.coupon-left .time .open {
+  color:white;
+  margin-left: 4rpx;
+  font-size: 10px;
+}
+
+.coupon-con {
+  background: #ff992a;
+  background: radial-gradient(circle at top left, transparent 5px, #ff992a 0) top left,radial-gradient(circle at bottom left, transparent 5px, #ff992a 0) bottom left;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  width: 30%;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+.coupon-con .matter {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-shadow: -1px 0 #fff, 0 1px #fff,
+  1px 0 #fff, 0 -1px #fff;
+}
+.coupon-con .matter .unit {
+  font-size: 14px;
+  margin: 10rpx 0 0 6rpx;
+  color: #fff;
+  text-shadow: -1px 0 #fff;
+}
+.coupon-con::after{
+  content: "";
+  position: absolute;
+  top: 5px;
+  height: 90px;
+  border-left: 2rpx dashed #fff;
+}
+
+.back_on {
+  background: radial-gradient(circle at top left, transparent 5px, #ff992a 0) top left,radial-gradient(circle at bottom left, transparent 5px, #ff992a 0) bottom left;
+}
+.back_off {
+  background: radial-gradient(circle at top left, transparent 5px, #999 0) top left,radial-gradient(circle at bottom left, transparent 5px, #999 0) bottom left;
+}
+
+.back_img {
+  background: url(https://xdtnyimg.waterbang.top/close_coupon.png);
+  background-repeat: no-repeat;
+  background-size: 50% 80%;
+}

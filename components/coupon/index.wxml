@@ -1,0 +1,20 @@
+<!--components/coupon/index.wxml-->
+<view class="coupon-contant">
+  <view class="coupon {{item.get == 'true'?'back_off':'back_on'}} " wx:for="{{coupon}}" wx:key="index" bindtap="_getCoupon" data-index="{{item.id}}" data-title="{{item.title}}">
+    <view class="coupon-left {{item.get == 'true'?'back_off back_img':'back_on'}} ">
+      <view class="title">{{item.title}}</view>
+      <view class="time">
+        <view class="msg">限定时间</view>
+        <view class="open">{{item.open_time}} - {{item.close_time}}</view>
+      </view>
+    </view>
+    <view class="coupon-con {{item.get == 'true'?'back_off':'back_on'}} ">
+      <block wx:if="{{item.status==1}}">
+        <view class="matter">{{item.offer}} <view class="unit">元</view></view>
+      </block>
+      <block wx:if="{{item.status==2}}">
+        <view class="matter">{{item.offer}}% <view class="unit">折</view></view>
+      </block>
+    </view>
+  </view>
+</view>
