@@ -29,11 +29,23 @@ Page({
   async getItemData(status) {
     this.setActiveKey(status);
     let List = await getOrderItemList(status);
-    List = List.data;
-    //console.log(List[0])
-    this.setData({
-      item:List
-    })
+    if (List.code == 200) {
+      this.setData({
+        item: List.data
+      })
+      return;
+    }
+    if (List.code == 1002) { // 没有数据
+      this.setData({
+        item:[]
+      })
+      return;
+    }
+    wx.lin.showMessage({
+      type:'warning',
+      content:'服务器出了点小问题，网络连接堵塞！'
+  })
+   
     wx.lin.flushSticky(); // 防止吸顶灯位置错乱
   },
   // 儿子需要刷新了通知我

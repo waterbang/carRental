@@ -39,17 +39,25 @@ Page({
   clickAssistant(e) {
     wx.vibrateShort()
     let index = e.currentTarget.dataset?.index;
-    if (index === 2) {
+    if (index === 1) { //  领取优惠券
+      this.getCoupon();
+      return;
+    }
+    if (index === 2) { // 签到积分
       this.signInIntegral();
       return;
     }
     showNoIconToast("暂未开放此功能！")
   },
+  // 领取优惠券
+  getCoupon() {
+    wx.navigateTo({
+      url: './receiveCoupon/coupon',
+    })
+  },
   // 签到积分
   async signInIntegral() {
-    wx.vibrateShort();
     let result = await signIn();
-    result = result.data.data ? result.data: result ;    
     if (result.code == 200) {
       this.integralMassage(result.data);
       return;

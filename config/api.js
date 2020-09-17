@@ -47,8 +47,16 @@ const api = {
   //渲染日历
   "INTEGRAL_CALENDAR":"sign/calendar",
   //积分变动情况
-  "INTEGRAL_LIST":"sign/lists"
+  "INTEGRAL_LIST":"sign/lists",
+  //----------------------------------------------积分
+  //优惠券列表
+  "COUPON_LIST":"coupons/lists",
+  //获取优惠券
+  "COUPON_GET":"coupons/addcoupon"
+
+
 }
+
 
 
 export default api;

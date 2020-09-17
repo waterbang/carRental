@@ -1,0 +1,9 @@
+<!--pages/index/receiveCoupon/coupon.wxml-->
+<l-dialog />
+<block wx:if="{{coupon}}">
+  <w-coupon coupon="{{coupon}}" bind:_getCoupon="_getCoupon"></w-coupon>
+</block>
+<block wx:else>
+  <l-status-show show="{{true}}" type="data"></l-status-show>
+</block>
+

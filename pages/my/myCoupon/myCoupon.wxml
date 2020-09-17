@@ -1,0 +1,25 @@
+<!--pages/my/myCoupon/myCoupon.wxml-->
+<view class="myCoupon">
+  <l-message />
+  <l-sticky>
+    <l-sticky-item l-header-sticky-class="sticky-header">
+      <view slot="header">
+        <l-segment l-class="segment" bind:linchange="changeTabs" active-color="#ec8e30" animated-for-line="true"
+          active-key="{{activeKey}}">
+          <l-segment-item tab="未使用" key="0" />
+          <l-segment-item tab="已使用" key="1" />
+          <l-segment-item tab="已过期" key="2" />
+        </l-segment>
+      </view>
+      <view class="body" slot="body">
+        <l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="到底了～">
+          <view slot="content">
+              <w-coupon coupon="{{coupon}}" bind:_getCoupon="_getCoupon"></w-coupon>
+              <l-status-show show="{{coupon.length == 0}}" type="data" full-screen="true" 
+              describe="您还没有优惠券～" button-text="去领取" l-button-class="status-show-btn" l-class="status-show" class="status-show" bind:lintap="goIndexCoupon"></l-status-show>
+          </view>
+        </l-loadmore>
+      </view>
+    </l-sticky-item>
+  </l-sticky>
+</view>

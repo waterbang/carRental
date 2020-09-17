@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "我的优惠券",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "l-segment":"/miniprogram_npm/lin-ui/segment/index",
+    "l-segment-item":"/miniprogram_npm/lin-ui/segment-item/index",
+    "l-message":"/miniprogram_npm/lin-ui/message/index",
+    "l-sticky":"/miniprogram_npm/lin-ui/sticky/index",
+    "l-sticky-item":"/miniprogram_npm/lin-ui/sticky-item/index",
+    "l-status-show":"/miniprogram_npm/lin-ui/status-show/index",
+    "w-coupon":"/components/coupon/index"
+  }
+}

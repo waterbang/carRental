@@ -10,7 +10,9 @@
     "pages/my/auth/auth",
     "pages/order/details/details",
     "pages/my/new/new",
-    "pages/integral/integral"
+    "pages/integral/integral",
+    "pages/index/receiveCoupon/coupon",
+    "pages/my/myCoupon/myCoupon"
   ],
   "subpackages": [
     {

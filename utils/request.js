@@ -57,15 +57,7 @@ const wxRequest = async (subUrl, params = {}) => {
         if (res && code == 200) {
           resolve(res.data)
         } else {
-          let err = {
-              data: {
-                status: res.data.code,
-                description: res.data.msg
-              }
-          }
-          const handlerErr = responseErrorHandler(err)
-          res.err = handlerErr
-          reject(res)
+          reject(res.data)
         }
       },
       fail: err => {

@@ -11,11 +11,11 @@ Page({
   data: {
     integral:0, //用户积分
   },
-  //我的订单
-  goAuth() {
+  // 去优惠券
+  goCouPon() {
     wx.vibrateShort()
     wx.navigateTo({
-      url: './auth/auth',
+      url: './myCoupon/myCoupon',
     })
   },
   //新手指导

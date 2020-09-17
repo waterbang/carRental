@@ -180,6 +180,20 @@
           "id": -1,
           "name": "积分页面",
           "pathName": "pages/integral/integral",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "用户领取优惠券",
+          "pathName": "pages/index/receiveCoupon/coupon",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我的优惠券",
+          "pathName": "pages/my/myCoupon/myCoupon",
           "scene": null
         }
       ]

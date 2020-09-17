@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "领取优惠券",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "w-coupon":"/components/coupon/index",
+    "l-status-show":"/miniprogram_npm/lin-ui/status-show/index",
+    "l-dialog" : "/miniprogram_npm/lin-ui/dialog/index"
+  }
+}
