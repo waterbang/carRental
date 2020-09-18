@@ -1,16 +1,27 @@
 // pages/reserve/affirm/affirm.js
 import {
-  showNoIconToast,
-  showAccessToast
+  showNoIconToast
 } from '../../utils/common'
-import { getOpenid } from '../../models/user'
+import {
+  getOpenid
+} from '../../models/user'
 import {
   orderACar
 } from '../../models/reserve'
+import {
+  getUserCoupon
+} from '../../models/pay'
 import * as Storage from '../../utils/storageSyncTool';
-import {CACHE} from '../../config/map';
-import { wxPayMeet,pollPay } from '../../servers/wxPay'
-import { CommonConfirmMessage } from '../../utils/common'
+import {
+  CACHE
+} from '../../config/map';
+import {
+  wxPayMeet,
+  pollPay
+} from '../../servers/wxPay'
+import {
+  CommonConfirmMessage
+} from '../../utils/common'
 Page({
 
   /**
@@ -26,13 +37,18 @@ Page({
     rentaladdress: '', //还车地址
     username: '用户名',
     day: '', //几天
-    money: 0,//钱
+    money: 0, //钱
+    ordMoney:0, // 旧的钱
     body: {}, //发送的内容
-    isNumber:false,//是否有手机
+    isNumber: false, //是否有手机
+    selectCoupon: [], // 选择的优惠券
+    coupon: [], //加载的优惠券
+    showCoupon: false, // 是否显示优惠券
+    offer:0, // 使用的优惠
   },
   init() {
     let data = this.data.body = wx.getStorageSync(CACHE.CAR_AFFIRM);
-    if(!data) {
+    if (!data) {
       wx.switchTab({
         url: '/pages/index/index',
       })
@@ -47,12 +63,11 @@ Page({
       rentaltime: data.rentaltime,
       returnaddress: this.filterAddress(data.returnaddress),
       rentaladdress: this.filterAddress(data.rentaladdress),
-      // cancelRule:data.cancelRule
     })
   },
   // 过滤地址
   filterAddress(address) {
-    let add =  address.split('#');
+    let add = address.split('#');
     return add[0];
   },
   //是否选中协议
@@ -62,8 +77,84 @@ Page({
   // 处理价格
   seMoney(day, money) {
     const result = Number.parseInt(money) * day;
+    this.data.ordMoney = result;
     this.setData({
       money: result
+    })
+  },
+  // 回传的优惠券
+  _getCoupon(e) {
+    const _data = e.detail;
+    this.setData({
+      selectCoupon: [_data]
+    })
+    this.makeCoupon(false); // 关闭弹出
+    this.updatePrice(); 
+  },
+  // 更新价格
+  updatePrice() {
+    const {offer , money, status} = this.data.selectCoupon[0];
+    this.data.offer = offer;
+    if (status === 1) { // 满减
+      if (this.data.ordMoney < money) {
+        showNoIconToast('没有达到这张优惠券的使用金额！');
+        this.clearCoupon();
+        return;
+      }
+      this.setData({
+        money: this.data.ordMoney - offer
+      })
+      return;
+    }
+    if (status == 2) {
+      // 周几可以使用，todo。。。。。。
+      const _money = (Number.parseInt(offer) * 0.01 * this.data.ordMoney).toFixed(2);
+      this.setData({
+        money: Number.parseInt(_money)
+      })
+      return;
+    }
+  
+  },
+  // 获取优惠券
+  async getUserCoupon() {
+    wx.showLoading({
+      title: '加载优惠券',
+    })
+    this.makeCoupon(true)
+    let result = await getUserCoupon(0); // 领取优惠券
+    if (result.code == 200) {
+      this.setData({
+        coupon: result.data
+      })
+    }
+    wx.hideLoading()
+  },
+  // 打开优惠券
+  makeCoupon(flag) {
+    this.setData({
+      showCoupon: flag
+    })
+  },
+  // 没有优惠券去领取优惠券
+  goGetCoupon() {
+    wx.navigateTo({
+      url: '/pages/index/receiveCoupon/coupon',
+    })
+  },
+  // 取消使用优惠券
+  clearCoupon() {
+    const offer = this.data.offer;
+    if (offer) {
+      this.setData({
+        money: this.data.money + Number.parseInt(offer),
+        selectCoupon: []
+      })
+      this.data.offer = null;
+      return;
+    }
+    this.setData({
+      selectCoupon: []
     })
   },
   // 提交
@@ -82,26 +173,29 @@ Page({
       c_id: data.carDetail.id,
       username: data.username
     }
-   let result = await orderACar(body);
-   wx.hideLoading();
-   if(result.code == 200){
-   wxPayMeet(result.data);
-   this.paymentMassage(result.data)
-   } else {
-     showNoIconToast(result.data);
-   }
+    let result = await orderACar(body);
+    wx.hideLoading();
+    if (result.code == 200) {
+      wxPayMeet(result.data);
+      this.paymentMassage(result.data)
+    } else {
+      showNoIconToast(result.data);
+    }
   },
   // 显示已支付或未支付
-paymentMassage(data){
-  const {o_id, uid} = data;
-  CommonConfirmMessage('支付订单确认', '您是否已经支付?','yes','no~',() => {
-    pollPay(uid ,o_id);
-  }, () => {
-    pollPay(uid ,o_id);
-  })
-},
+  paymentMassage(data) {
+    const {
+      o_id,
+      uid
+    } = data;
+    CommonConfirmMessage('支付订单确认', '您是否已经支付?', 'yes', 'no~', () => {
+      pollPay(uid, o_id);
+    }, () => {
+      pollPay(uid, o_id);
+    })
+  },
   // 获取用户手机信息
-  isHaveNumber(){
+  isHaveNumber() {
     let isNumber = Storage.getStorage(CACHE.USER_ISNUMBER);
     if (!isNumber) {
       wx.removeStorageSync('XIAOQI');
@@ -116,7 +210,7 @@ paymentMassage(data){
   //关闭手机授权弹窗
   clonePhoneNumber() {
     this.setData({
-      isNumber:false
+      isNumber: false
     })
   },
   /**

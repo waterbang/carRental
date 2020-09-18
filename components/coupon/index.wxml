@@ -1,6 +1,6 @@
 <!--components/coupon/index.wxml-->
 <view class="coupon-contant">
-  <view class="coupon " wx:for="{{coupon}}" wx:key="index" bindtap="_getCoupon" data-index="{{item.id}}" data-title="{{item.title}}">
+  <view class="coupon " wx:for="{{coupon}}" wx:key="index" bindtap="_getCoupon" data-item="{{item}}">
     <view class="coupon-left {{item.get == 'true'?' coupon-left-off':'coupon-left-on'}}">
       <block wx:if="{{item.get=='true'}}"><image class="back_img" src="{{alreadyReceived}}"></image></block>
       <block wx:if="{{item.set==1}}"><image class="back_img" src="{{beenUsed}}"></image></block>

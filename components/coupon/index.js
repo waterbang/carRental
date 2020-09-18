@@ -27,9 +27,8 @@ Component({
   methods: {
     //领取
     async _getCoupon(e) {
-      const index = e.currentTarget.dataset.index;
-      const title = e.currentTarget.dataset.title;
-      this.triggerEvent('_getCoupon', {index,title})
+      const item = e.currentTarget.dataset.item;
+      this.triggerEvent('_getCoupon', item)
     }
   }
 

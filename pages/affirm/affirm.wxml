@@ -30,6 +30,18 @@
 			<text class="time">{{rentaladdress}}</text>
 		</view>
 	</view>
+	<view class="coupon"  catchtap="getUserCoupon">
+		<l-collapse>
+			<l-collapse-item title="选择您要使用的优惠券" disabled="true">
+				<block wx:if="{{selectCoupon.length == 0}}">
+					不使用优惠券
+				</block>
+				<block wx:else>
+					<w-coupon coupon="{{selectCoupon}}"></w-coupon>
+				</block>
+			</l-collapse-item>
+		</l-collapse>
+	</view>
 
 	<view class="userTheCar">
 		<view class="title">用车人:</view>
@@ -63,8 +75,8 @@
 	<view class="submit">
 		<view class="content">
 			<l-price unit="￥" value="{{money}}" autofix value-color="#ff992a" unit-color="#ff992a" value-size="28"></l-price>
-			<l-price unit="￥" value="{{money+50}}" deleted="{{true}}" value-color="#ff992a" unit-color="#ff992a"
-				value-size="23" unit-size="20"> </l-price>
+			<l-price unit="￥" value="{{money + 50}}" deleted="{{true}}" value-color="#ff992a" unit-color="#ff992a"
+				value-size="23" unit-size="20" > </l-price>
 			<view class="text">活动扣除50元服务费。</view>
 		</view>
 		<view class="day">共 <text style="color:#ff992a">{{day}}</text> 天
@@ -76,3 +88,16 @@
 	<w-login show="{{isNumber}}" isNumber="true" bind:clonePhoneNumber="clonePhoneNumber"></w-login>
 </view>
 <l-dialog />
+<l-arc-popup show="{{showCoupon}}" max-height="800">
+	<block wx:if="{{coupon}}">
+		<w-coupon coupon="{{coupon}}" bind:_getCoupon="_getCoupon"></w-coupon>
+		<l-button size="long" type="warning" bind:lintap="clearCoupon">取消使用优惠券</l-button>
+
+	</block>
+	<block wx:else>
+		<view class="no-coupon">
+		<view class="title">您还没有优惠券哦😅</view>
+		<l-button type="default" bind:lintap="goGetCoupon">去领取优惠券</l-button>
+		</view>
+	</block>
+</l-arc-popup>

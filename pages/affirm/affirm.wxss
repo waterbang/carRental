@@ -91,6 +91,14 @@
   width: 80%;
   overflow-x: scroll;
 }
+/* 优惠券 */
+.affirm .coupon {
+  width: 97%;
+  border-radius: 10rpx;
+  box-shadow: 0 6px -6px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  margin-bottom: 20rpx;
+}
 
 /* 用车人 */
 .userTheCar,
@@ -201,4 +209,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* 优惠券 */
+.no-coupon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.no-coupon .title {
+  margin: 20rpx;
 }

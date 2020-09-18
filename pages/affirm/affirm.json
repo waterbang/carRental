@@ -6,6 +6,11 @@
     "l-tag":"/miniprogram_npm/lin-ui/tag/index",
     "l-price":"/miniprogram_npm/lin-ui/price/index",
     "w-login":"/components/login/index",
-    "l-dialog":"/miniprogram_npm/lin-ui/dialog"
+    "l-dialog":"/miniprogram_npm/lin-ui/dialog",
+    "l-collapse":"/miniprogram_npm/lin-ui/collapse/index",
+    "l-collapse-item":"/miniprogram_npm/lin-ui/collapse-item/index",
+    "l-arc-popup":"/miniprogram_npm/lin-ui/arc-popup/index",
+    "w-coupon":"/components/coupon/index",
+    "l-button":"/miniprogram_npm/lin-ui/button/index"
   }
 }

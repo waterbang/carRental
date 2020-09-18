@@ -19,7 +19,8 @@ Page({
   },
    //领取
    async _getCoupon(e) {
-    const {index, title} = e.detail;
+    const _data = e.detail;
+    const index = _data.id,title = _data.title;
     let result = await getCoupon(index);
     if (result.code == 200) {
       this.couponMassage(title);
