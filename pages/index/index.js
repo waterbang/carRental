@@ -58,6 +58,7 @@ Page({
   // 签到积分
   async signInIntegral() {
     let result = await signIn();
+    console.log(result)
     if (result.code == 200) {
       this.integralMassage(result.data);
       return;

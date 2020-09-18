@@ -16,7 +16,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    alreadyReceived:"https://xdtnyimg.waterbang.top/close_coupon.png", //已领取
+    beenUsed:"https://xdtnyimg.waterbang.top/HasBeenUsed.png", //已使用
+    haveExpired:'https://xdtnyimg.waterbang.top/haveExpired.png' // 已过期
   },
 
   /**

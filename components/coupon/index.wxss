@@ -34,14 +34,32 @@
   justify-content: space-between;
   padding: 10rpx;
 }
+.coupon-left-off {
+  background: #999;
+  background: radial-gradient(circle at top right, transparent 5px, #999 0) top right, radial-gradient(circle at bottom right, transparent 5px, #999 0) bottom right;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  width: 70%;
+  border-radius: 5px 0 0 5px;
+}
+.coupon-left-on {
+  background: #ff992a;
+  background: radial-gradient(circle at top right, transparent 5px, #ff992a 0) top right, radial-gradient(circle at bottom right, transparent 5px, #ff992a 0) bottom right;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  width: 70%;
+  border-radius: 5px 0 0 5px;
+}
 
 .coupon-left .title {
+  z-index: 2;
   text-shadow: 1rpx 2rpx 2rpx white;
   color: #fff;
   font-size: 20px;
   margin: 20rpx;
 }
 .coupon-left .time {
+  z-index: 2;
   display: flex;
   flex-direction: column;
   margin: 10rpx;
@@ -89,15 +107,29 @@
   border-left: 2rpx dashed #fff;
 }
 
-.back_on {
+.coupon-con-on {
+  background: #ff992a;
   background: radial-gradient(circle at top left, transparent 5px, #ff992a 0) top left,radial-gradient(circle at bottom left, transparent 5px, #ff992a 0) bottom left;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  width: 30%;
+  color: white;
+  border-radius: 0 5px 5px 0;
 }
-.back_off {
+.coupon-con-off {
+  background: #999;
   background: radial-gradient(circle at top left, transparent 5px, #999 0) top left,radial-gradient(circle at bottom left, transparent 5px, #999 0) bottom left;
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  width: 30%;
+  color: white;
+  border-radius: 0 5px 5px 0;
 }
 
 .back_img {
-  background: url(https://xdtnyimg.waterbang.top/close_coupon.png);
-  background-repeat: no-repeat;
-  background-size: 50% 80%;
+  position: absolute;
+  left:30%;
+  width: 160rpx;
+  height: 100rpx;
+  z-index: 1;
 }

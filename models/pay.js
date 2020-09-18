@@ -12,7 +12,11 @@ const getCouponList = () => post(API.COUPON_LIST).then(res => {return res}).catc
 
 // 获取优惠券
 const getCoupon = (id) => post(API.COUPON_GET,{id}).then(res => {return res}).catch(err => {return err});
+
+// 获取用户优惠券列表
+const getUserCoupon = (status) => post(API.COUPON_USER_LIST,{status}).then(res => {return res}).catch(err => {return err});
 module.exports = {
+  getUserCoupon,
   payMentOfAnOrder,
   pollingOrderPay,
   getCouponList,
