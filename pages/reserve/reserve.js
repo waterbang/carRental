@@ -154,10 +154,12 @@ Page({
   },
   // 提交订单
   async orderACar() {
+    wx.showLoading({
+      title: '正在生成订单',
+    })
     let status = await this.verify();
-    if (!status)return;
+    if (!status) {wx.hideLoading();return;};
     const data = {
-    // cancelRule:this.data.getTime,
     carDetail:this.data.carDetail,
     returntime :this.data. getDate + this.data.getTime,
      rentaltime : this.data.reDate + this.data.reTime,
@@ -165,9 +167,9 @@ Page({
      rentaladdress : this.setAddress(this.data.repayCarAddress),
      username  : wx.getStorageSync(CACHE.USER_IS_LOGIN).nickName,
      day : this.data.day + this.setMoneyTime(this.data.hour),
-     
     }
     wx.setStorageSync(CACHE.CAR_AFFIRM, data)
+    wx.hideLoading()
     wx.navigateTo({
       url: '/pages/affirm/affirm',
     })

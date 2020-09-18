@@ -147,7 +147,7 @@ Page({
     const offer = this.data.offer;
     if (offer) {
       this.setData({
-        money: this.data.money + Number.parseInt(offer),
+        money: this.data.ordMoney + Number.parseInt(offer),
         selectCoupon: []
       })
       this.data.offer = null;
