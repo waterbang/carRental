@@ -1,6 +1,8 @@
 // components/orderItem/index.js
 // 0 已下单 ， 1 出租中 2 已完成 3 全部
-import {pollPay} from '../../servers/wxPay'
+import {
+  pollPay
+} from '../../servers/wxPay'
 import {
   cancelOrder,
   modifyOrderStatus,
@@ -14,6 +16,9 @@ import * as Storage from '../../utils/storageSyncTool'
 import {
   wxPayMeet
 } from '../../servers/wxPay'
+import {
+  CommonConfirmMessage
+} from '../../utils/common'
 Component({
   /**
    * 组件的属性列表
@@ -47,7 +52,7 @@ Component({
         uid: item.uid
       }
       await wxPayMeet(orderDetail);
-     this.paymentMassage(orderDetail);
+      this.paymentMassage(orderDetail);
     },
     // 支付订单
     paymentMassage(data) {
@@ -55,35 +60,28 @@ Component({
         o_id,
         uid
       } = data;
-      wx.lin.showDialog({
-        type: "confirm",
-        title: "支付订单确认",
-        content: "您是否已经支付?",
-        confirmText: "yes",
-        confirmColor: "#f60",
-        cancelText: "no~",
-        cancelColor: "#999",
-        success: (res) => {
-          if (res.confirm) {
-            pollPay(uid, o_id);
-          } else if (res.cancel) {
-            pollPay(uid, o_id, true);
-            console.log('用户点击取消')
-          }
-        }
+      CommonConfirmMessage('支付订单确认', '您是否已经支付?', 'yes', 'no~', () => {
+        pollPay(uid, o_id);
+      }, () => {
+        pollPay(uid, o_id, true);
+        console.log('用户点击取消')
       })
     },
     //取消订单
     async _cancelOrder(e) {
       wx.vibrateShort()
       let id = e.target.dataset.id;
-      let result = await cancelOrder(id);
-      if (result.code == 200) {
-        showAccessToast("取消成功！");
-        this.emitNewData();
-      } else {
-        showNoIconToast("取消失败：" + result.msg);
-      }
+      CommonConfirmMessage('取消订单', '确定取消此订单吗?', '确定', '我点错了~',async () => {
+        let result = await cancelOrder(id);
+        if (result.code == 200) {
+          showAccessToast("取消成功！");
+          this.emitNewData();
+        } else {
+          showNoIconToast("取消失败：" + result.msg);
+        }
+      }, () => {
+        // console.log('用户点击取消')
+      })
     },
     //删除订单
     async _deleteOrder(e) {

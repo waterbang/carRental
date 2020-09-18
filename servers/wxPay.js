@@ -34,7 +34,7 @@ const wxPay = (obj) => {
     return;
   }
   let payData = await payMentOfAnOrder(uid, o_id);
- await wxPay(payData.data);
+  wxPay(payData);
 }
 
 const pollPay = (uid, o_id, no = false) => {
@@ -59,7 +59,6 @@ const pollPay = (uid, o_id, no = false) => {
     if (index === 3) { // 订单失败
       clearInterval(timeId)
       if (!no) {
-        setTimeout(() => {
           wx.hideLoading();
           wx.showToast({
             title:"取消支付！"
@@ -67,7 +66,6 @@ const pollPay = (uid, o_id, no = false) => {
           wx.reLaunch({
             url: '/pages/order/order?status=3',
           })
-        },100)
       } else {
         wx.hideLoading();
         wx.showToast({
