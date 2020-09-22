@@ -9,6 +9,8 @@ Page({
     item: [], //数据
     activeKey:0, //默认激活的选项卡 0 已下单 1 出租中 2 已完成 3 全部
     loading:false,//是否加载
+    curPage:1, // 当前第几页
+    footer:false, // false 下拉还有数据 true 已经没有数据了
   },
     // 吸顶
     onPageScroll(res) {
@@ -18,7 +20,8 @@ Page({
   changeTabs(e) {
     wx.vibrateShort()
     const key = Number.parseInt(e.detail.activeKey);
-    this.getItemData(key);
+    this.data.footer = true;
+    this.getItemData(key, 1);
   },
   setActiveKey(key) {
     this.setData({
@@ -26,21 +29,40 @@ Page({
     })
   },
   // 获取数据
-  async getItemData(status) {
+  async getItemData(status,page = 1) {
     this.setActiveKey(status);
-    let List = await getOrderItemList(status);
+    this.setLoading(true);
+    this.data.curPage = page;
+    let List = await getOrderItemList(status, page);
+   if (page === 1) {
     if (List.code == 200) {
       this.setData({
         item: List.data
       })
+      this.setLoading(false);
       return;
     }
     if (List.code == 1002) { // 没有数据
       this.setData({
         item:[]
       })
+      this.setLoading(false);
       return;
     }
+   } else {
+    if (List.code == 200) { 
+      this.setData({
+        item: this.data.item.concat(List.data)
+      })
+      this.setLoading(false);
+      return;
+    }
+    if (List.code == 1002) { // 没有数据
+      this.data.footer = true;
+      this.setLoading(false);
+      return;
+    }
+   }
     wx.lin.showMessage({
       type:'warning',
       content:'服务器出了点小问题，网络连接堵塞！'
@@ -112,7 +134,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log("触底啦")
+    console.log(this.data.footer,this.data.curPage)
+    if (this.data.footer === false) {
+      this.getItemData(this.data.activeKey,++this.data.curPage);
+    }
   },
 
   /**

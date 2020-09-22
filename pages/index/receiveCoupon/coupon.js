@@ -6,15 +6,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    coupon:[]
+    coupon:[],
+    curPage: 1, //当前页面
+    footer: false , // false 还有数据 true 没有数据
   },
   // 获取优惠券列表
-  async _getCouponList() {
-    let result = await getCouponList();
-    if (result.code == 200) {
-      this.setData({
-        coupon: result.data
-      })
+  async _getCouponList(page = 1) {
+    let result = await getCouponList(page);
+    if (page === 1) {
+      this.data.curPage = page;
+      if (result.code == 200) {
+        if (result.data.length !== 0) {
+          this.data.footer = false;
+          this.setData({
+            coupon: result.data
+          })
+        }
+      } else {
+        this.data.footer = true;
+      }
+    } else {
+      if (result.code == 200) {
+        if (result.data.length !== 0) {
+          this.setData({
+            coupon: this.data.coupon.concat(result.data)
+          })
+         } else {
+          this.data.footer = true;
+        }
+      }
     }
   },
    //领取
@@ -23,6 +43,7 @@ Page({
     const index = _data.id,title = _data.title;
     let result = await getCoupon(index);
     if (result.code == 200) {
+      this._getCouponList(1)
       this.couponMassage(title);
       return;
     }
@@ -94,7 +115,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.footer === false) {
+      this._getCouponList(++this.data.curPage);
+    }
   },
 
   /**

@@ -48,7 +48,6 @@ const wxRequest = async (subUrl, params = {}) => {
       method,
       data,
       success: res => {
-        // console.log(res.data);
         const {
           code,
           msg,

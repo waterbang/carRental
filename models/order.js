@@ -5,7 +5,7 @@ import {
 
 // 获取订单接口
 
-const getOrderItemList = (status) => post(API.ORDER_LIST,{status}).then(res => {return res}).catch(err => {return err}); 
+const getOrderItemList = (status,page,size = 10) => post(API.ORDER_LIST,{status,page,size}).then(res => {return res}).catch(err => {return err}); 
 
 // 取消订单
 const cancelOrder = (id) => post(API.ORDER_CANCEL,{id}).then(res => {return res}).catch(err => {return err});
