@@ -49,7 +49,7 @@ Component({
       let item = e.target.dataset.item;
       let orderDetail = {
         o_id: item.id,
-        uid: item.uid
+        uid: item.u_id
       }
       await wxPayMeet(orderDetail);
       this.paymentMassage(orderDetail);

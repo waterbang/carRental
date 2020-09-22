@@ -30,14 +30,14 @@
 			<text class="time">{{rentaladdress}}</text>
 		</view>
 	</view>
-	<view class="coupon"  catchtap="getUserCoupon">
-		<l-collapse>
+	<view class="coupon" >
+		<l-collapse bind:linfold="playCollapse" bind:linexpand="playCollapse">
 			<l-collapse-item title="选择您要使用的优惠券" disabled="true">
 				<block wx:if="{{selectCoupon.length == 0}}">
 					不使用优惠券
 				</block>
 				<block wx:else>
-					<w-coupon coupon="{{selectCoupon}}"></w-coupon>
+					<w-coupon coupon="{{selectCoupon}}" catchtap="getUserCoupon"></w-coupon>
 				</block>
 			</l-collapse-item>
 		</l-collapse>

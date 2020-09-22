@@ -106,7 +106,7 @@ Page({
       })
       return;
     }
-    if (status == 2) {
+    if (status == 2) { // 打折
       // 周几可以使用，todo。。。。。。
       const _money = (Number.parseInt(offer) * 0.01 * this.data.ordMoney).toFixed(2);
       this.setData({
@@ -142,6 +142,14 @@ Page({
       url: '/pages/index/receiveCoupon/coupon',
     })
   },
+  playCollapse(e) {
+    if (e.type == "linfold") {
+      this.makeCoupon(false)
+      this.clearCoupon();
+    } else {
+      this.getUserCoupon();
+    }
+  },
   // 取消使用优惠券
   clearCoupon() {
     const offer = this.data.offer;
@@ -164,6 +172,12 @@ Page({
       title: '正在下单',
     })
     let data = this.data.body;
+    let _couponId = null;
+    try {
+      _couponId = this.data.selectCoupon[0].id
+    } catch(e) {
+      _couponId = null;
+    }
     let body = {
       day: data.day,
       returntime: data.returntime,
@@ -171,7 +185,8 @@ Page({
       returnaddress: data.returnaddress,
       rentaladdress: data.rentaladdress,
       c_id: data.carDetail.id,
-      username: data.username
+      username: data.username,
+      coupon_id: _couponId
     }
     let result = await orderACar(body);
     wx.hideLoading();

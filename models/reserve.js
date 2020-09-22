@@ -12,7 +12,8 @@ const orderACar = (data) => post(API.ORDER_ADD,{
   returnaddress:data.returnaddress,
   rentaladdress:data.rentaladdress,
   c_id:data.c_id,
-  username:data.username
+  username:data.username,
+  coupon_id: data.coupon_id
 }).then(res => {return res}).catch(err => {return err})
 module.exports = {
   getCarDetail,
