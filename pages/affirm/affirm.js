@@ -39,14 +39,16 @@ Page({
     username: '用户名',
     day: '', //几天
     money: 0, //钱
-    ordMoney:0, // 旧的钱
+    ordMoney: 0, // 旧的钱
     body: {}, //发送的内容
     isNumber: false, //是否有手机
     selectCoupon: [], // 选择的优惠券
     coupon: [], //加载的优惠券
     showCoupon: false, // 是否显示优惠券
-    offer:0, // 使用的优券
-    couponNums:1, // 优惠券数量
+    offer: 0, // 使用的优券
+    couponNums: 1, // 优惠券数量
+    curNums: false, // 还有没有优惠券
+    curPage:1, // 当前页数
   },
   init() {
     let data = this.data.body = wx.getStorageSync(CACHE.CAR_AFFIRM);
@@ -91,11 +93,15 @@ Page({
       selectCoupon: [_data]
     })
     this.makeCoupon(false); // 关闭弹出
-    this.updatePrice(); 
+    this.updatePrice();
   },
   // 更新价格
   updatePrice() {
-    const {offer , money, status} = this.data.selectCoupon[0];
+    const {
+      offer,
+      money,
+      status
+    } = this.data.selectCoupon[0];
     this.data.offer = offer;
     if (status === 1) { // 满减
       if (this.data.ordMoney < money) {
@@ -116,7 +122,7 @@ Page({
       })
       return;
     }
-  
+
   },
   // 获取优惠券
   async getUserCoupon() {
@@ -124,13 +130,29 @@ Page({
       title: '加载优惠券',
     })
     this.makeCoupon(true)
-    let result = await getUserCoupon(0, 1, this.data.couponNums); // 领取优惠券
+    if (this.data.couponNums <= 0) { return wx.hideLoading();} // 上次加载过了
+    let result = await getUserCoupon(0, 1, 5); // 领取优惠券
     if (result.code == 200) {
       this.setData({
-        coupon: result.data
+        coupon: result.data,
+        couponNums: this.data.couponNums - result.data.length
       })
     }
-    wx.hideLoading()
+    wx.hideLoading();
+  },
+  // 循环拉取优惠券
+  async loopGetCoupon() {
+    this.setLoading(true);
+    let result = await getUserCoupon(0, ++this.data.curPage, 5); // 领取优惠券
+    if (result.code == 200) {
+      this.setData({
+        coupon: this.data.coupon.concat(result.data),
+        couponNums: this.data.couponNums - result.data.length,
+        loading:false
+      })
+      return;
+    }
+    this.setLoading(false);
   },
   // 打开优惠券
   makeCoupon(flag) {
@@ -161,11 +183,13 @@ Page({
         selectCoupon: []
       })
       this.data.offer = null;
+      this.makeCoupon(false); // 关闭弹出
       return;
     }
     this.setData({
       selectCoupon: []
     })
+    this.makeCoupon(false); // 关闭弹出
   },
   // 提交
   async submitOrder() {
@@ -177,7 +201,7 @@ Page({
     let _couponId = 0;
     try {
       _couponId = this.data.selectCoupon[0].id
-    } catch(e) {
+    } catch (e) {
       _couponId = 0;
     }
     let body = {
@@ -232,10 +256,16 @@ Page({
   },
   // 当前优惠券数量
   async getCouponNumber() {
-    let result =  await getUserCouponNumber();
+    let result = await getUserCouponNumber();
     if (result.code == 200) {
       this.data.couponNums = Number.parseInt(result.data);
-    } 
+    }
+  },
+  // 底部加载动画
+  setLoading(flag) {
+    this.setData({
+      loading:flag
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -255,7 +285,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: async function () {
-    await this.getCouponNumber(); 
+    await this.getCouponNumber();
   },
 
   /**

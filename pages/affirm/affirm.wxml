@@ -88,9 +88,13 @@
 	<w-login show="{{isNumber}}" isNumber="true" bind:clonePhoneNumber="clonePhoneNumber"></w-login>
 </view>
 <l-dialog />
-<l-arc-popup show="{{showCoupon}}" max-height="800">
+<l-arc-popup show="{{showCoupon}}" max-height="800" locked="true">
 	<block wx:if="{{coupon}}">
-		<w-coupon coupon="{{coupon}}" bind:_getCoupon="_getCoupon"></w-coupon>
+		<l-loadmore show="{{true}}" type="{{loading?'loading':'end'}}" loading-text="努力加载中~" end-text="{{couponNums > 0?'点击加载剩下的优惠券':'您没有可用的优惠券了～'}}" bind:lintap="loopGetCoupon" size="38" >
+						<view slot="content">
+							<w-coupon coupon="{{coupon}}" bind:_getCoupon="_getCoupon"></w-coupon>
+						</view>
+					</l-loadmore>
 		<l-button size="long" type="warning" bind:lintap="clearCoupon">取消使用优惠券</l-button>
 
 	</block>

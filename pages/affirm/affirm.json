@@ -11,6 +11,7 @@
     "l-collapse-item":"/miniprogram_npm/lin-ui/collapse-item/index",
     "l-arc-popup":"/miniprogram_npm/lin-ui/arc-popup/index",
     "w-coupon":"/components/coupon/index",
-    "l-button":"/miniprogram_npm/lin-ui/button/index"
+    "l-button":"/miniprogram_npm/lin-ui/button/index",
+    "l-loadmore":"/miniprogram_npm/lin-ui/loadmore/index"
   }
 }
