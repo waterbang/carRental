@@ -6,7 +6,7 @@
 	</view>
 	<view class="cord">
 		<view class="coupon" catchtap="goCouPon">
-			<view class="title"><text class="title-num">0</text>张</view>
+			<view class="title"><text class="title-num">{{couponNums}}</text>张</view>
 			<view class="disc">优惠券</view>
 		</view>
 		<view class="integral" catchtap="goIntegral">

@@ -2,14 +2,18 @@
 import {
   showNoIconToast
 } from '../../utils/common'
-import {getUserIntegral} from '../../models/my'
+import {
+  getUserIntegral
+} from '../../models/my'
+import { getUserCouponNumber } from '../../models/pay'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    integral:0, //用户积分
+    integral: 0, //用户积分
+    couponNums:0 // 优惠券数量
   },
   // 去优惠券
   goCouPon() {
@@ -54,7 +58,16 @@ Page({
     let result = await getUserIntegral();
     if (result.code == 200 && result.data.integral != undefined) {
       this.setData({
-        integral:result.data.integral
+        integral: result.data.integral
+      })
+    }
+  },
+  // 当前优惠券数量
+  async getCouponNumber() {
+    let result = await getUserCouponNumber();
+    if (result.code == 200) {
+      this.setData({
+        couponNums:Number.parseInt(result.data)
       })
     }
   },
@@ -75,8 +88,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    this.getIntegral();//获取用户积分
+  onShow:async function () {
+    this.getIntegral(); //获取用户积分
+    await this.getCouponNumber(); // 优惠券数量
   },
 
   /**

@@ -54,8 +54,9 @@ const api = {
   //获取优惠券
   "COUPON_GET":"coupons/addcoupon",
   // 用户优惠券列表
-  "COUPON_USER_LIST":"coupons/personal_lists"
-
+  "COUPON_USER_LIST":"coupons/personal_lists",
+  // 用户的优惠券数量
+  "COUPON_NUMS":"coupons/order_lists"
 }
 
 

@@ -111,7 +111,6 @@ Page({
     this.setData({
       coupon: []
     })
-    console.log(this.data.activeKey)
     this.getUserCouponList(this.data.activeKey);
     wx.stopPullDownRefresh()
     wx.hideLoading()

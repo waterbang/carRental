@@ -15,10 +15,14 @@ const getCoupon = (id) => post(API.COUPON_GET,{id}).then(res => {return res}).ca
 
 // 获取用户优惠券列表
 const getUserCoupon = (status, page, size = 10) => post(API.COUPON_USER_LIST,{status,page,size}).then(res => {return res}).catch(err => {return err});
+
+const getUserCouponNumber = () => post(API.COUPON_NUMS).then(res => {return res}).catch(err => {return err});
+
 module.exports = {
   getUserCoupon,
   payMentOfAnOrder,
   pollingOrderPay,
   getCouponList,
-  getCoupon
+  getCoupon,
+  getUserCouponNumber
 }

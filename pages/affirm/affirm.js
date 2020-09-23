@@ -9,7 +9,8 @@ import {
   orderACar
 } from '../../models/reserve'
 import {
-  getUserCoupon
+  getUserCoupon,
+  getUserCouponNumber
 } from '../../models/pay'
 import * as Storage from '../../utils/storageSyncTool';
 import {
@@ -44,7 +45,8 @@ Page({
     selectCoupon: [], // 选择的优惠券
     coupon: [], //加载的优惠券
     showCoupon: false, // 是否显示优惠券
-    offer:0, // 使用的优惠
+    offer:0, // 使用的优券
+    couponNums:1, // 优惠券数量
   },
   init() {
     let data = this.data.body = wx.getStorageSync(CACHE.CAR_AFFIRM);
@@ -122,7 +124,7 @@ Page({
       title: '加载优惠券',
     })
     this.makeCoupon(true)
-    let result = await getUserCoupon(0); // 领取优惠券
+    let result = await getUserCoupon(0, 1, this.data.couponNums); // 领取优惠券
     if (result.code == 200) {
       this.setData({
         coupon: result.data
@@ -172,11 +174,11 @@ Page({
       title: '正在下单',
     })
     let data = this.data.body;
-    let _couponId = null;
+    let _couponId = 0;
     try {
       _couponId = this.data.selectCoupon[0].id
     } catch(e) {
-      _couponId = null;
+      _couponId = 0;
     }
     let body = {
       day: data.day,
@@ -191,7 +193,7 @@ Page({
     let result = await orderACar(body);
     wx.hideLoading();
     if (result.code == 200) {
-      wxPayMeet(result.data);
+      await wxPayMeet(result.data);
       this.paymentMassage(result.data)
     } else {
       showNoIconToast(result.data);
@@ -228,6 +230,13 @@ Page({
       isNumber: false
     })
   },
+  // 当前优惠券数量
+  async getCouponNumber() {
+    let result =  await getUserCouponNumber();
+    if (result.code == 200) {
+      this.data.couponNums = Number.parseInt(result.data);
+    } 
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -245,8 +254,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: async function () {
+    await this.getCouponNumber(); 
   },
 
   /**
