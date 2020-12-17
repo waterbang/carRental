@@ -30,7 +30,9 @@ Page({
     isTime: false, //时间选择框
     day: 0, // 共几天
     hour: 0, // 小时
-    isLogin: false
+    isLogin: false,
+    radioCurrent: 0, // 是否有选择同意协议
+    activeKey:'one', // 默认激活到bar
   },
   //获取详情信息
   async getReserve(id) {
@@ -185,6 +187,11 @@ Page({
     })
     return false;
   }
+  if (this.data.radioCurrent == 0) {
+    showNoIconToast("您需要先同意租车协议");
+    this.checkTabBottom()
+    return false;
+  }
   if(this.data.getCarAddress == null) {
     showNoIconToast("未设置取车地址");
     return false;
@@ -261,6 +268,22 @@ Page({
       getAndRepay: getAndRepay
     })
   },
+  // 设置同意协议
+  selectProtocal() {
+    const cur = (this.data.radioCurrent == 0)?1:0
+    this.setData({
+      radioCurrent: cur
+    })
+  },
+  // 自动定位到同意协议
+  checkTabBottom() {
+    this.setData({
+      activeKey: 'two'
+    })
+    wx.pageScrollTo({
+      scrollTop: 1000
+  })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -270,13 +293,7 @@ Page({
     await this.getDate(); // 获取时间
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
+ 
   /**
    * 生命周期函数--监听页面显示
    */

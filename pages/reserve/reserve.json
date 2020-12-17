@@ -8,6 +8,8 @@
     "l-tabs": "/miniprogram_npm/lin-ui/tabs/index",
     "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index",
     "w-condition": "/components/condition/index",
-    "w-login": "/components/login/index"
+    "w-login": "/components/login/index",
+    "l-radio-group":"/miniprogram_npm/lin-ui/radio-group/index",
+    "l-radio":"/miniprogram_npm/lin-ui/radio/index"
   }
 }

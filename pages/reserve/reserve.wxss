@@ -122,3 +122,15 @@
   left: 0;
   box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.2);
 }
+
+/* 同意协议 */
+.grup {
+  display: flex;
+  justify-content: center;
+}
+.radioGrup .radio {
+  font-size: 13px;
+  display: flex;
+  align-items: baseline;
+}
+

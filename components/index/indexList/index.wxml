@@ -6,7 +6,7 @@
 	<block wx:else>
 		<view wx:for="{{recommendList}}" wx:key="index" class="list-item" bindtap="goReserve" data-id="{{item.id}}">
 		<view class="list-img">
-			<image src="{{item.imgs}}" class="img" lazy-load="true"></image>
+			<image mode="aspectFill" src="{{item.imgs}}" class="img" lazy-load="true"></image>
 			<view class="item-msg-list">
 				<l-tag l-class="item-msg" plain="{{true}}" font-color="#d3d3d3;" size="super-mini"><text class="msg-list">周年庆大促</text></l-tag>
 				<l-tag l-class="item-msg" plain="{{true}}" font-color="#d3d3d3;" size="super-mini"><text class="msg-list">车已消毒</text></l-tag>
