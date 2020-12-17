@@ -9,6 +9,7 @@
 
 /* 导航块 */
 .index .header .header-recom {
+  margin-top: 10rpx;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -30,7 +31,7 @@
   height: 120rpx;
   background-color: #fff;
   padding: 10rpx;
-  border-radius: 8%;
+  border-radius: 5rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,7 +47,7 @@
 /* 主页推荐列表 */
 
 .index .list {
-  margin-top: 50rpx;
+  margin-top: 40rpx;
   background-color: #fff;
   width: 100%;
   height: auto;
@@ -54,3 +55,7 @@
   flex-direction: column;
 }
 
+/* 加载end */
+.loading-end {
+  background-color: #f0f0f0f0 !important;
+}
