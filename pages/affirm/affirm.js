@@ -258,7 +258,9 @@ Page({
   async getCouponNumber() {
     let result = await getUserCouponNumber();
     if (result.code == 200) {
-      this.data.couponNums = Number.parseInt(result.data);
+      this.setData({
+        couponNums: Number.parseInt(result.data)
+      })
     }
   },
   // 底部加载动画
@@ -272,6 +274,7 @@ Page({
    */
   onLoad: function (options) {
     this.init();
+    this.getCouponNumber();
   },
 
   /**
@@ -285,7 +288,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: async function () {
-    await this.getCouponNumber();
   },
 
   /**
